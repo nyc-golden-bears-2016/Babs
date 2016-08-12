@@ -3,7 +3,7 @@ class CreateEntries < ActiveRecord::Migration[5.0]
     create_table :entries do |t|
       t.string :body, null:false
       t.references :author, as: :user_id, null:false
-      t.references :viewer, as: :user_id, null:false
+      t.references :viewer, as: :user_id
       t.belongs_to :prompt
       t.boolean :is_private, default: false, null:false
       t.boolean :is_read, default: false, null:false

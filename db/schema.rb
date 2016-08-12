@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160811201101) do
   create_table "entries", force: :cascade do |t|
     t.string   "body",                        null: false
     t.integer  "author_id",                   null: false
-    t.integer  "viewer_id",                   null: false
+    t.integer  "viewer_id"
     t.integer  "prompt_id"
     t.boolean  "is_private",  default: false, null: false
     t.boolean  "is_read",     default: false, null: false
