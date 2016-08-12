@@ -7,7 +7,7 @@ class App extends React.Component {
       user: "",
       entries: []
     };
-
+    this.addEntry = this.addEntry.bind(this);
   }
 
   componentDidMount() {
@@ -19,17 +19,20 @@ class App extends React.Component {
       this.setState({
         user: response
       });
+
+
+
+      $.ajax({
+        url: 'http://localhost:3000/entries/show',
+      })
+      .done((response) => {
+        this.setState({
+          entries: response
+        });
+      });
+
     });
 
-    $.ajax({
-      url: 'http://localhost:3000/entries/show',
-    })
-    .done((response) => {
-      debugger;
-      this.setState({
-        entries: response
-      });
-    });
   }
 
   addEntry(entry) {
@@ -50,8 +53,7 @@ class App extends React.Component {
       data: { entry: { body: body } }
     })
     .done((response) => {
-          debugger;
-      this.props.onAddEntry(response);
+      this.addEntry(response);
       textArea.value = '';
     })
   }
@@ -67,10 +69,11 @@ class App extends React.Component {
           <input type='submit' value='Post'/>
         </form>
         <ul>
-          {this.props.entries.map((entry) => {
+          {this.state.entries.map((entry) => {
             return <Entry key={entry.id} data={entry}/>
           })}
         </ul>
+
       </div>
       )
   }

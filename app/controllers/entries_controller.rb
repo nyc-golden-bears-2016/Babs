@@ -20,8 +20,6 @@ class EntriesController < ApplicationController
     render json: @entries
   end
 
-
-
   private
 
   def permit_params
