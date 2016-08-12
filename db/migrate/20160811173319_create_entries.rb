@@ -4,11 +4,11 @@ class CreateEntries < ActiveRecord::Migration[5.0]
       t.string :body
       t.belongs_to :user
       t.belongs_to :prompt
-      t.boolean :is_private
-      t.boolean :is_read
-      t.boolean :can_respond
+      t.boolean :is_private, default: false
+      t.boolean :is_read, default: false
+      t.boolean :can_respond, default: false
 
-      t.timestamps
+      t.timestamps, null: false
     end
   end
 end

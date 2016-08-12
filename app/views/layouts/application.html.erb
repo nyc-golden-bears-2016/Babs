@@ -6,6 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <nav>
+      <a href="/">Home</a>
+      <% if user_signed_in? %>
+        <a href="/static/index"><%= current_user.username.capitalize %></a>
+        <a href="/users/sign_out">logout</a>
+      <% else %>
+        <a href="/users/sign_in">login</a>
+        <a href="/users/sign_up">sign up</a>
+      <% end %>
+
+    </nav>
   </head>
 
   <body>
