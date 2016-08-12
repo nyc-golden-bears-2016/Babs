@@ -4,7 +4,6 @@ class Entry < ApplicationRecord
   has_many :responses
 
   validates :user_id, presence: true
-  validates :user_id, uniqueness: true
   validates :body, presence: true
   validates :is_private, inclusion: {in: [true,false]}
   validates :is_private, exclusion: {in: [nil]}
