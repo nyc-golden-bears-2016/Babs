@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(permit_params)
-    @entry.user_id = current_user.id
+    @entry.author_id = current_user.id
     if request.xhr?
       # set the viewer for a new entry
       # @entry.message_in_a_bottle
@@ -52,7 +52,7 @@ class EntriesController < ApplicationController
     begin
       bottle_receiver = User.find(rand(1..total_users))
     end until !user.nil?
-    self.viewer = bottle_receiver.id
+    self.viewer_id = bottle_receiver.id
     self.save
   end
 

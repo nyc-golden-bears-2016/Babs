@@ -5,7 +5,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :responses
-  has_many :entries
+  has_many :entries, :foreign_key => 'author_id'
+  has_many :entries, :foreign_key => 'viewer_id'
   # validates :username, :presence => true, :uniqueness => { :case_sensitive => false }
   # validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
