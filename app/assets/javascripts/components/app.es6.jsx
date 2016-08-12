@@ -1,33 +1,35 @@
 class App extends React.Component {
 
-    constructor() {
+ constructor(){
     super();
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
+    this.state ={
       user: "",
       entries: []
     };
+
     this.addEntry = this.addEntry.bind(this);
+    this.removeEntry = this.removeEntry.bind(this);
   }
 
-  componentDidMount() {
+  removeEntry(entry) {
+    let newTree = this.state.entries.filter(function(e){return e.id!==entry.id});
+    this.setState({entries: newTree});
+  }
 
+
+  componentDidMount() {
     $.ajax({
       url: 'http://localhost:3000/users/show',
     })
-    .done((response) => {
-      this.setState({
-        user: response
-      });
-
-
+    .done((userResponse) => {
 
       $.ajax({
         url: 'http://localhost:3000/entries/show',
       })
-      .done((response) => {
+      .done((entryResponse) => {
         this.setState({
-          entries: response
+          user: userResponse,
+          entries: entryResponse
         });
       });
 
@@ -35,45 +37,29 @@ class App extends React.Component {
 
   }
 
-  addEntry(entry) {
-    this.setState((prevState) => {
-      return {
-        entries: [entry, ...prevState.entries]
-      };
-    });
-  }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    let textArea = this.refs.entryTextarea,
-        body = textArea.value;
-    $.ajax({
-      url: '/entries',
-      method: 'POST',
-      data: { entry: { body: body } }
-    })
-    .done((response) => {
-      this.addEntry(response);
-      textArea.value = '';
-    })
-  }
+
+
+  addEntry(entry){
+    let entries = this.state.entries;
+    this.setState({entries: [entry, ...entries]});
+   }
+
+
 
   render () {
     return (
       <div>
 
         <h1>Welcome, {this.state.user.username}!</h1>
-        <form onSubmit={this.handleSubmit}>
-          Write something:<br/>
-          <textarea ref="entryTextarea" name="body"/>
-          <input type='submit' value='Post'/>
-        </form>
+        <div>
+          <EntryBox onAddEntry={this.addEntry}/>
+        </div>
         <ul>
           {this.state.entries.map((entry) => {
-            return <Entry key={entry.id} data={entry}/>
+            return <Entry key={entry.id} data={entry} onRemoveEntry={this.removeEntry}/>
           })}
         </ul>
-
       </div>
       )
   }

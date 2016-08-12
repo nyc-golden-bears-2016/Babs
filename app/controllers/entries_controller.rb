@@ -20,6 +20,12 @@ class EntriesController < ApplicationController
     render json: @entries
   end
 
+  def destroy
+    entry = Entry.find(params[:id])
+    entry.destroy
+    render json: entry.to_json
+  end
+
   private
 
   def permit_params
