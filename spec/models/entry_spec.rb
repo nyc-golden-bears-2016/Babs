@@ -19,23 +19,23 @@ require 'rails_helper'
    end
  end
 
-  describe "#user_id" do
+  describe "#author_id" do
     describe "validations" do
      it "is has a user" do
-      entry.user_id = 1
+      entry.author_id = 1
       entry.valid?
-      expect(entry.errors[:user_id]).to be_empty
+      expect(entry.errors[:author_id]).to be_empty
     end
 
     it "is throws an errors when there is no user" do
       entry.valid?
-      expect(entry.errors[:user_id]).to_not be_empty
+      expect(entry.errors[:author_id]).to_not be_empty
     end
 
     it "is not valid when it is not unique" do
       user = User.new(id: 1)
-      entry_1 = Entry.create(id: 1, user_id: 1)
-      entry.user_id = 1
+      entry_1 = Entry.create(id: 1, author_id: 1)
+      entry.author_id = 1
       entry.id = 2
       entry.valid?
       expect(entry.errors[:user]).to_not be_empty
@@ -123,14 +123,14 @@ require 'rails_helper'
 
     @prompt = Prompt.create!(question: "what would you do for a scammer?")
 
-    @entry = Entry.create!(body: "yes", user_id: @user.id, prompt_id: @prompt.id, is_private: false, is_read: true, can_respond: true)
+    @entry = Entry.create!(body: "yes", author_id: @user.id, prompt_id: @prompt.id, is_private: false, is_read: true, can_respond: true)
 
-    @entry_2 = Entry.create!(body: "no", user_id: @user_1.id, prompt_id: @prompt.id, is_private: false, is_read: true, can_respond: true)
+    @entry_2 = Entry.create!(body: "no", author_id: @user_1.id, prompt_id: @prompt.id, is_private: false, is_read: true, can_respond: true)
 
-    @response_1 = Response.create!(body: "yes please", entry_id: @entry.id, user_id: @user.id, is_read: true, can_respond: true)
+    @response_1 = Response.create!(body: "yes please", entry_id: @entry.id, author_id: @user.id, is_read: true, can_respond: true)
 
 
-    @response_2 = Response.create!(body: "no thanks", entry_id: @entry.id, user_id: @user.id, is_read: true, can_respond: true)
+    @response_2 = Response.create!(body: "no thanks", entry_id: @entry.id, author_id: @user.id, is_read: true, can_respond: true)
 
   end
 

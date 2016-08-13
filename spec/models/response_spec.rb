@@ -57,9 +57,9 @@ require 'rails_helper'
 
     @prompt = Prompt.create!(question: "what would you do for a scammer?")
 
-    @entry = Entry.create!(body: "yes", user_id: @user.id, prompt_id: @prompt.id, is_private: false, is_read: true, can_respond: true)
+    @entry = Entry.create!(body: "yes", author_id: @user.id, prompt_id: @prompt.id, is_private: false, is_read: true, can_respond: true)
 
-    @response = Response.create!(body: "no thanks", entry_id: @entry.id, user_id: @user.id, is_read: true, can_respond: true)
+    @response = Response.create!(body: "no thanks", entry_id: @entry.id, author_id: @user.id, is_read: true, can_respond: true)
 
   end
 

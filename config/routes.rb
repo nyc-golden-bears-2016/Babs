@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/users/show' => 'users#show'
 
   resources :entries, only: [:new, :create, :update, :destroy, :show]
+  resources :responses, only: [:new, :create, :update, :destroy, :show]
 
 
   devise_for :users
