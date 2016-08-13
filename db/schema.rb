@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811201101) do
+ActiveRecord::Schema.define(version: 20160812173319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "entries", force: :cascade do |t|
     t.string   "body",                        null: false
-    t.integer  "author_id",                   null: false
+    t.integer  "user_id",                     null: false
     t.integer  "viewer_id"
     t.integer  "prompt_id"
     t.boolean  "is_private",  default: false, null: false
@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20160811201101) do
     t.boolean  "can_respond", default: false, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.index ["author_id"], name: "index_entries_on_author_id", using: :btree
-    t.index ["prompt_id"], name: "index_entries_on_prompt_id", using: :btree
+    t.index ["user_id"], name: "index_entries_on_user_id", using: :btree
     t.index ["viewer_id"], name: "index_entries_on_viewer_id", using: :btree
   end
 

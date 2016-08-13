@@ -2,7 +2,7 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(permit_params)
-    @entry.author_id = current_user.id
+    @entry.user_id = current_user.id
     if request.xhr?
       # set the viewer for a new entry
       # @entry.message_in_a_bottle
@@ -18,7 +18,10 @@ class EntriesController < ApplicationController
   end
 
   def show
-    @entries = current_user.entries
+    # @entries = Entry.all.where(user_id: current_user.id).reverse
+
+    # this is the corrent association, but .enrties isn't working. There's something wrong with the associations in the model.
+    @entries = current_user.entries.reverse
     render json: @entries
   end
 
