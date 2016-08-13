@@ -2,8 +2,10 @@ class ResponsesController < ApplicationController
 
   def create
     @response = Response.new(permit_params)
+    @response.user_id = current_user.id
+    binding.pry
     if request.xhr?
-      if @resonse.save?
+      if @resonse.save
         render json: @response
       else
         flash[:error] = 'Something went wrong'
