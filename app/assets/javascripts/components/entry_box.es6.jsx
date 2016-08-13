@@ -3,7 +3,9 @@ class EntryBox extends React.Component{
   constructor() {
     super();
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
+  };
+
+
 
   handleSubmit(event) {
     event.preventDefault();
