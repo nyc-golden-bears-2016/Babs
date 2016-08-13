@@ -1,24 +1,9 @@
-# README
+# Message in a Bottle
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Message in a Bottle is a jorunaling web-app with a focus on creating genuine user reflections through revealing questions and exposure to anonymous user journal entries.
 
-Things you may want to cover:
+This is was conceived, designed, and deployed by:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Alex Bills (abb1991)
+- Ben Behrman (bbehrman10)
+- Ben Kudler (bkudler)
