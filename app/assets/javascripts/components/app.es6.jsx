@@ -5,10 +5,13 @@ class App extends React.Component {
     this.state ={
       user: "",
       entries: [],
-      replies: []
+      replies: [],
+      teaser: '',
+      showEntryForm: false
     };
 
     this.addEntry = this.addEntry.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
   }
 
@@ -31,12 +34,20 @@ class App extends React.Component {
         this.setState({
           user: userResponse,
           entries: entryResponse.entries,
-          replies: entryResponse.responses
+          replies: entryResponse.responses,
+          teaser: entryResponse.teaser
         });
       });
 
     });
 
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+      this.setState({
+          showEntryForm: true
+        });
   }
 
 
@@ -52,10 +63,9 @@ class App extends React.Component {
   render () {
     return (
       <div>
-
         <h1>Welcome, {this.state.user.username}!</h1>
         <div>
-          <EntryBox onAddEntry={this.addEntry}/>
+          {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
         </div>
         <ul>
           {this.state.entries.map((entry) => {
