@@ -59,7 +59,7 @@ class App extends React.Component {
         </div>
         <ul>
           {this.state.entries.map((entry) => {
-            return <Entry key={entry.id} data={entry} onRemoveEntry={this.removeEntry}/>
+            return <Entry key={entry.id} data={entry} onRemoveEntry={this.removeEntry} replies={this.state.replies}/>
           })}
         </ul>
       </div>
