@@ -7,10 +7,11 @@ class ReplyBox extends React.Component{
 
   handleSubmit(event) {
     event.preventDefault();
+    debugger;
     let textArea = this.refs.entryTextarea,
         body = textArea.value;
     $.ajax({
-      url: '/response',
+      url: '/responses',
       method: 'POST',
       data: { response: { body: body } }
     })
@@ -19,6 +20,9 @@ class ReplyBox extends React.Component{
       textArea.value = '';
     })
   }
+
+
+  // add input for user id.
 
   render() {
     return (
