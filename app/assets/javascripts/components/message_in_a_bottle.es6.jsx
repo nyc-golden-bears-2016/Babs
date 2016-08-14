@@ -4,8 +4,6 @@ class MessageInABottle extends React.Component{
     super();
   }
 
-
-
   render() {
     return (
       <div>
@@ -13,6 +11,5 @@ class MessageInABottle extends React.Component{
       </div>
     );
   }
-
 
 }
