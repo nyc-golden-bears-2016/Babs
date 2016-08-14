@@ -23,9 +23,11 @@ class EntriesController < ApplicationController
   def show
     # @entries = Entry.all.where(user_id: current_user.id).reverse
 
-    # this is the corrent association, but .enrties isn't working. There's something wrong with the associations in the model.
+    # this is the correct association, but .enrties isn't working. There's something wrong with the associations in the model.
     @entries = current_user.entries.reverse
-    render json: @entries
+    @responses = Response.all.where(user_id: current_user.id)
+    render json: {entries: @entries,
+                  responses: @responses}
   end
 
   def destroy

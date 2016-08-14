@@ -18,6 +18,7 @@ class EntryBox extends React.Component{
     })
     .done((response) => {
       this.props.onAddEntry(response);
+       debugger;
       textArea.value = '';
     })
   }
