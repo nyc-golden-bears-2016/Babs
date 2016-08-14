@@ -21,7 +21,7 @@ class Entry extends React.Component {
   addReply(reply){
     let replies = this.state.replies;
     this.setState({replies: [reply, ...replies]});
-   }
+   } 
 
 
 
