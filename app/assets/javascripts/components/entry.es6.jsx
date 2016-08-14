@@ -36,6 +36,12 @@ class Entry extends React.Component {
             return <Reply key={response.id} entryKey= {this.props.data.id} data={response} />
           })}
         </ul>
+        <ul>
+          {this.props.replies.map((reply)=>{
+            if(reply.id === this.props.data.id)
+              return <Reply key={reply.id} data={response}/>
+          })}
+        </ul>
         {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.addReply} /> : null}
       </li>
     )
