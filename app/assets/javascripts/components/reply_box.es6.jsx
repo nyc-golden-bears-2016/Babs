@@ -6,14 +6,15 @@ class ReplyBox extends React.Component{
   }
 
   handleSubmit(event) {
+
     event.preventDefault();
-    debugger;
-    let textArea = this.refs.entryTextarea,
+    let textArea = this.refs.responseTextarea,
+        entry_id = this.refs.entryId.value,
         body = textArea.value;
     $.ajax({
       url: '/responses',
       method: 'POST',
-      data: { response: { body: body } }
+      data: { response: { body: body, entry_id: entry_id } }
     })
     .done((response) => {
       this.props.onAddReply(response);
@@ -25,11 +26,13 @@ class ReplyBox extends React.Component{
   // add input for user id.
 
   render() {
+
     return (
       <section id="respond-box">
       <form id="respond-box" onSubmit={this.handleSubmit}>
           Respond:<br/>
-          <textarea ref="entryTextarea" name="body"/>
+          <textarea ref="responseTextarea" name="body"/>
+          <input ref="entryId" type="hidden" value={this.props.data.id}/>
           <input type='submit' value='Respond'/>
         </form>
       </section>

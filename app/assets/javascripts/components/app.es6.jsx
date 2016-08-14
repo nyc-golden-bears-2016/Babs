@@ -4,7 +4,8 @@ class App extends React.Component {
     super();
     this.state ={
       user: "",
-      entries: []
+      entries: [],
+      replies: []
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -29,7 +30,8 @@ class App extends React.Component {
       .done((entryResponse) => {
         this.setState({
           user: userResponse,
-          entries: entryResponse
+          entries: entryResponse.entries,
+          replies: entryResponse.responses
         });
       });
 

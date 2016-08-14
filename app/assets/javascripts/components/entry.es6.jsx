@@ -2,7 +2,9 @@ class Entry extends React.Component {
 
  constructor(){
     super();
-    this.state ={
+      this.state ={
+      user: "",
+      entries: [],
       replies: [],
       box: false
     };
@@ -24,7 +26,6 @@ class Entry extends React.Component {
 
 
   render() {
-
     return (
       <li className="entry">
         <span className="entry-span">{this.props.data.body}</span>
@@ -32,10 +33,10 @@ class Entry extends React.Component {
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <ul>
           {this.state.replies.map((response) => {
-            return <ReplyBox key={entry.id} data={entry}/>
+            return <Reply key={response.id} data={response} />
           })}
         </ul>
-        {this.state.box ? <ReplyBox/> : null}
+        {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.addReply} /> : null}
       </li>
     )
   }

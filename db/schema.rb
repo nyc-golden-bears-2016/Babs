@@ -36,13 +36,13 @@ ActiveRecord::Schema.define(version: 20160812173319) do
   end
 
   create_table "responses", force: :cascade do |t|
-    t.string   "body",        null: false
-    t.integer  "entry_id",    null: false
-    t.integer  "user_id",     null: false
-    t.boolean  "is_read",     null: false
-    t.boolean  "can_respond", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "body",                        null: false
+    t.integer  "entry_id",                    null: false
+    t.integer  "user_id",                     null: false
+    t.boolean  "is_read",     default: false, null: false
+    t.boolean  "can_respond", default: false, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.index ["entry_id"], name: "index_responses_on_entry_id", using: :btree
     t.index ["user_id"], name: "index_responses_on_user_id", using: :btree
   end
