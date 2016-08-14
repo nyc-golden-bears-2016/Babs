@@ -5,8 +5,8 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     if request.xhr?
       # set the viewer for a new entry
-      @entry.message_in_a_bottle
-      @viewer = User.find(@entry.viewer_id)
+      # @entry.message_in_a_bottle
+      # @viewer = User.find(@entry.viewer_id)
       # @entry.message_in_a_bottle
       if @entry.save
         # NotificationMailer.awaiting_response(@viewer, @entry).deliver_later *** this is the logic for emailing
@@ -26,8 +26,10 @@ class EntriesController < ApplicationController
     # this is the correct association, but .enrties isn't working. There's something wrong with the associations in the model.
     @entries = current_user.entries.reverse
     @responses = Response.all.where(user_id: current_user.id)
+    @teaser = 'teaser'
     render json: {entries: @entries,
-                  responses: @responses}
+                  responses: @responses,
+                  teaser: @teaser}
   end
 
   def destroy
