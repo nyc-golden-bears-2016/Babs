@@ -5,8 +5,11 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     if request.xhr?
       # set the viewer for a new entry
+      @entry.message_in_a_bottle
+      @viewer = User.find(@entry.viewer_id)
       # @entry.message_in_a_bottle
       if @entry.save
+        # NotificationMailer.awaiting_response(@viewer, @entry).deliver_later *** this is the logic for emailing
         render json: @entry
       else
         flash[:error] = "Your entry was not succussfully created"
