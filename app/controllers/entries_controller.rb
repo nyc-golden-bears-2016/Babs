@@ -7,6 +7,8 @@ class EntriesController < ApplicationController
       # set the viewer for a new entry
       # @entry.message_in_a_bottle
       if @entry.save
+        binding.pry
+        NotificationMailer.awaiting_response(current_user, @entry).deliver_now
         render json: @entry
       else
         flash[:error] = "Your entry was not succussfully created"
