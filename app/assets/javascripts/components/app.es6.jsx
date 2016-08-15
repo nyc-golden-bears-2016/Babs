@@ -7,6 +7,7 @@ class App extends React.Component {
       entries: [],
       replies: [],
       teaser: '',
+      inspo: '',
       showEntryForm: false
     };
 
@@ -34,7 +35,8 @@ class App extends React.Component {
           user: userResponse,
           entries: entryResponse.entries,
           replies: entryResponse.responses,
-          teaser: entryResponse.teaser
+          teaser: entryResponse.teaser,
+          inspo: entryResponse.inspo
         });
       });
 
@@ -58,12 +60,13 @@ class App extends React.Component {
     return (
       <div>
         <h1>Welcome, {this.state.user.username}!</h1>
+        <p>{this.state.inspo.question}</p>
         <div>
-          {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
+          {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
         </div>
         <ul>
           {this.state.entries.map((entry) => {
-            return <Entry key={entry.id} data={entry} replies={this.state.replies} onRemoveEntry={this.removeEntry}/>
+            return <Entry key={entry.id} data={entry} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
           })}
         </ul>
       </div>
