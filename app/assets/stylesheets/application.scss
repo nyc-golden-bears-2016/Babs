@@ -73,6 +73,27 @@ input{
   border-radius: 5px;
   }
 }
+.bottle-entries{
+  top: 20vh;
+  position: absolute;
+  right: 15%;
+  font-size: 18px;
+  width: 35vw;
+  overflow: scroll;
+  max-height: 100vh;
+  & a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  & input[type='submit']{
+  background-color: white;
+  width: 7vw;
+  font-size: 12px;
+  border-radius: 5px;
+  }
+}
+
 textarea{
   width: 30vw;
   height: 30vh;

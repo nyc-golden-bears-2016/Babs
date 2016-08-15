@@ -9,6 +9,7 @@ class App extends React.Component {
       teaser: '',
       inspo: '',
       bottles: [],
+      all_prompts: [],
       showEntryForm: false,
       showBottle: false
     };
@@ -40,6 +41,7 @@ class App extends React.Component {
           replies: entryResponse.responses,
           teaser: entryResponse.teaser,
           inspo: entryResponse.inspo,
+          all_prompts: entryResponse.all_prompts,
           bottles: entryResponse.bottles
         });
       });
@@ -69,22 +71,31 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="user-entries">
-        <h1>Welcome, {this.state.user.username}!</h1>
-        <p>{this.state.inspo.question}</p>
-        <div>
-          {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
+      <section>
+        <div className="bottle-entries">
+          <h1>Welcome, {this.state.user.username}!</h1>
+          <p>{this.state.inspo.question}</p>
+          <div>
+            {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
+          </div>
+          <ul>
+            {this.state.bottles.map((bottle) => {
+              return <Bottle onAddReply={this.addReply} key={bottle.id} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
+            })}
+          </ul>
         </div>
-        <div>
+        <div className="user-entries">
+          <div>
 
-          {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
+            {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
+          </div>
+          <ul>
+            {this.state.entries.map((entry) => {
+              return <Entry onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+            })}
+          </ul>
         </div>
-        <ul>
-          {this.state.entries.map((entry) => {
-            return <Entry onAddReply={this.addReply} key={entry.id} data={entry} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
-          })}
-        </ul>
-      </div>
+      </section>
       )
   }
 }
