@@ -28,6 +28,7 @@ class Entry extends React.Component {
     return (
       <li className="entry">
         <span className="entry-span">{this.props.data.body}</span>
+        <span className="entry-span">{this.props.data.body}</span>
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <ul>
