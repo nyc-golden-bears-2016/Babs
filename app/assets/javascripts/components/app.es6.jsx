@@ -4,10 +4,14 @@ class App extends React.Component {
     super();
     this.state ={
       user: "",
-      entries: []
+      entries: [],
+      replies: [],
+      teaser: '',
+      showEntryForm: false
     };
 
     this.addEntry = this.addEntry.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
   }
 
@@ -29,12 +33,21 @@ class App extends React.Component {
       .done((entryResponse) => {
         this.setState({
           user: userResponse,
-          entries: entryResponse
+          entries: entryResponse.entries,
+          replies: entryResponse.responses,
+          teaser: entryResponse.teaser
         });
       });
 
     });
 
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+      this.setState({
+          showEntryForm: true
+        });
   }
 
 
@@ -50,14 +63,13 @@ class App extends React.Component {
   render () {
     return (
       <div>
-
         <h1>Welcome, {this.state.user.username}!</h1>
         <div>
-          <EntryBox onAddEntry={this.addEntry}/>
+          {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
         </div>
         <ul>
           {this.state.entries.map((entry) => {
-            return <Entry key={entry.id} data={entry} onRemoveEntry={this.removeEntry}/>
+            return <Entry key={entry.id} data={entry} replies={this.state.entries.replies} onRemoveEntry={this.removeEntry}/>
           })}
         </ul>
       </div>

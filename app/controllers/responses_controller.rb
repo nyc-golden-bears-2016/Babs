@@ -1,9 +1,20 @@
 class ResponsesController < ApplicationController
 
+  def show
+    @responses = Response.all.where(entry_id: params[:id])
+    if request.xhr?
+      render json: @responses
+    else
+      flash[:error] = "Soemthing went wrong."
+    end
+  end
+
+
   def create
     @response = Response.new(permit_params)
+    @response.user_id = current_user.id
     if request.xhr?
-      if @resonse.save?
+      if @response.save
         render json: @response
       else
         flash[:error] = 'Something went wrong'
