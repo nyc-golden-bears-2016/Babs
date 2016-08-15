@@ -24,6 +24,7 @@ class EntryBox extends React.Component{
 
   render() {
     return (
+      <div>
       <section id="entry-box">
       <form id="entry-form" onSubmit={this.handleSubmit}>
           Write something:<br/>
@@ -31,6 +32,14 @@ class EntryBox extends React.Component{
           <input type='submit' value='Post'/>
         </form>
       </section>
+      <section id="bottle-button">
+      <form id="bottle-form" onChange={this.handleSubmit}>
+          Message In A Bottle:
+          <input type='checkbox' checked={d.selected}  value='Message In A Bottle'/>
+        </form>
+      </section>
+      </div>
+
     );
   }
 }
