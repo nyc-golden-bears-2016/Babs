@@ -35,12 +35,12 @@ class EntryBox extends React.Component{
     let textArea = this.refs.entryTextarea,
         body = textArea.value,
         can_respond = this.state.respond,
-        inspo = this.props.inspo,
+        inspo = this.props.inspo.id,
         is_private = this.state.bottle;
     $.ajax({
       url: '/entries',
       method: 'POST',
-      data: { entry: { body: body, is_private: is_private, can_respond: can_respond, prompt_id:inspo.id} }
+      data: { entry: { body: body, is_private: is_private, can_respond: can_respond, prompt_id: inspo} }
     })
     .done((response) => {
       this.props.onAddEntry(response);
