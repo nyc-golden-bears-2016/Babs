@@ -29,6 +29,7 @@ gem 'pry'
 gem 'faker'
 
 gem 'bcrypt'
+gem 'rufus-scheduler'
 
 
 # Use Redis adapter to run Action Cable in production
