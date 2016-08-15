@@ -53,21 +53,16 @@ class EntryBox extends React.Component{
       <section id="entry-box">
       <form id="entry-form" onSubmit={this.handleSubmit}>
           Write something:<br/>
-          <textarea ref="entryTextarea" name="body"/>
+          <textarea ref="entryTextarea" name="body"/><br/>
+          <section id="bottle-button" onClick={this.onPrivate}>
+          Message in a Bottle:
+          <input type='checkbox' value='Message In A Bottle'/>
+      </section>
+      <section id="respond-button" onClick={this.onRespond}>Respondable:
+          <input type='checkbox'  value='Can Respond'/>
+      </section><br/>
           <input type='submit' value='Post'/>
         </form>
-      </section>
-      <section id="bottle-button">
-      <form id="bottle-form" onClick={this.onPrivate}>
-          Message In A Bottle:
-          <input type='checkbox'  value='Message In A Bottle'/>
-        </form>
-      </section>
-      <section id="respond-button">
-      <form id="can-respond-form" onClick={this.onRespond}>
-          Can Be Responded To:
-          <input type='checkbox'  value='Can Respond'/>
-      </form>
       </section>
       </div>
 
