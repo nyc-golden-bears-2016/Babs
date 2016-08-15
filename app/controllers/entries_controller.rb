@@ -3,10 +3,9 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
-    # binding.pry
     if request.xhr?
       # set the viewer for a new entry
-      @entry.send_message_in_a_bottle
+      # @entry.send_message_in_a_bottle
       # @viewer = User.find(@entry.viewer_id)
       if @entry.save
         # NotificationMailer.awaiting_response(@viewer, @entry).deliver_later *** this is the logic for emailing
@@ -24,12 +23,21 @@ class EntriesController < ApplicationController
     # @entries = Entry.all.where(user_id: current_user.id).reverse
 
     # this is the correct association, but .enrties isn't working. There's something wrong with the associations in the model.
+    Rufus::Scheduler.singleton.every '24h' do
+      @prompt = prompt_find
+    end
+
+    if @prompt == nil
+      @prompt = prompt_find
+    end
+
     @entries = current_user.entries.reverse
     @responses = Response.all.where(user_id: current_user.id)
     @teaser = get_bottle_teaser
     render json: {entries: @entries,
                   responses: @responses,
-                  teaser: @teaser}
+                  teaser: @teaser,
+                  inspo: @prompt}
   end
 
   def destroy
@@ -41,7 +49,7 @@ class EntriesController < ApplicationController
   private
 
   def permit_params
-    params.require(:entry).permit(:body, :is_private, :can_respond)
+    params.require(:entry).permit(:body, :is_private, :can_respond, :prompt_id)
   end
 
   # get entry object if user_id is stored as a viewer_id in a different user's entry, i.e. if a user has a MIB.
@@ -63,6 +71,22 @@ class EntriesController < ApplicationController
       "Waiting for a new bottle..."
     end
   end
+
+  def used_prompts
+    current_user.entries.map do |entry|
+      entry.prompt_id
+    end
+  end
+
+
+   def prompt_find
+    Prompt.all.each do |prompt|
+        unless used_prompts.include?(prompt.id)
+          return prompt
+        end
+     end
+  end
+
 
 
 
