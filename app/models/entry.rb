@@ -1,6 +1,7 @@
 class Entry < ApplicationRecord
   belongs_to :user
-  # belongs_to :prompt
+  belongs_to :prompt
+  belongs_to :viewer, class_name: 'User'
   has_many :responses, dependent: :destroy
 
   # validates :author_id, presence: true
@@ -30,6 +31,15 @@ class Entry < ApplicationRecord
     end until !bottle_receiver.nil?
     self.viewer_id = bottle_receiver.id
     self.save
+  end
+
+  def unlock_bottle
+    if self.body.length > 4
+      return full_bottle = Entry.all.where(viewer_id: self.user_id)[-1]
+    else
+      # save entry, but flash alert that bottle was not unlocked. Keep teaser.
+      flash[:alert] = "Your post was not long enough to unlock your bottle."
+    end
   end
 
 end

@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   get '/' => 'users#index'
   get '/users/show' => 'users#show'
 
+  get '/entries/viewed' => 'entries#viewed'
 
   resources :entries, only: [:new, :create, :update, :destroy, :show]
+
   resources :responses, only: [:new, :create, :update, :destroy, :show]
 
   devise_for :users
