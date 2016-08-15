@@ -67,6 +67,9 @@ class App extends React.Component {
         <div>
           {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
         </div>
+        <div>
+          <EntryBox onAddEntry={this.addEntry}/>
+        </div>
         <ul>
           {this.state.entries.map((entry) => {
             return <Entry key={entry.id} data={entry} replies={this.state.entries.replies} onRemoveEntry={this.removeEntry}/>
