@@ -24,7 +24,6 @@ class Entry extends React.Component {
    }
 
 
-
   render() {
     return (
       <li className="entry">
@@ -32,8 +31,10 @@ class Entry extends React.Component {
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <ul>
-          {this.props.replies.map((response) => {
-            return <Reply key={response.id} entryKey= {this.props.data.id} data={response} />
+          {this.state.replies.map((reply)=>{
+            if(reply.entry_id === this.props.data.id){
+              return <Reply key={reply.id} data={reply}/>
+            }
           })}
         </ul>
         {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.addReply} /> : null}

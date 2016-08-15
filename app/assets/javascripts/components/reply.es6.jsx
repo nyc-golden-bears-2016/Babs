@@ -10,9 +10,7 @@ class Reply extends React.Component{
   render() {
     return (
      <li>
-<span>{if(this.props.data.id === this.props.entryKey){
-        return {this.props.data.body}}
-      }</span>
+        <span>{this.props.data.body}</span>
      </li>
     );
   }
