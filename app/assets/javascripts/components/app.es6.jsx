@@ -62,15 +62,13 @@ class App extends React.Component {
    }
 
   render () {
-    debugger;
     return (
       <div className="user-entries">
         <h1>Welcome, {this.state.user.username}!</h1>
         <p>{this.state.inspo.question}</p>
         <div>
-          {this.state.showBottle ? <FullMessageInABottle data={this.state.teaser}/> : null }
+          {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} data={this.state.teaser}/> : null }
           {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
-
         </div>
         <ul>
           {this.state.entries.map((entry) => {

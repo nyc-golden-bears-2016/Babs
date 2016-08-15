@@ -1,5 +1,20 @@
 class EntriesController < ApplicationController
 
+
+  def viewed
+    @bottle = get_bottles[-1]
+    @bottle.is_read = true
+    if request.xhr?
+      if @bottle.save
+        render json: {respondable: @bottle.can_respond}
+      else
+        render json: {respondable: 'something went wrong'}
+      end
+    else
+      redirect_to '/'
+    end
+  end
+
   def create
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
@@ -52,6 +67,9 @@ class EntriesController < ApplicationController
                   bottles: @bottles}
 >>>>>>> added react component for full message in a bottle. Added method to entry model to unlock full body of bottle. Added bottles and show bottle as state to App component. On submit new entry, ajax call returns full bottle message, which is updated through setState.
   end
+
+
+
 
   def destroy
     entry = Entry.find(params[:id])

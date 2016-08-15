@@ -35,7 +35,7 @@ class Entry < ApplicationRecord
 
   def unlock_bottle
     if self.body.length > 4
-      return full_bottle = Entry.all.where(viewer_id: self.user_id)[-1].body
+      return full_bottle = Entry.all.where(viewer_id: self.user_id)[-1]
     else
       # save entry, but flash alert that bottle was not unlocked. Keep teaser.
       flash[:alert] = "Your post was not long enough to unlock your bottle."

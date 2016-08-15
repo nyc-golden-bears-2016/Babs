@@ -13,6 +13,9 @@ class ResponsesController < ApplicationController
   def create
     @response = Response.new(permit_params)
     @response.user_id = current_user.id
+    if @response.entry_id.nil?
+      @response.entry_id = 1
+    end
     if request.xhr?
       if @response.save
         render json: @response

@@ -2,12 +2,30 @@ class FullMessageInABottle extends React.Component{
 
   constructor() {
     super();
+    this.state = {
+      respondable: false
+    }
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: 'http://localhost:3000/entries/viewed'
+    })
+    .done((response) => {
+        this.setState({
+          respondable: response.respondable
+        });
+        debugger;
+    });
+
   }
 
   render() {
+
     return (
       <div>
-        <span href="/mib" onClick={this.props.onHandleClick}>{this.props.data}!</span>
+        <span href="/mib">{this.props.data.body}!</span>
+        {this.state.respondable ? <BottleReplyBox onAddEntry={this.props.onAddEntry}/> : null }
       </div>
     );
   }
