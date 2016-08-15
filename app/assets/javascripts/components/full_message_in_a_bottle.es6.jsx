@@ -20,11 +20,10 @@ class FullMessageInABottle extends React.Component{
   }
 
   render() {
-
     return (
       <div>
         <span href="/mib">{this.props.data.body}!</span>
-        {this.state.respondable ? <BottleReplyBox onAddEntry={this.props.onAddEntry}/> : null }
+        {this.state.respondable ? <BottleReplyBox onAddReply={this.props.onAddReply} data={this.props.data} onAddEntry={this.props.onAddEntry}/> : null }
       </div>
     );
   }

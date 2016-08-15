@@ -9,7 +9,7 @@ class Entry extends React.Component {
       box: false
     };
 
-    this.addReply = this.addReply.bind(this);
+
     this.showBox = this.showBox.bind(this);
 
   }
@@ -18,10 +18,10 @@ class Entry extends React.Component {
     this.setState({box: true})
    }
 
-  addReply(reply){
-    let replies = this.state.replies;
-    this.setState({replies: [reply, ...replies]});
-   }
+  // addReply(reply){
+  //   let replies = this.state.replies;
+  //   this.setState({replies: [reply, ...replies]});
+  //  }
 
 
   render() {
@@ -42,7 +42,7 @@ class Entry extends React.Component {
             }
           })}
         </ul>
-        {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.addReply} /> : null}
+        {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.props.onAddReply} /> : null}
       </li>
     )
   }

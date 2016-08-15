@@ -4,6 +4,9 @@ class EntriesController < ApplicationController
   def viewed
     @bottle = get_bottles[-1]
     @bottle.is_read = true
+    #######
+    @bottle.can_respond = true
+    #####
     if @bottle.save
       render json: {respondable: @bottle.can_respond}
     else

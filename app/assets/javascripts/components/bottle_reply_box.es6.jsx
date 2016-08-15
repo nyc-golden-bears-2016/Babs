@@ -8,6 +8,7 @@ class BottleReplyBox extends React.Component{
   handleSubmit(event) {
     event.preventDefault();
     let textArea = this.refs.responseTextarea,
+        entry_id = this.refs.entryId.value,
         body = textArea.value;
     $.ajax({
       url: '/responses',
@@ -15,8 +16,8 @@ class BottleReplyBox extends React.Component{
       data: { response: { body: body, entry_id: entry_id } }
     })
     .done((response) => {
-      this.props.onAddReply(response);
       textArea.value = '';
+      this.props.onAddReply(response);
     })
   }
 
@@ -24,10 +25,9 @@ class BottleReplyBox extends React.Component{
   // add input for user id.
 
   render() {
-
     return (
       <section id="respond-box">
-      <form id="respond-box" onSubmit={this.handleSubmit}>
+        <form id="respond-box" onSubmit={this.handleSubmit}>
           Respond:<br/>
           <textarea ref="responseTextarea" name="body"/>
           <input ref="entryId" type="hidden" value={this.props.data.id}/>

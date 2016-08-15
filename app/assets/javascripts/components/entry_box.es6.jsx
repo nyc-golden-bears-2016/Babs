@@ -43,8 +43,8 @@ class EntryBox extends React.Component{
       data: { entry: { body: body, is_private: is_private, can_respond: can_respond, prompt_id: inspo} }
     })
     .done((response) => {
-      this.props.onAddEntry(response);
       textArea.value = '';
+      this.props.onAddEntry(response);
     })
   }
 
