@@ -13,3 +13,46 @@
  *= require_tree .
  *= require_self
  */
+
+html{
+  /*background-color: white;*/
+  font-family: helvetica;
+}
+.container{
+position: relative;
+}
+body{
+  margin: 0;
+}
+.nav{
+  border: 1px solid black;
+  height: 10vh;
+  line-height: 10vh;
+}
+.nav a{
+  padding: 2%;
+  font-size: 24px;
+  text-decoration: none;
+  color: black;
+}
+a:hover{
+  color: yellow;
+}
+.field{
+  background-color: #83929f;
+  font-size: 18px;
+  width: 20%;
+  padding: 1%;
+  border-radius: 5%;
+  margin: 1%;
+  box-shadow: 3px 3px 1px;
+}
+input[type=submit]{
+  font-size: 100px;
+}
+input{
+  font-size: 18px;
+}
+.actions {
+  font-size: 28px;
+}
