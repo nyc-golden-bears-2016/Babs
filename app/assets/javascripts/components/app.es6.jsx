@@ -20,7 +20,6 @@ class App extends React.Component {
     this.setState({entries: newTree});
   }
 
-
   componentDidMount() {
     $.ajax({
       url: 'http://localhost:3000/users/show',
@@ -50,15 +49,10 @@ class App extends React.Component {
         });
   }
 
-
-
-
   addEntry(entry){
     let entries = this.state.entries;
     this.setState({entries: [entry, ...entries]});
    }
-
-
 
   render () {
     return (
@@ -66,9 +60,6 @@ class App extends React.Component {
         <h1>Welcome, {this.state.user.username}!</h1>
         <div>
           {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
-        </div>
-        <div>
-          <EntryBox onAddEntry={this.addEntry}/>
         </div>
         <ul>
           {this.state.entries.map((entry) => {
