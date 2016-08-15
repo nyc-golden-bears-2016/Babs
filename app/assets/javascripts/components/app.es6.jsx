@@ -16,6 +16,7 @@ class App extends React.Component {
     this.addEntry = this.addEntry.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
+    this.addReply = this.addReply.bind(this);
   }
 
   removeEntry(entry) {
@@ -61,18 +62,26 @@ class App extends React.Component {
     this.setState({showBottle: true});
    }
 
+   addReply(reply){
+    let replies = this.state.replies;
+    this.setState({replies: [reply, ...replies]});
+   }
+
   render () {
     return (
       <div className="user-entries">
         <h1>Welcome, {this.state.user.username}!</h1>
         <p>{this.state.inspo.question}</p>
         <div>
-          {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} data={this.state.teaser}/> : null }
+          {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
+        </div>
+        <div>
+
           {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
         </div>
         <ul>
           {this.state.entries.map((entry) => {
-            return <Entry key={entry.id} data={entry} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+            return <Entry onAddReply={this.addReply} key={entry.id} data={entry} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
           })}
         </ul>
       </div>
