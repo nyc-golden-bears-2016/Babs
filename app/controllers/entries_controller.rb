@@ -50,9 +50,6 @@ class EntriesController < ApplicationController
                   bottles: @bottles}
   end
 
-
-
-
   def destroy
     entry = Entry.find(params[:id])
     entry.destroy
@@ -80,7 +77,6 @@ class EntriesController < ApplicationController
     @viewer = User.find(@entry.viewer_id)
   end
 
-
   # take bottle object and truncate the body to return a teaser sentence for the user
   def get_bottle_teaser
     entries = get_bottles
@@ -97,8 +93,7 @@ class EntriesController < ApplicationController
     end
   end
 
-
-   def prompt_find
+  def prompt_find
     Prompt.all.each do |prompt|
         unless used_prompts.include?(prompt.id)
           return prompt

@@ -27,9 +27,9 @@ class Entry extends React.Component {
   render() {
     return (
       <li className="entry">
-      {this.props.all_prompts.map((prompt) => {
+      {this.props.all_prompts.map((prompt, i) => {
         if(prompt.id === this.props.data.prompt_id){
-              return <span>{prompt.question}</span>
+              return <span key={i}>{prompt.question}</span>
             }
         })}
         <br />
