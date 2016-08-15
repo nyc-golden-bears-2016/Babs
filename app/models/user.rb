@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :responses
   has_many :entries
-  has_one :viewer, class_name: 'User', foreign_key: 'viewer_id'
+  has_many :viewers, class_name: 'User', foreign_key: 'viewer_id'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   attr_accessor :login
