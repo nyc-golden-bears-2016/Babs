@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
+    binding.pry
     if request.xhr?
       # set the viewer for a new entry
       # @entry.send_message_in_a_bottle
@@ -42,7 +43,7 @@ class EntriesController < ApplicationController
   private
 
   def permit_params
-    params.require(:entry).permit(:body)
+    params.require(:entry).permit(:body, :is_private, :can_respond)
   end
 
   # get entry object if user_id is stored as a viewer_id in a different user's entry, i.e. if a user has a MIB.
