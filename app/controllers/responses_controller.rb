@@ -1,7 +1,7 @@
 class ResponsesController < ApplicationController
 
   def show
-    @responses = Response.all.where(entry_id: params[:id])
+    @responses =  current_user.responses
     if request.xhr?
       render json: @responses
     else

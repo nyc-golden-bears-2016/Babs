@@ -5,10 +5,11 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     if request.xhr?
       # set the viewer for a new entry
-      # @entry.send_message_in_a_bottle
+
       # @viewer = User.find(@entry.viewer_id)
+      @entry.send_message_in_a_bottle3
       if @entry.save
-        # NotificationMailer.awaiting_response(@viewer, @entry).deliver_later *** this is the logic for emailing
+        # NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later *** this is the logic for emailing
         render json: @entry
       else
         flash[:error] = "Your entry was not succussfully created"
@@ -32,7 +33,7 @@ class EntriesController < ApplicationController
     end
 
     @entries = current_user.entries.reverse
-    @responses = Response.all.where(user_id: current_user.id)
+    @responses = current_user.responses.reverse
     @teaser = get_bottle_teaser
     render json: {entries: @entries,
                   responses: @responses,
@@ -61,6 +62,12 @@ class EntriesController < ApplicationController
       return false
     end
   end
+
+  # find the viewer of a message in a bottle to send them a teaser email
+  def find_viewer
+    @viewer = User.find(@entry.viewer_id)
+  end
+
 
   # take bottle object and truncate the body to return a teaser sentence for the user
   def get_bottle_teaser

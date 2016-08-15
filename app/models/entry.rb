@@ -1,6 +1,7 @@
 class Entry < ApplicationRecord
   belongs_to :user
-  # belongs_to :prompt
+  belongs_to :prompt
+  belongs_to :viewer, class_name: 'User'
   has_many :responses, dependent: :destroy
 
   # validates :author_id, presence: true
