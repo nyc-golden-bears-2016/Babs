@@ -56,8 +56,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
-        <h1>Welcome, {this.state.user.username}!</h1>
+      <div className="user-entries">
         <div>
           {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
         </div>

@@ -3,7 +3,7 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
-    binding.pry
+    # binding.pry
     if request.xhr?
       # set the viewer for a new entry
       @entry.send_message_in_a_bottle

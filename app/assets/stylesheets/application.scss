@@ -47,12 +47,50 @@ a:hover{
   margin: 1%;
   box-shadow: 3px 3px 1px;
 }
-input[type=submit]{
-  font-size: 100px;
-}
 input{
   font-size: 18px;
 }
 .actions {
   font-size: 28px;
 }
+.user-entries{
+  top: 20vh;
+  position: absolute;
+  left: 15%;
+  font-size: 18px;
+  width: 35vw;
+  overflow: scroll;
+  max-height: 100vh;
+  & a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  & input[type='submit']{
+  background-color: white;
+  width: 7vw;
+  font-size: 12px;
+  border-radius: 5px;
+  }
+}
+textarea{
+  width: 30vw;
+  height: 30vh;
+  font-size: 18px;
+}
+#bottle-button, #respond-button{
+  font-size: 14px;
+  display: inline-block;
+  padding-right: 7%;
+  height: 8vh;
+  margin-bottom: 2%;
+}
+
+.delete-button, .respond-button{
+  display: inline-block;
+
+}
+li{
+  margin: 3%;
+}
+
