@@ -72,6 +72,7 @@ class EntriesController < ApplicationController
     end
   end
 
+
   def used_prompts
     current_user.entries.map do |entry|
       entry.prompt_id
@@ -86,8 +87,5 @@ class EntriesController < ApplicationController
         end
      end
   end
-
-
-
 
 end
