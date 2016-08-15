@@ -38,7 +38,7 @@ class App extends React.Component {
           entries: entryResponse.entries,
           replies: entryResponse.responses,
           teaser: entryResponse.teaser,
-          inspo: entryResponse.inspo
+          inspo: entryResponse.inspo,
           bottles: entryResponse.bottles
         });
       });

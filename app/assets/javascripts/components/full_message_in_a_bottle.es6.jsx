@@ -15,7 +15,6 @@ class FullMessageInABottle extends React.Component{
         this.setState({
           respondable: response.respondable
         });
-        debugger;
     });
 
   }

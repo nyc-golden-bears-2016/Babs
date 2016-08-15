@@ -4,41 +4,29 @@ class EntriesController < ApplicationController
   def viewed
     @bottle = get_bottles[-1]
     @bottle.is_read = true
-    if request.xhr?
-      if @bottle.save
-        render json: {respondable: @bottle.can_respond}
-      else
-        render json: {respondable: 'something went wrong'}
-      end
+    if @bottle.save
+      render json: {respondable: @bottle.can_respond}
     else
-      redirect_to '/'
+      render json: {respondable: 'something went wrong'}
     end
   end
 
   def create
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
-    #################
-    @entry.prompt_id = 1
-    #############
 
     # unlock bottle
     @bottle = @entry.unlock_bottle
-    if request.xhr?
-      # set the viewer for a new entry
+    # set the viewer for a new entry
 
-      # @viewer = User.find(@entry.viewer_id)
-      @entry.send_message_in_a_bottle3
-      if @entry.save
-        # NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later *** this is the logic for emailing
-        render json: {entry: @entry,
-                      bottle: @bottle}
-      else
-        flash[:error] = "Your entry was not succussfully created"
-      end
+    # @viewer = User.find(@entry.viewer_id)
+    @entry.send_message_in_a_bottle
+    if @entry.save
+      # NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later *** this is the logic for emailing
+      render json: {entry: @entry,
+                    bottle: @bottle}
     else
-      flash[:error] = "Your entry was not succussfully created"
-      redirect_to '/static/index'
+      render json: {error: "Your entry was not succussfully created"}
     end
   end
 
@@ -49,11 +37,9 @@ class EntriesController < ApplicationController
     Rufus::Scheduler.singleton.every '24h' do
       @prompt = prompt_find
     end
-
     if @prompt == nil
       @prompt = prompt_find
     end
-
     @entries = current_user.entries.reverse
     @responses = current_user.responses.reverse
     @bottles = get_bottles
@@ -61,11 +47,8 @@ class EntriesController < ApplicationController
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
-<<<<<<< 4f3f46f1ee7446687598bd83dd7acf7c00b92a12
-                  inspo: @prompt}
-=======
+                  inspo: @prompt,
                   bottles: @bottles}
->>>>>>> added react component for full message in a bottle. Added method to entry model to unlock full body of bottle. Added bottles and show bottle as state to App component. On submit new entry, ajax call returns full bottle message, which is updated through setState.
   end
 
 
@@ -109,8 +92,6 @@ class EntriesController < ApplicationController
     end
   end
 
-
-<<<<<<< 4f3f46f1ee7446687598bd83dd7acf7c00b92a12
   def used_prompts
     current_user.entries.map do |entry|
       entry.prompt_id
@@ -125,7 +106,4 @@ class EntriesController < ApplicationController
         end
      end
   end
-
-=======
->>>>>>> added react component for full message in a bottle. Added method to entry model to unlock full body of bottle. Added bottles and show bottle as state to App component. On submit new entry, ajax call returns full bottle message, which is updated through setState.
 end
