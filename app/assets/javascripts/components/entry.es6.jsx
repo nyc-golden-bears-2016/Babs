@@ -32,6 +32,11 @@ class Entry extends React.Component {
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <ul>
           {this.state.replies.map((reply)=>{
+              return <Reply key={reply.id} data={reply}/>
+          })}
+        </ul>
+        <ul>
+          {this.props.replies.map((reply)=>{
             if(reply.entry_id === this.props.data.id){
               return <Reply key={reply.id} data={reply}/>
             }
