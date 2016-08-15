@@ -21,7 +21,7 @@ class Entry extends React.Component {
   addReply(reply){
     let replies = this.state.replies;
     this.setState({replies: [reply, ...replies]});
-   } 
+   }
 
 
   render() {
@@ -33,13 +33,6 @@ class Entry extends React.Component {
         <ul>
           {this.state.replies.map((reply)=>{
               return <Reply key={reply.id} data={reply}/>
-          })}
-        </ul>
-        <ul>
-          {this.props.replies.map((reply)=>{
-            if(reply.entry_id === this.props.data.id){
-              return <Reply key={reply.id} data={reply}/>
-            }
           })}
         </ul>
         <ul>
