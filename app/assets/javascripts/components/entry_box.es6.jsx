@@ -37,6 +37,8 @@ class EntryBox extends React.Component{
     } else{
       this.setState({stream:false})
     }
+    this.setState({respond:false})
+    this.setState({bottle:false})
   }
 
   handleSubmit(event) {

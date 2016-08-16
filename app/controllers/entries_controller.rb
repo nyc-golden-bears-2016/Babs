@@ -55,7 +55,9 @@ class EntriesController < ApplicationController
 
   def stream
     streams = Entry.all.where(stream: true)
-    streams = streams.to_a
+    streams = streams.map do |stream|
+      stream.body
+    end
     render json: {streams: streams}
   end
 
