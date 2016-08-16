@@ -1,4 +1,4 @@
-class EntryPrivate extends React.Component {
+class EntryPublic extends React.Component {
 
  constructor(){
     super();
@@ -28,7 +28,7 @@ class EntryPrivate extends React.Component {
             }
         })}
         <br/>
-        <span className="entry-private-span">{this.props.data.body}</span>
+        <span className="entry-bottle-span">{this.props.data.body}</span>
         <br/>
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
