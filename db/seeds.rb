@@ -26,3 +26,7 @@ Prompt.create(question: "When was the last time you")
 User.create(username: "Alex", email: "alex@alex.com", password: "password")
 User.create(username: "Joe", email: "joe@alex.com", password: "easyman")
 
+Entry.create(body: "stream test", user_id: 1, stream: true)
+Entry.create(body: "stream test2", user_id: 1, stream: true)
+Entry.create(body: "stream test3", user_id: 1, stream: true)
+Entry.create(body: "stream test4", user_id: 1, stream: true)

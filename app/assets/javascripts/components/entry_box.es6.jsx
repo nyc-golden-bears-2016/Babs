@@ -5,11 +5,13 @@ class EntryBox extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state ={
       bottle: false,
-      respond: false
+      respond: false,
+      stream: false
     }
 
     this.onPrivate = this.onPrivate.bind(this);
     this.onRespond = this.onRespond.bind(this);
+    this.onStream = this.onStream.bind(this);
   };
 
 
@@ -29,6 +31,15 @@ class EntryBox extends React.Component{
     }
   }
 
+ onStream(){
+    if(this.state.stream === false){
+      this.setState({stream: true})
+    } else{
+      this.setState({stream:false})
+    }
+    this.setState({respond:false})
+    this.setState({bottle:false})
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -37,10 +48,11 @@ class EntryBox extends React.Component{
         can_respond = this.state.respond,
         inspo = this.props.inspo.id,
         is_private = this.state.bottle;
+        stream = this.state.stream;
     $.ajax({
       url: '/entries',
       method: 'POST',
-      data: { entry: { body: body, is_private: is_private, can_respond: can_respond, prompt_id: inspo} }
+      data: { entry: { body: body, is_private: is_private, can_respond: can_respond, prompt_id: inspo, stream: stream} }
     })
     .done((response) => {
       textArea.value = '';
@@ -59,9 +71,12 @@ class EntryBox extends React.Component{
             <p>private:</p>
             <input type='checkbox' value='Message In A Bottle'/>
           </section>
-      <section id="respond-button" onClick={this.onRespond}>Respondable:
-          <input type='checkbox'  value='Can Respond'/>
-      </section><br/>
+            <section id="respond-button" onClick={this.onRespond}>Respondable:
+                <input type='checkbox'  value='Can Respond'/>
+            </section><br/>
+            <section id="stream-button" onClick={this.onStream}>Stream:
+                <input type='checkbox'  value='Stream'/>
+            </section><br/>
           <input type='submit' value='Post'/>
         </form>
       </section>

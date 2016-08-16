@@ -6,6 +6,7 @@ class App extends React.Component {
       user: "",
       entries: [],
       replies: [],
+      streams: [],
       teaser: '',
       inspo: '',
       bottles: [],
@@ -18,6 +19,7 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
     this.addReply = this.addReply.bind(this);
+    this.updateStreams = this.updateStreams.bind(this);
   }
 
   removeEntry(entry) {
@@ -48,6 +50,21 @@ class App extends React.Component {
 
     });
 
+    var self = this;
+    setInterval(function(){
+      $.ajax({url: 'http://localhost:3000/entries/stream', success: function(data){
+      }, dataType: "json"}).done(function(response){
+        self.updateStreams({streams: response.streams})
+      })
+    }, 1000);
+
+
+
+
+  }
+
+  updateStreams(response) {
+    this.setState(response);
   }
 
   handleClick(event) {
@@ -72,6 +89,9 @@ class App extends React.Component {
   render () {
     return (
       <section>
+        <div className = "streams">
+        <p className="marquee"><span>{this.state.streams.join(".......")}</span></p>
+        </div>
         <div className="bottle-entries">
           <h1>Welcome, {this.state.user.username}!</h1>
           <p>{this.state.inspo.question}</p>
@@ -96,6 +116,7 @@ class App extends React.Component {
           </ul>
         </div>
       </section>
+
       )
   }
 }

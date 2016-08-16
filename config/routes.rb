@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/users/show' => 'users#show'
 
   get '/entries/viewed' => 'entries#viewed'
+  get '/entries/stream' => 'entries#stream'
 
   resources :entries, only: [:new, :create, :update, :destroy, :show]
 
