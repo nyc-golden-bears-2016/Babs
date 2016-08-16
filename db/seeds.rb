@@ -21,3 +21,8 @@ Prompt.create(question: "What is a skill you have developed in the last year?")
 Prompt.create(question: "so much depends upon a red wheel barrow glazed with rain water beside the white chickens --William Carlos Williams")
 Prompt.create(question: "How long does it usually take you to fall asleep?")
 Prompt.create(question: "When was the last time you")
+
+
+User.create(username: "Alex", email: "alex@alex.com", password: "password")
+User.create(username: "Joe", email: "joe@alex.com", password: "easyman")
+

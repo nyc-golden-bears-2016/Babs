@@ -8,6 +8,7 @@ class CreateEntries < ActiveRecord::Migration[5.0]
       t.boolean :is_private, default: false, null:false
       t.boolean :is_read, default: false, null:false
       t.boolean :can_respond, default: false, null:false
+      t.boolean :stream, default: false
 
       t.timestamps null: false
     end

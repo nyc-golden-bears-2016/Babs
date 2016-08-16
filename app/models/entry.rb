@@ -20,6 +20,12 @@ class Entry < ApplicationRecord
     end
   end
 
+  def stream_length_check
+      if self.body.length > 80
+        self.user = nil
+      end
+  end
+
   # find a random user to receiver message
   def find_random_user
     total_users = User.last.id
