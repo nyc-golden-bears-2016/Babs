@@ -9,9 +9,9 @@ class Stream extends React.Component{
 
   render() {
     return (
-     <li className="stream-bullet">
-        <p className="marquee"><span>{this.props.data}</span></p>
-     </li>
+      <li>
+        <span>{this.props.data}</span>
+      </li>
     );
   }
 }

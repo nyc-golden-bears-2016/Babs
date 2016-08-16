@@ -90,11 +90,7 @@ class App extends React.Component {
     return (
       <section>
         <div className = "streams">
-          <ul className="stream-list">
-            {this.state.streams.map((stream) => {
-              return <Stream key= {this.state.streams.indexOf(stream)} data={stream}/>
-            })}
-          </ul>
+        <p className="marquee"><span>{this.state.streams.join(".......")}</span></p>
         </div>
         <div className="bottle-entries">
           <h1>Welcome, {this.state.user.username}!</h1>
