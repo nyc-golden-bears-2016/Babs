@@ -15,7 +15,7 @@ class ReplyButton extends React.Component{
     return (
       <div>
         <form id="reply-desire" onClick={this.handleReply}>
-          <input type = "submit" value="Respond"/>
+          <input type = "submit" value=""/>
         </form>
       </div>
     );

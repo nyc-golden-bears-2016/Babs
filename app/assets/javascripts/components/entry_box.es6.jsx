@@ -74,8 +74,7 @@ class EntryBox extends React.Component{
           Write something:<br/>
           <textarea className={this.state.postLongEnough} ref="entryTextarea" onKeyUp={this.longEnough} name="body"/><br/>
           <section id="bottle-button" onClick={this.onPrivate}>
-            <p>personal</p>
-            <input type='checkbox' value='Message In A Bottle'/>
+            <section id="bot-but"/>
           </section>
             <section id="respond-button" onClick={this.onRespond}>Respondable:
                 <input type='checkbox'  value='Can Respond'/>
