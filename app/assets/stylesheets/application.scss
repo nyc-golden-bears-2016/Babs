@@ -40,19 +40,48 @@ a:hover{
 }
 .field{
   background-color: #83929f;
-  font-size: 18px;
+  font-size: 20px;
+  padding-top: 9px;
+  padding-bottom: 1%;
+  padding-left: 3px;
+  padding-right: 2px;
+  height: 9%;
   width: 20%;
-  padding: 1%;
-  border-radius: 5%;
-  margin: 1%;
-  box-shadow: 3px 3px 1px;
+  line-height: 30px;
+  display: block;
+  margin: auto;
+  box-shadow: 1px 1px 1px;
+  text-align: left
 }
+
 input{
-  font-size: 18px;
+  font-size: 20px;
 }
+
 .actions {
   font-size: 28px;
+  width: 5%;
+  padding-right: 16%;
+  padding-top: 1%;
+  line-height: 20px;
+  display: block;
+  margin: auto;
+  text-align: left
+
 }
+
+.sign-up {
+  font-size: 30px;
+  width: 80%;
+  padding-left: 2%;
+  padding-bottom: 9%;
+  line-height: 10px;
+  display: block;
+  text-align: left
+
+}
+
+
 .user-entries{
   top: 20vh;
   position: absolute;
