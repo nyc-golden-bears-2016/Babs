@@ -27,8 +27,6 @@ Prompt.create(question: "To have that sense of one's intrinsic worth which const
 Prompt.create(question: "When was the last time you betrayed someone?")
 Prompt.create(question: "How old were you the first time you questioned something important?")
 
-
-
 User.create(username: "Alex", email: "alex@alex.com", password: "password")
 User.create(username: "Joe", email: "joe@alex.com", password: "easyman")
 
@@ -41,3 +39,8 @@ Entry.create(body: "If Wal-Mart doesn't have the DVDs I desire I will not be oka
 Entry.create(body: "All right, leaving Wal-Mart", user_id: 1, viewer_id: 1, stream: true)
 Entry.create(body: "Lowes FTW!", user_id: 1, viewer_id: 1, stream: true)
 Entry.create(body: "Wal-Mart Is Now Closing", user_id: 1,viewer_id: 1, stream: true)
+Entry.create(body: "stream test", user_id: 1,viewer_id: 1, stream: true)
+Entry.create(body: "stream test2", user_id: 1, viewer_id: 1,  stream: true)
+Entry.create(body: "stream test3", user_id: 1, viewer_id: 1, stream: true)
+Entry.create(body: "stream test4", user_id: 1, viewer_id: 1, stream: true)
+
