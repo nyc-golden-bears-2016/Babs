@@ -13,13 +13,6 @@ class Entry < ApplicationRecord
   # validates :can_respond, inclusion: {in: [true,false]}
   # validates :can_respond, exclusion: {in: [nil]}
 
-  # is message in a bottle?
-  def send_message_in_a_bottle
-    if !self.is_private
-      self.find_random_user
-    end
-  end
-
   def stream_length_check
       if self.body.length > 80
         self.user = nil
@@ -40,12 +33,27 @@ class Entry < ApplicationRecord
   end
 
   def unlock_bottle
-    if self.body.length > 4
-      return full_bottle = Entry.all.where(viewer_id: self.user_id)[-1]
+    if !self.is_private
+      self.find_random_user
+      if self.body.length > 4
+        full_bottle = Entry.all.where(viewer_id: self.user_id)[-1]
+        if full_bottle
+          return full_bottle
+        else
+          {body: "Waiting for a new bottle...",
+          id: self.id}
+        end
+      else
+        {body: "Your post was not long enough to unlock your bottle.",
+          id: self.id}
+      end
     else
-      # save entry, but flash alert that bottle was not unlocked. Keep teaser.
-      flash[:alert] = "Your post was not long enough to unlock your bottle."
+      # viewer_id can't be null. If a message is private, the viewer_id is set to the user_id
+      self.viewer_id = self.user_id
+      {body: 'Send a message in a bottle to unlock one.',
+        id: self.id}
     end
   end
+
 
 end

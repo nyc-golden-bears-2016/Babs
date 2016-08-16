@@ -9,7 +9,10 @@ class App extends React.Component {
       streams: [],
       teaser: '',
       inspo: '',
-      bottles: [],
+      bottles:  [{
+                  id: 1,
+                  body: 'Write an entry to unlock your first bottle!'
+                }],
       all_prompts: [],
       showEntryForm: false,
       showBottle: false
@@ -44,8 +47,8 @@ class App extends React.Component {
           teaser: entryResponse.teaser,
           inspo: entryResponse.inspo,
           all_prompts: entryResponse.all_prompts,
-          bottles: entryResponse.bottles
         });
+        entryResponse.bottles.length > 0 ? this.setState({bottles: entryResponse.bottles}) : null
       });
 
     });
@@ -83,7 +86,7 @@ class App extends React.Component {
 
    addReply(reply){
     let replies = this.state.replies;
-    this.setState({replies: [reply, ...replies]});
+    this.setState({replies: replies.concat(reply)});
    }
 
   render () {
@@ -93,20 +96,19 @@ class App extends React.Component {
         <p className="marquee"><span>{this.state.streams.join(".......")}</span></p>
         </div>
         <div className="bottle-entries">
-          <h1>Welcome, {this.state.user.username}!</h1>
-          <p>{this.state.inspo.question}</p>
+          <h2>your bottles</h2>
           <div>
             {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
           </div>
           <ul>
-            {this.state.bottles.map((bottle) => {
-              return <Bottle onAddReply={this.addReply} key={bottle.id} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
+            {this.state.bottles.map((bottle, i) => {
+              return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
             })}
           </ul>
         </div>
         <div className="user-entries">
+          <h2>your entries</h2>
           <div>
-
             {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
           </div>
           <ul>
