@@ -14,8 +14,10 @@ class App extends React.Component {
                   body: 'Write an entry to unlock your first bottle!'
                 }],
       all_prompts: [],
+      showStream: true,
       showEntryForm: false,
-      showBottle: false
+      showBottle: false,
+      streamOn: '=>'
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -23,12 +25,32 @@ class App extends React.Component {
     this.removeEntry = this.removeEntry.bind(this);
     this.addReply = this.addReply.bind(this);
     this.updateStreams = this.updateStreams.bind(this);
+    this.showStream = this.showStream.bind(this);
+
   }
 
   removeEntry(entry) {
     let newTree = this.state.entries.filter(function(e){return e.id!==entry.id});
     this.setState({entries: newTree});
   }
+
+
+  showStream(){
+    if(this.state.showStream === false){
+      this.setState({showStream: true})
+    } else{
+      this.setState({showStream:false})
+    }
+    if(this.state.streamOn === '=>'){
+      this.setState({streamOn: '<='})
+    }else{
+      this.setState({streamOn: '=>'})
+    }
+  }
+
+
+
+
 
   componentDidMount() {
     $.ajax({
@@ -62,8 +84,6 @@ class App extends React.Component {
     }, 1000);
 
 
-
-
   }
 
   updateStreams(response) {
@@ -92,9 +112,6 @@ class App extends React.Component {
   render () {
     return (
       <section>
-        <div className = "streams">
-        <p className="marquee"><span>{this.state.streams.join(".......")}</span></p>
-        </div>
         <div className="bottle-entries">
           <h2>your bottles</h2>
           <div>
@@ -113,9 +130,21 @@ class App extends React.Component {
           </div>
           <ul>
             {this.state.entries.map((entry) => {
-              return <Entry onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+              if(entry.is_private === true && entry.stream === false){
+              return <EntryPrivate onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+            } else if (entry.is_private === false && entry.stream === false){
+              return <EntryPublic onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+            } else if (entry.stream === true){
+              return <EntryStream onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+            }
             })}
           </ul>
+        </div>
+        <div className = "streams">
+        <section id="stream-button" onClick={this.showStream}>
+          <button type="button">{this.state.streamOn}</button>
+         </section>
+        {this.state.showStream ? <footer className="marquee"><span>{this.state.streams.join('')}</span></footer> : null }
         </div>
       </section>
 
