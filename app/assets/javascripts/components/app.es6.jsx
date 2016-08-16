@@ -6,6 +6,7 @@ class App extends React.Component {
       user: "",
       entries: [],
       replies: [],
+      streams: [],
       teaser: '',
       inspo: '',
       bottles: [],
@@ -47,6 +48,16 @@ class App extends React.Component {
       });
 
     });
+
+    setInterval(function(){
+      $.ajax({url: 'http://localhost:3000/entries/stream', success: function(data){
+      }, dataType: "json"}).done(function(response){
+        // console.log(response.data[0])
+      })
+    }, 7000);
+
+
+
 
   }
 

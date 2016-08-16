@@ -53,6 +53,12 @@ class EntriesController < ApplicationController
                   bottles: @bottles}
   end
 
+  def stream
+    streams = Entry.all.where(stream: true)
+    streams = streams.to_a
+    render json: {streams: streams}
+  end
+
   def destroy
     entry = Entry.find(params[:id])
     entry.destroy
@@ -62,7 +68,7 @@ class EntriesController < ApplicationController
   private
 
   def permit_params
-    params.require(:entry).permit(:body, :is_private, :can_respond, :prompt_id)
+    params.require(:entry).permit(:body, :is_private, :can_respond, :prompt_id, :stream)
   end
 
   # get entry object if user_id is stored as a viewer_id in a different user's entry, i.e. if a user has a MIB.
