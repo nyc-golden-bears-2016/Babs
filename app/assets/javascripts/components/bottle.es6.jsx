@@ -1,4 +1,4 @@
-class Entry extends React.Component {
+class Bottle extends React.Component {
 
  constructor(){
     super();
@@ -8,8 +8,6 @@ class Entry extends React.Component {
       replies: [],
       box: false
     };
-
-
     this.showBox = this.showBox.bind(this);
 
   }
@@ -18,23 +16,10 @@ class Entry extends React.Component {
     this.setState({box: true})
    }
 
-  // addReply(reply){
-  //   let replies = this.state.replies;
-  //   this.setState({replies: [reply, ...replies]});
-  //  }
-
-
   render() {
     return (
       <li className="entry">
-      {this.props.all_prompts.map((prompt, i) => {
-        if(prompt.id === this.props.data.prompt_id){
-              return <span key={i}>{prompt.question}</span>
-            }
-        })}
-        <br />
         <span className="entry-span">{this.props.data.body}</span><br />
-        <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <ul>
           {this.state.replies.map((reply)=>{
