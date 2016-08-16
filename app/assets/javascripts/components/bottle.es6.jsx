@@ -13,7 +13,7 @@ class Bottle extends React.Component {
   }
 
   showBox(){
-    this.setState({box: true})
+    this.setState({box: !this.state.box})
    }
 
   render() {

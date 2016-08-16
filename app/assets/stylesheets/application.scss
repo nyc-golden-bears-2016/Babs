@@ -138,6 +138,12 @@ input{
 
 textarea{
   width: 30vw;
+  height: 5vh;
+  font-size: 18px;
+}
+
+.post-textarea{
+  width: 30vw;
   height: 30vh;
   font-size: 18px;
 }
@@ -150,7 +156,9 @@ textarea{
   background-color: transparent;
 
 }
-.respond-button, .delete-button{
+.respond-button,
+.delete-button,
+.question-button {
   display: inline-block;
   & input[type='submit']{
     background-size: 20%;
@@ -168,6 +176,8 @@ textarea{
 .delete-button{
   & input[type='submit']{
     background-image: image-url("garbage.png");
+    filter: hue-rotate(180deg);
+      -webkit-filter: hue-rotate(180deg);
   }
 }
 
@@ -252,5 +262,11 @@ li{
     width: 100%;
 }
 
+.mail-read {
+  color: red;
+}
 
+.mail-unread {
+  color: green;
+}
 

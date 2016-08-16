@@ -51,7 +51,7 @@ class EntriesController < ApplicationController
 
   def stream
     streams = Entry.all.where(stream: true)
-    streams = streams.map do |stream|
+    streams = streams[-10..-1].map do |stream|
       stream.body
     end
     render json: {streams: streams}
