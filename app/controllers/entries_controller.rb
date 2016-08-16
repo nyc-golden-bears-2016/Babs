@@ -19,6 +19,9 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     @bottle = @entry.unlock_bottle
     @entry.send_message_in_a_bottle
+    if @entry.stream == true
+      @entry.stream_length_check
+    end
     if @entry.save
       # NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later *** this is the logic for emailing
       render json: {entry: @entry,
