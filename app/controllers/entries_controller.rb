@@ -4,9 +4,6 @@ class EntriesController < ApplicationController
   def viewed
     @bottle = get_bottles[-1]
     @bottle.is_read = true
-    #######
-    @bottle.can_respond = true
-    #####
     if @bottle.save
       render json: {respondable: @bottle.can_respond}
     else
@@ -18,7 +15,6 @@ class EntriesController < ApplicationController
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
     @bottle = @entry.unlock_bottle
-    @entry.send_message_in_a_bottle
     if @entry.stream == true
       @entry.stream_length_check
     end
@@ -39,11 +35,11 @@ class EntriesController < ApplicationController
       @prompt = prompt_find
     end
     @entries = current_user.entries.reverse
-    @responses = current_user.responses.reverse
+    @responses = get_responses(@entries)
     @all_prompts = @entries.map do |entry|
       Prompt.find(entry.prompt_id)
     end
-    @bottles = get_bottles
+    @bottles = get_your_bottles
     @teaser = get_bottle_teaser
     render json: {entries: @entries,
                   responses: @responses,
@@ -83,6 +79,27 @@ class EntriesController < ApplicationController
     end
   end
 
+  # returns an array of the bottles you have unlocked through creating a new entry
+  def get_your_bottles
+    bottles = get_bottles
+    your_bottles = bottles.map do |bottle|
+      # if user_id == viewer_id, the entry is private and should not be displayed alongside bottles
+      if bottle.is_read && bottle.user_id != bottle.viewer_id
+        bottle
+      end
+    end
+    return your_bottles.compact
+  end
+
+  # returns an array of non_user responses
+  def get_responses(entries)
+    responses = entries.map do |entry|
+      entry.responses
+    end
+    responses.flatten.compact
+  end
+
+
   # find the viewer of a message in a bottle to send them a teaser email
   def find_viewer
     @viewer = User.find(@entry.viewer_id)
@@ -112,3 +129,6 @@ class EntriesController < ApplicationController
      end
   end
 end
+
+
+

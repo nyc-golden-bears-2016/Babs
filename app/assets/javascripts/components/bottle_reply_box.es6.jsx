@@ -21,9 +21,6 @@ class BottleReplyBox extends React.Component{
     })
   }
 
-
-  // add input for user id.
-
   render() {
     return (
       <section id="respond-box">

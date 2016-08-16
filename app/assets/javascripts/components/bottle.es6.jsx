@@ -20,7 +20,7 @@ class Bottle extends React.Component {
     return (
       <li className="entry">
         <span className="entry-span">{this.props.data.body}</span><br />
-        <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
+        {this.props.data.can_respond ? <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>: null }
         <ul>
           {this.state.replies.map((reply)=>{
               return <Reply key={reply.id} data={reply}/>
