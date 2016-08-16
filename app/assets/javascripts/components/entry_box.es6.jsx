@@ -39,10 +39,12 @@ class EntryBox extends React.Component{
   // if the character minimum has been met for creating a new entry
   longEnough() {
     charCount = this.refs.entryTextarea.value.length
-    if(charCount > 10) {
-      this.setState({postLongEnough: 'post-long-enough'})
+    if(charCount > 30) {
+      this.setState({postLongEnough: 'post-long-enough',
+                    textAreaSize: 'post-textarea'})
     } else {
-      this.setState({postLongEnough: false})
+      this.setState({postLongEnough: false,
+                    textAreaSize: 'textarea'})
     }
   }
 
@@ -61,18 +63,21 @@ class EntryBox extends React.Component{
     })
     .done((response) => {
       textArea.value = '';
+      this.setState({postLongEnough: false,
+                    textAreaSize: 'textarea'})
       this.props.onAddEntry(response);
     })
   }
 
   render() {
+
     return (
       <div>
       <section id="entry-box">
       <h2>{this.props.inspo.question}</h2>
       <form id="entry-form" onSubmit={this.handleSubmit}>
           Write something:<br/>
-          <textarea className={this.state.postLongEnough} ref="entryTextarea" onKeyUp={this.longEnough} name="body"/><br/>
+          <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body"/><br/>
           <section id="bottle-button" onClick={this.onPrivate}>
             <section id="bot-but"/>
           </section>
