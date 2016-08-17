@@ -252,22 +252,32 @@ li{
     100% { transform: translate(-100%, 0); }
 }
 
+
+.entry-private{
+    list-style-type: square;
+  }
+
+  .entry-public{
+    list-style-type: lower-alpha;
+  }
+
+  .entry-stream{
+    list-style-type: lower-roman;
+  }
+
 .entry-private-span{
-  border: solid;
-  border: green;
-  background-color: red;
-}
+    font-family:"minion-pro",times,serif;
+    float: left;
+  }
 
 .entry-bottle-span{
-  border: solid;
-  border: green;
-  background-color: blue;
+font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    float: left;
 }
 
 .entry-stream-span{
-  border: solid;
-  border: green;
-  background-color: green;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    float: left;
 }
 
 .post-long-enough {
