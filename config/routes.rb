@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
 
   get '/static/index' => 'static#index'
-  get '/' => 'users#index'
   get '/users/show' => 'users#show'
+  devise_scope :user do
+    root to: "static#index"
+  end
+  # unauthenticated do
+  #   root 'devise/registrations#new', as: unauthenticated_root
+  # end
 
   get '/entries/viewed' => 'entries#viewed'
   get '/entries/stream' => 'entries#stream'

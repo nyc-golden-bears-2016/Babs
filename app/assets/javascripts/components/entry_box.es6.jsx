@@ -74,7 +74,7 @@ class EntryBox extends React.Component{
     return (
       <div>
       <section id="entry-box">
-      <h2>{this.props.inspo.question}</h2>
+      <h4>{this.props.inspo.question}</h4>
       <form id="entry-form" onSubmit={this.handleSubmit}>
           Write something:<br/>
           <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body"/><br/>
