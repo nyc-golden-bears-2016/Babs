@@ -11,8 +11,8 @@
       <div class="nav">
         <a href="/">Home</a>
         <% if user_signed_in? %>
-          <a href="/static/index">Welcome, <%= current_user.username.capitalize %></a>
           <a href="/users/sign_out">Logout</a>
+          <a id="user-greeting" href="/static/index">Welcome, <%= current_user.username.capitalize %></a>
         <% else %>
           <a href="/users/sign_in">Login</a>
           <a href="/users/sign_up">Sign Up</a>
