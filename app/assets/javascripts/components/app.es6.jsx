@@ -15,11 +15,12 @@ class App extends React.Component {
                 }],
       all_prompts: [],
       showStream: true,
-      showEntryForm: false,
+      showEntryForm: true,
       showBottle: false,
       showBottleDiv: false,
       bottleButton: '<=',
-      streamOn: '⇩'
+      streamOn: '⇩',
+      showStreamClass: "show-stream-on"
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -40,9 +41,11 @@ class App extends React.Component {
 
   showStream(){
     if(this.state.showStream === false){
-      this.setState({showStream: true})
+      this.setState({showStream: true,
+                    showStreamClass: 'show-stream-on'})
     } else{
-      this.setState({showStream:false})
+      this.setState({showStream:false,
+                    showStreamClass: 'show-stream-off'})
     }
     if(this.state.streamOn === '⇩'){
       this.setState({streamOn: '⇧'})
@@ -135,8 +138,10 @@ class App extends React.Component {
           <button type="button">{this.state.bottleButton}</button>
          </section>
         {this.state.showBottleDiv ? <div className="bottle-entries-big">
-          <h2>Your Bottles:</h2>
-         <div>
+          <h2 id="new-bottles">new bottles</h2>
+          <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />
+          <h2 id="your-bottles">your bottles</h2>
+          <div>
             {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
           </div>
           <ul>
@@ -156,9 +161,10 @@ class App extends React.Component {
           </ul>
         </div>}
         <div className="user-entries">
-          <h2>Your Entries:</h2>
+          <h2>your entries</h2>
           <div>
-            {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
+          <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
+
           </div>
           <ul>
             {this.state.entries.map((entry) => {
@@ -173,9 +179,9 @@ class App extends React.Component {
           </ul>
         </div>
         <div className = "streams">
-          <section  onClick={this.showStream}>
+          <section id={this.state.showStreamClass} onClick={this.showStream}>
             <button id="stream-button" type="button">{this.state.streamOn}</button>
-           </section>
+          </section>
         {this.state.showStream ? <footer className="marquee"><span>{this.state.streams.join('')}</span></footer> : null }
         </div>
       </section>
