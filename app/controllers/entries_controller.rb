@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
       @entry.stream_length_check
     end
     if @entry.save
-      # NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later *** this is the logic for emailing
+      # mail(@entry)
       render json: {entry: @entry,
                     bottle: @bottle}
     else
@@ -129,6 +129,11 @@ class EntriesController < ApplicationController
           return prompt
         end
      end
+  end
+  def mail(post)
+    if post.viewer_id != current_user.id
+      NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later
+    end
   end
 end
 

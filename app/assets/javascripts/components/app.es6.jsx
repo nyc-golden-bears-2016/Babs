@@ -113,7 +113,7 @@ class App extends React.Component {
     return (
       <section>
         <div className="bottle-entries">
-          <h2>your bottles</h2>
+          <h2>Your Bottles:</h2>
           <div>
             {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
           </div>
@@ -124,7 +124,7 @@ class App extends React.Component {
           </ul>
         </div>
         <div className="user-entries">
-          <h2>your entries</h2>
+          <h2>Your Entries:</h2>
           <div>
             {this.state.showEntryForm ? <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/> : <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />}
           </div>
