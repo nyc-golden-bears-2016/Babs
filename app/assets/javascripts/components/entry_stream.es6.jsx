@@ -6,12 +6,15 @@ class EntryStream extends React.Component {
       user: "",
       entries: [],
       replies: [],
-      box: false
+      box: false,
+      showReply: true,
+      replyButton:"hide"
     };
 
 
-    this.showBox = this.showBox.bind(this);
+    this.showBox = this.showBox.bind(this)
     this.showQuestion = this.showQuestion.bind(this);
+    this.hideResponses = this.hideResponses.bind(this)
 
   }
 
@@ -19,9 +22,24 @@ class EntryStream extends React.Component {
     this.setState({box: true})
    }
 
+<<<<<<< 0157120bc78bb147839fe66c3ce68f003000c3c2
   showQuestion(){
     this.setState({question: !this.state.question})
   }
+=======
+   hideResponses(){
+    if(this.state.showReply === true){
+      this.setState({showReply: false})
+    } else{
+      this.setState({showReply: true})
+    }
+     if(this.state.replyButton === "hide"){
+      this.setState({replyButton: "show"})
+    }else{
+      this.setState({replyButton: "hide"})
+    }
+   }
+>>>>>>> oh yeah
 
 
   render() {
@@ -39,18 +57,23 @@ class EntryStream extends React.Component {
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <span  className="question-button"><QuestionButton id={this.props.data.id} onShowQuestion={this.showQuestion} /></span>
+        {this.state.showReply ?
         <ul>
           {this.state.replies.map((reply)=>{
-              return <Reply key={reply.id} data={reply}/>
+             <Reply key={reply.id} data={reply}/>
           })}
-        </ul>
-        <ul>
-          {this.props.replies.map((reply)=>{
-            if(reply.entry_id === this.props.data.id){
-              return <Reply key={reply.id} data={reply}/>
-            }
-          })}
-        </ul>
+        </ul> : null}
+         <span className="hide-respones" onClick={this.hideResponses}>
+          <button type = "button">{this.state.replyButton}</button>
+         </span>
+         {this.state.showReply ?
+            <ul>
+              {this.props.replies.map((reply)=>{
+                if(reply.entry_id === this.props.data.id){
+                  return <Reply key={reply.id} data={reply}/>
+                }
+              })}
+            </ul> : null}
         {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.props.onAddReply} /> : null}
       </li>
     )
