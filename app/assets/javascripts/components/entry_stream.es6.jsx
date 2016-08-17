@@ -9,7 +9,8 @@ class EntryStream extends React.Component {
       box: false,
       question: false,
       showReply: true,
-      replyButton:"hide"
+      replyButton:"hide",
+      showHide: false
     };
 
 
@@ -63,9 +64,14 @@ class EntryStream extends React.Component {
              <Reply key={reply.id} data={reply} userId={this.props.userId}/>
           })}
         </ul> : null}
-         <span className="hide-respones" onClick={this.hideResponses}>
+        {this.state.replies.map((reply)=>{
+             if(reply.entry_id == this.props.data.id){
+              this.setState({showHide: true})
+             }
+          })}
+         {this.state.showHide ? <span className="hide-respones" onClick={this.hideResponses}>
           <button type = "button">{this.state.replyButton}</button>
-         </span>
+         </span> : null }
          {this.state.showReply ?
             <ul>
               {this.props.replies.map((reply)=>{
