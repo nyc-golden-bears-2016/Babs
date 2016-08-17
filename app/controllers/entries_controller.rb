@@ -124,11 +124,17 @@ class EntriesController < ApplicationController
   end
 
   def prompt_find
-    Prompt.all.each do |prompt|
+    prompts = Prompt.all
+    new_prompts = prompts.select do |prompt|
         unless used_prompts.include?(prompt.id)
           return prompt
         end
      end
+    if new_prompts.empty?
+      return prompts.sample
+    else
+      return new_prompts.sample
+    end
   end
   def mail(post)
     if post.viewer_id != current_user.id
