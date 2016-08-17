@@ -9,8 +9,7 @@ class Entry extends React.Component {
       box: false,
       question: false,
       showReply: true,
-      replyButton:"hide",
-      showHide: false
+      replyButton:"hide"
     };
 
 
@@ -64,14 +63,10 @@ class Entry extends React.Component {
              <Reply key={reply.id} data={reply} userId={this.props.userId}/>
           })}
         </ul> : null}
-         {this.props.replies.length > 0 ? <span className="hide-respones" onClick={this.hideResponses}>
+         <span className="hide-respones" onClick={this.hideResponses}>
           <button type = "button">{this.state.replyButton}</button>
-         </span> : null }
-         {this.state.replies.map((reply)=>{
-             if(reply.entry_id == this.props.data.id){
-              this.setState({showHide: true})
-             }
-          })}
+         </span>
+
          {this.state.showReply ?
             <ul>
               {this.props.replies.map((reply)=>{
