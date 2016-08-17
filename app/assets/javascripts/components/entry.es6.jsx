@@ -1,4 +1,4 @@
-class EntryPrivate extends React.Component {
+class Entry extends React.Component {
 
  constructor(){
     super();
