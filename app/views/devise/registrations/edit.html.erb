@@ -1,3 +1,4 @@
+<%= video_tag "video.webm", id:"video-background", autoplay: true, loop: true, muted: true %>
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 <div class="user-form">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>

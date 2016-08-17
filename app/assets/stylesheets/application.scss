@@ -20,12 +20,13 @@ html{
 body{
   margin: 0;
   background-color: #fdfdfd;
+  max-height: 99vh;
 }
 .nav {
   border: 1px solid #c5a2a2;
   height: 10vh;
   line-height: 10vh;
-  background-color: #ff6d6d;
+  background-color: white;
   box-shadow: 2px 2px 4px #888888;
   opacity: .75;
 }
@@ -120,10 +121,7 @@ input{
     font-weight: bold;
   }
   & input[type='submit']{
-
-
   font-size: 12px;
-
   }
 }
 .entry-span{
@@ -312,7 +310,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 
 .streams{
     position: absolute;
-    bottom: -878%;
+    bottom: 0%;
     float: right;
     width: 100%;
 }
@@ -331,6 +329,12 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   color: green;
 }
 
-#user-greeting {
+.logo{
+  height: 90%;
+  width: auto;
   float: right;
 }
+
+/*#user-greeting {
+  float: right;
+}*/
