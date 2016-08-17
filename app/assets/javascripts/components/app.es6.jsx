@@ -68,12 +68,6 @@ class App extends React.Component {
     }
   }
 
-
-
-
-
-
-
   componentDidMount() {
     $.ajax({
       url: '/users/show',

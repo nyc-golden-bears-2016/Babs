@@ -176,6 +176,7 @@ textarea{
   height: 3em;
   transition: height .6s ease-out;
   border-radius: 8px;
+  box-shadow: 2px 2px 4px #888888;
 }
 
 .post-textarea{
@@ -183,6 +184,7 @@ textarea{
   height: 30vh;
   font-size: 18px;
   border-radius: 8px;
+  box-shadow: 2px 2px 4px #888888;
 }
 
 #bottle-button, #respond-button{
@@ -388,16 +390,20 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 .anon-response {
-  border-top: 1px solid gray;
+  border: 1px solid gray;
   list-style-type: none;
   text-align: right;
-  background-color: gray;
+  background-color: #e5f9ff;
+  box-shadow: 1px 1px 2px #888888;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .user-response {
   border-top: 1px solid gray;
   list-style-type: none;
   text-align: left;
+  padding: 5px;
 }
 
 
