@@ -22,7 +22,7 @@ class DeleteButton extends React.Component{
     return (
 
         <form id="delete-form" onSubmit={this.handleDelete}>
-          <input type = "submit" value=""/>
+          <input type = "submit" value="⊗"/>
         </form>
     );
   }
