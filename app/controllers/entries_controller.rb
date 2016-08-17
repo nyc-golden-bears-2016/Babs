@@ -50,12 +50,12 @@ class EntriesController < ApplicationController
   end
 
   def stream
-    streams = Entry.all.where(stream: true)
+    streams = Entry.where(stream: true).last(10)
     if streams != nil
-      streams = streams[-10..-1].map do |stream|
+      streams_body = streams.map do |stream|
         stream.body
       end
-      render json: {streams: streams}
+      render json: {streams: streams_body}
     end
   end
 

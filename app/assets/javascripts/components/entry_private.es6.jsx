@@ -45,7 +45,7 @@ class EntryPrivate extends React.Component {
   render() {
     return (
       <li className="entry-private">
-      {this.props.all_prompts.map((prompt, i) => {
+        {this.props.all_prompts.map((prompt, i) => {
             if(prompt.id === this.props.data.prompt_id){
                   return  this.state.question ? <span className="question" key={i}>{prompt.question}</span> : null
                 }
@@ -60,7 +60,7 @@ class EntryPrivate extends React.Component {
         {this.state.showReply ?
         <ul>
           {this.state.replies.map((reply)=>{
-             <Reply key={reply.id} data={reply}/>
+             <Reply key={reply.id} data={reply} userId={this.props.userId}/>
           })}
         </ul> : null}
          <span className="hide-respones" onClick={this.hideResponses}>
@@ -70,7 +70,7 @@ class EntryPrivate extends React.Component {
             <ul>
               {this.props.replies.map((reply)=>{
                 if(reply.entry_id === this.props.data.id){
-                  return <Reply key={reply.id} data={reply}/>
+                  return <Reply key={reply.id} data={reply} userId={this.props.userId}/>
                 }
               })}
             </ul> : null}

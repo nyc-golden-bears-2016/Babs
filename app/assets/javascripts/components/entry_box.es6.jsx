@@ -56,7 +56,7 @@ class EntryBox extends React.Component{
         body = textArea.value,
         can_respond = this.state.respond,
         inspo = this.props.inspo.id,
-        stream = this.state.stream;
+        stream = this.state.stream,
         is_private = this.state.personal;
     $.ajax({
       url: '/entries',
@@ -66,7 +66,7 @@ class EntryBox extends React.Component{
     .done((response) => {
       textArea.value = '';
       this.setState({postLongEnough: false,
-                    textAreaSize: 'textarea'})
+                    textAreaSize: 'textarea'});
       this.props.onAddEntry(response);
     })
   }
@@ -78,10 +78,10 @@ class EntryBox extends React.Component{
         <section id="entry-box">
           <h4>{this.props.inspo.question}</h4>
           <form id="entry-form" onSubmit={this.handleSubmit}>
-              <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
-              <a id="bottle-button bot-but" onClick={this.onPrivate} href="">bottle</a>
-              <a href="/nowhere" id="respond-button" onClick={this.onRespond}>respond</a>
-              <a id="stream-checkbox" onClick={this.onStream} href="/nowhere">♨</a>
+            <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
+            <a id="bottle-button bot-but" onClick={this.onPrivate} href="">bottle</a>
+            <a id="respond-button" onClick={this.onRespond} href="/nowhere">respond</a>
+            <a id="stream-checkbox" onClick={this.onStream} href="/nowhere">♨</a>
             <input className="stream-link" type='submit' value='Post'/>
           </form>
         </section>
