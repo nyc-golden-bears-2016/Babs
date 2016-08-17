@@ -75,12 +75,12 @@ class App extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: 'http://localhost:3000/users/show',
+      url: '/users/show',
     })
     .done((userResponse) => {
 
       $.ajax({
-        url: 'http://localhost:3000/entries/show',
+        url: '/entries/show',
       })
       .done((entryResponse) => {
         this.setState({
@@ -98,7 +98,7 @@ class App extends React.Component {
 
     var self = this;
     setInterval(function(){
-      $.ajax({url: 'http://localhost:3000/entries/stream', success: function(data){
+      $.ajax({url: '/entries/stream', success: function(data){
       }, dataType: "json"}).done(function(response){
         self.updateStreams({streams: response.streams})
       })

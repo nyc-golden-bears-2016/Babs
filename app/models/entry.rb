@@ -22,12 +22,14 @@ class Entry < ApplicationRecord
   # find a random user to receiver message
   def find_random_user
     total_users = User.last.id
+    count = 0
     begin
       bottle_receiver = User.find(rand(1..total_users))
       if bottle_receiver.id == self.user_id
         bottle_receiver = nil
       end
-    end until !bottle_receiver.nil?
+      count += 1
+    end until !bottle_receiver.nil? || count > total_users
     self.viewer_id = bottle_receiver.id
     self.save
   end

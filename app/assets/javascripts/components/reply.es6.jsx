@@ -4,9 +4,6 @@ class Reply extends React.Component{
     super();
   }
 
-
-  // add input for user id.
-
   render() {
     return (
      <li>

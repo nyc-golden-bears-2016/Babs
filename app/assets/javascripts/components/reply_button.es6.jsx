@@ -19,10 +19,6 @@ class ReplyButton extends React.Component{
 
     }
 
-
-
-
-
   render() {
     return (
       <div>
