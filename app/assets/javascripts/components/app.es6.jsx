@@ -14,13 +14,13 @@ class App extends React.Component {
                   body: 'Write an entry to unlock your first bottle!'
                 }],
       all_prompts: [],
-      showStream: true,
+      showStream: "stream-big",
       showEntryForm: true,
       showBottle: false,
-      showBottleDiv: false,
-      bottleButton: '<=',
+      showBottleClass: "bottle-entries-big",
+      bottleButton: '=>',
       streamOn: '⇩',
-      showStreamClass: "show-stream-on"
+      showStreamId: "show-stream-on"
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -29,7 +29,7 @@ class App extends React.Component {
     this.addReply = this.addReply.bind(this);
     this.updateStreams = this.updateStreams.bind(this);
     this.showStream = this.showStream.bind(this);
-    this.onShowBottleDiv = this.onShowBottleDiv.bind(this);
+    this.onShowBottleClass = this.onShowBottleClass.bind(this);
 
   }
 
@@ -40,12 +40,12 @@ class App extends React.Component {
 
 
   showStream(){
-    if(this.state.showStream === false){
-      this.setState({showStream: true,
-                    showStreamClass: 'show-stream-on'})
+    if(this.state.showStream === "stream-big"){
+      this.setState({showStream: "stream-small",
+                    showStreamId: 'show-stream-on'})
     } else{
-      this.setState({showStream:false,
-                    showStreamClass: 'show-stream-off'})
+      this.setState({showStream: "stream-big",
+                    showStreamId: 'show-stream-off'})
     }
     if(this.state.streamOn === '⇩'){
       this.setState({streamOn: '⇧'})
@@ -54,11 +54,11 @@ class App extends React.Component {
     }
   }
 
-  onShowBottleDiv(){
-    if(this.state.showBottleDiv === false){
-      this.setState({showBottleDiv: true})
+  onShowBottleClass(){
+    if(this.state.showBottleClass === "bottle-entries-big"){
+      this.setState({showBottleClass: "bottle-entries-small"})
     } else{
-      this.setState({showBottleDiv:false})
+      this.setState({showBottleClass: "bottle-entries-big"})
     }
     if(this.state.bottleButton === '=>'){
       this.setState({bottleButton: '<='})
@@ -134,10 +134,10 @@ class App extends React.Component {
   render () {
     return (
       <section>
-        <section className="bottle-show" onClick={this.onShowBottleDiv}>
+        <section className="bottle-show" onClick={this.onShowBottleClass}>
           <button type="button">{this.state.bottleButton}</button>
          </section>
-        {this.state.showBottleDiv ? <div className="bottle-entries-big">
+        <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottles</h2>
           <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />
           <h2 id="your-bottles">your bottles</h2>
@@ -149,22 +149,11 @@ class App extends React.Component {
               return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
             })}
           </ul>
-        </div> : <div className="bottle-entries-small">
-          <h2>Your Bottles:</h2>
-         <div>
-            {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
-          </div>
-          <ul>
-            {this.state.bottles.map((bottle, i) => {
-              return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
-            })}
-          </ul>
-        </div>}
+        </div>
         <div className="user-entries">
           <h2>your entries</h2>
           <div>
           <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
-
           </div>
           <ul>
             {this.state.entries.map((entry) => {
@@ -179,10 +168,10 @@ class App extends React.Component {
           </ul>
         </div>
         <div className = "streams">
-          <section id={this.state.showStreamClass} onClick={this.showStream}>
+          <section id={this.state.showStreamId} onClick={this.showStream}>
             <button id="stream-button" type="button">{this.state.streamOn}</button>
           </section>
-        {this.state.showStream ? <footer className="marquee"><span>{this.state.streams.join('')}</span></footer> : null }
+          <footer className={"marquee " + this.state.showStream} ><span>{this.state.streams.join('')}</span></footer>
         </div>
       </section>
 

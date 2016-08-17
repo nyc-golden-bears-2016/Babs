@@ -138,17 +138,19 @@ input{
   word-wrap: normal;
 }
 
-.bottle-entries-small{
-  top: 100%;
+.bottle-entries-small,
+.bottle-entries-big {
+  top: 10.5%;
   position: absolute;
   background-color: #ffd4d4;
+  transition: width .6s ease-out;
   box-shadow: 2px 2px 4px #888888;
   right: 0%;
   border-left: 1px solid #c5a2a2;
   font-size: 18px;
-  width: 20vw;
+  width: 25vw;
   overflow-y: scroll;
-  height: 70vh;
+  height: 89vh;
   border: 1px solid black;
   & a{
     text-decoration: none;
@@ -163,29 +165,8 @@ input{
   }
 }
 
-.bottle-entries-big{
-  top: 100%;
-  position: absolute;
-  background-color: #ffd4d4;
-  box-shadow: 2px 2px 4px #888888;
-  right: 0%;
-  border-left: 1px solid #c5a2a2;
-  font-size: 18px;
-  width: 30vw;
-  overflow-y: scroll;
-  height: 100vh;
-  border: 1px solid black;
-  & a{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-  }
-  & input[type='submit']{
-
-  width: 7vw;
-  font-size: 12px;
-  border-radius: 5px;
-  }
+.bottle-entries-small {
+  width: 18vh;
 }
 
 
@@ -241,6 +222,9 @@ textarea{
 
 }
 
+#delete-button {
+  font-size: 30px;
+}
 #bot-but{
   background-image: image-url("bottle.png");
   background-size:  80%;
@@ -323,11 +307,16 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   box-shadow: 0 0 10px #00ff00;
 }
 
-.streams{
+.stream-big,
+.stream-small {
     position: absolute;
     bottom: 0%;
     float: right;
     width: 100%;
+    transition: height .2s ease-out;
+}
+.stream-small {
+  height: 0px;
 }
 
 .bottle-show{
@@ -338,6 +327,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 .mail-read {
+  font-size: 30px;
   color: red;
 }
 
@@ -357,7 +347,9 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 
 #stream-button {
   font-size: 17px;
+  position: absolute;
   padding: 0%;
+  bottom: 5%;
   margin: 0%;
   height: 3vh;
   border-bottom: none;
@@ -372,14 +364,11 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 #show-stream-on {
-  position: absolute;
-  bottom: 20%;
+  bottom: 5%;
 }
 
 #show-stream-off {
-  position: absolute;
   bottom: 0%;
-  max-height: 60px;
 }
 
 #new-bottles {
