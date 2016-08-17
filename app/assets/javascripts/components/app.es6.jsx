@@ -17,6 +17,8 @@ class App extends React.Component {
       showStream: true,
       showEntryForm: false,
       showBottle: false,
+      showBottleDiv: false,
+      bottleButton: '<=',
       streamOn: '=>'
     };
 
@@ -26,6 +28,7 @@ class App extends React.Component {
     this.addReply = this.addReply.bind(this);
     this.updateStreams = this.updateStreams.bind(this);
     this.showStream = this.showStream.bind(this);
+    this.onShowBottleDiv = this.onShowBottleDiv.bind(this);
 
   }
 
@@ -47,6 +50,21 @@ class App extends React.Component {
       this.setState({streamOn: '=>'})
     }
   }
+
+  onShowBottleDiv(){
+    if(this.state.showBottleDiv === false){
+      this.setState({showBottleDiv: true})
+    } else{
+      this.setState({showBottleDiv:false})
+    }
+    if(this.state.bottleButton === '=>'){
+      this.setState({bottleButton: '<='})
+    }else{
+      this.setState({bottleButton: '=>'})
+    }
+  }
+
+
 
 
 
@@ -109,12 +127,16 @@ class App extends React.Component {
     this.setState({replies: replies.concat(reply)});
    }
 
+
   render () {
     return (
       <section>
-        <div className="bottle-entries">
+        <section className="bottle-show" onClick={this.onShowBottleDiv}>
+          <button type="button">{this.state.bottleButton}</button>
+         </section>
+        {this.state.showBottleDiv ? <div className="bottle-entries">
           <h2>Your Bottles:</h2>
-          <div>
+         <div>
             {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
           </div>
           <ul>
@@ -122,7 +144,7 @@ class App extends React.Component {
               return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
             })}
           </ul>
-        </div>
+        </div> : null}
         <div className="user-entries">
           <h2>Your Entries:</h2>
           <div>
