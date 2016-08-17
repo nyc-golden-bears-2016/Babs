@@ -332,8 +332,9 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 
 .bottle-show{
   position: absolute;
-  top: 93.6%;
-  right: 0.1%;
+  top: 83.6%;
+  right: 10.1%;
+  z-index: 1;
 }
 
 .mail-read {
