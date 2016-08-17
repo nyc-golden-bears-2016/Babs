@@ -9,7 +9,7 @@ class FullMessageInABottle extends React.Component{
 
   componentDidMount() {
     $.ajax({
-      url: 'http://localhost:3000/entries/viewed'
+      url: '/entries/viewed'
     })
     .done((response) => {
         this.setState({

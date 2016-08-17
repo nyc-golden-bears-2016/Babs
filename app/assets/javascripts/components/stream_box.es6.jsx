@@ -8,9 +8,6 @@ class StreamBox extends React.Component{
 
   }
 
-
-  // add input for user id.
-
   render() {
     return (
       <ul>
