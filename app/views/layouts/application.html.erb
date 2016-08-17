@@ -6,7 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-   <!--  <%= video_tag "beach.webm", id:"video-background", autoplay: true, loop: true, muted: true %> -->
+
     <div class="container">
       <div class="nav">
         <a href="/">Home</a>
@@ -17,6 +17,10 @@
           <a href="/users/sign_in">Login</a>
           <a href="/users/sign_up">Sign Up</a>
         <% end %>
+        <img class="logo" src="<%= image_path('logo.png' ) %>">
+
+      </div>
+    </div>
 
     </head>
 
