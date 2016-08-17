@@ -19,7 +19,7 @@ class App extends React.Component {
       showBottle: false,
       showBottleDiv: false,
       bottleButton: '<=',
-      streamOn: '=>'
+      streamOn: '⇩'
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -44,10 +44,10 @@ class App extends React.Component {
     } else{
       this.setState({showStream:false})
     }
-    if(this.state.streamOn === '=>'){
-      this.setState({streamOn: '<='})
+    if(this.state.streamOn === '⇩'){
+      this.setState({streamOn: '⇧'})
     }else{
-      this.setState({streamOn: '=>'})
+      this.setState({streamOn: '⇩'})
     }
   }
 
@@ -173,9 +173,9 @@ class App extends React.Component {
           </ul>
         </div>
         <div className = "streams">
-        <section id="stream-button" onClick={this.showStream}>
-          <button type="button">{this.state.streamOn}</button>
-         </section>
+          <section  onClick={this.showStream}>
+            <button id="stream-button" type="button">{this.state.streamOn}</button>
+           </section>
         {this.state.showStream ? <footer className="marquee"><span>{this.state.streams.join('')}</span></footer> : null }
         </div>
       </section>
