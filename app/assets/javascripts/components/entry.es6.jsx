@@ -1,4 +1,4 @@
-class EntryPrivate extends React.Component {
+class Entry extends React.Component {
 
  constructor(){
     super();
@@ -45,14 +45,14 @@ class EntryPrivate extends React.Component {
 
   render() {
     return (
-      <li className="entry-private">
-        {this.props.all_prompts.map((prompt, i) => {
+      <li className="entry-public">
+      {this.props.all_prompts.map((prompt, i) => {
             if(prompt.id === this.props.data.prompt_id){
                   return  this.state.question ? <span className="question" key={i}>{prompt.question}</span> : null
                 }
             })}
         <br/>
-        <span className="entry-private-span">{this.props.data.body}</span>
+        <span className="entry-bottle-span">{this.props.data.body}</span>
         <br/>
         {this.props.data.user_id != this.props.data.viewer_id ? this.props.data.is_read ? <span className="mail-read"> &#9993; </span> : <span className="mail-unread"> &#9993; </span>  : null}
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
@@ -64,14 +64,14 @@ class EntryPrivate extends React.Component {
              <Reply key={reply.id} data={reply} userId={this.props.userId}/>
           })}
         </ul> : null}
-        {this.state.replies.map((reply)=>{
+         {this.props.replies.length > 0 ? <span className="hide-respones" onClick={this.hideResponses}>
+          <button type = "button">{this.state.replyButton}</button>
+         </span> : null }
+         {this.state.replies.map((reply)=>{
              if(reply.entry_id == this.props.data.id){
               this.setState({showHide: true})
              }
           })}
-         {this.props.replies.length > 0 ? <span className="hide-respones" onClick={this.hideResponses}>
-          <button type = "button">{this.state.replyButton}</button>
-         </span> : null }
          {this.state.showReply ?
             <ul>
               {this.props.replies.map((reply)=>{
@@ -85,4 +85,3 @@ class EntryPrivate extends React.Component {
     )
   }
 }
-

@@ -139,8 +139,8 @@ class App extends React.Component {
           <button type="button">{this.state.bottleButton}</button>
          </section>
         <div className={this.state.showBottleClass}>
-          <h2 id="new-bottles">new bottles</h2>
-          {this.state.unlockedBottle.length == 0 ? <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} /> : <p>waiting for new bottle...</p> }
+          <h2 id="new-bottles">new bottle</h2>
+          {this.state.unlockedBottle.length == 0 ? <div><p>{this.state.teaser}</p><p className="teaser">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend diam pharetra, cursus ipsum in, sollicitudin dui. Etiam molestie dolor laoreet quam fringilla cursus. Donec pellentesque ac mauris vitae placerat. Nunc vehicula convallis volutpat. Donec convallis turpis eget erat tempor, in imperdiet sem dignissim. Aliquam vel purus nec neque euismod bibendum. "</p></div> : <p>"waiting for new bottle..."</p> }
           <h2 id="your-bottles">your bottles</h2>
           <div>
             {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> : null }
@@ -158,14 +158,8 @@ class App extends React.Component {
           </div>
           <ul>
             {this.state.entries.map((entry) => {
-              if(entry.is_private === true && entry.stream === false){
-              return <EntryPrivate onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
-            } else if (entry.is_private === false && entry.stream === false){
-              return <EntryPublic onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
-            } else if (entry.stream === true){
-              return <EntryStream onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
-            }
-            })}
+              return <Entry onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
+              })}
           </ul>
         </div>
         <div className = "streams">

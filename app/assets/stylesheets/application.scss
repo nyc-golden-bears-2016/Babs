@@ -129,7 +129,7 @@ input{
     font-weight: bold;
   }
   & input[type='submit']{
-  font-size: 12px;
+  font-size: 22px;
   }
 }
 
@@ -287,16 +287,9 @@ li{
     width: 90%;
     text-align: center;
     box-shadow: 2px 2px 4px #888888;
-    border-radius: 10px;
+    border-radius: 6px;
   }
 
-/*.entry-public{
-    list-style-type: lower-alpha;
-  }
-
-.entry-stream{
-    list-style-type: lower-roman;
-  }*/
 
 .entry-private-span{
     font-family:"minion-pro",times,serif;
@@ -408,6 +401,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 
-
-
+.teaser{
+  -webkit-filter: blur(3.2px);
+}
 

@@ -6,9 +6,9 @@ class MessageInABottle extends React.Component{
 
   render() {
     return (
-      <div>
+      <p>
         <a href="/mib" onClick={this.props.onHandleClick}>{this.props.data}!</a>
-      </div>
+      </p>
     );
   }
 
