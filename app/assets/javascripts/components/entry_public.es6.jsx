@@ -7,21 +7,21 @@ class EntryPublic extends React.Component {
       entries: [],
       replies: [],
       box: false,
-      question: false
+      question: false,
       showReply: true,
       replyButton:"hide"
     };
 
 
-    this.showBox = this.showBox.bind(this);
+    this.showBox = this.showBox.bind(this)
     this.showQuestion = this.showQuestion.bind(this);
-    this.hideResponses = this.hideResponses.bind(this);
+    this.hideResponses = this.hideResponses.bind(this)
 
   }
 
   showBox(){
-    this.setState({box: !this.state.box})
-  }
+    this.setState({box: true})
+   }
 
   showQuestion(){
     this.setState({question: !this.state.question})
@@ -39,6 +39,7 @@ class EntryPublic extends React.Component {
       this.setState({replyButton: "hide"})
     }
    }
+
 
 
   render() {
@@ -78,4 +79,3 @@ class EntryPublic extends React.Component {
     )
   }
 }
-

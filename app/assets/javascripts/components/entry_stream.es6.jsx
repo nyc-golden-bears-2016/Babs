@@ -7,6 +7,7 @@ class EntryStream extends React.Component {
       entries: [],
       replies: [],
       box: false,
+      question: false,
       showReply: true,
       replyButton:"hide"
     };
@@ -22,11 +23,10 @@ class EntryStream extends React.Component {
     this.setState({box: true})
    }
 
-<<<<<<< 0157120bc78bb147839fe66c3ce68f003000c3c2
   showQuestion(){
     this.setState({question: !this.state.question})
   }
-=======
+
    hideResponses(){
     if(this.state.showReply === true){
       this.setState({showReply: false})
@@ -39,7 +39,7 @@ class EntryStream extends React.Component {
       this.setState({replyButton: "hide"})
     }
    }
->>>>>>> oh yeah
+
 
 
   render() {

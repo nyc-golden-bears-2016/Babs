@@ -7,21 +7,21 @@ class EntryPrivate extends React.Component {
       entries: [],
       replies: [],
       box: false,
+      question: false,
       showReply: true,
-      replyButton:"hide",
-      question: false
+      replyButton:"hide"
     };
 
 
-    this.showBox = this.showBox.bind(this);
-    this.hideResponses = this.hideResponses.bind(this);
+    this.showBox = this.showBox.bind(this)
     this.showQuestion = this.showQuestion.bind(this);
+    this.hideResponses = this.hideResponses.bind(this)
 
   }
 
   showBox(){
-    this.setState({box: !this.state.box})
-  }
+    this.setState({box: true})
+   }
 
   showQuestion(){
     this.setState({question: !this.state.question})
@@ -41,6 +41,7 @@ class EntryPrivate extends React.Component {
    }
 
 
+
   render() {
     return (
       <li className="entry">
@@ -55,8 +56,8 @@ class EntryPrivate extends React.Component {
         {this.props.data.user_id != this.props.data.viewer_id ? this.props.data.is_read ? <span className="mail-read"> &#9993; </span> : <span className="mail-unread"> &#9993; </span>  : null}
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
-        // {this.state.showReply ? null : null }
         <span  className="question-button"><QuestionButton id={this.props.data.id} onShowQuestion={this.showQuestion} /></span>
+        {this.state.showReply ?
         <ul>
           {this.state.replies.map((reply)=>{
              <Reply key={reply.id} data={reply}/>
@@ -78,3 +79,4 @@ class EntryPrivate extends React.Component {
     )
   }
 }
+
