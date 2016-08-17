@@ -134,7 +134,7 @@ class App extends React.Component {
         <section className="bottle-show" onClick={this.onShowBottleDiv}>
           <button type="button">{this.state.bottleButton}</button>
          </section>
-        {this.state.showBottleDiv ? <div className="bottle-entries">
+        {this.state.showBottleDiv ? <div className="bottle-entries-big">
           <h2>Your Bottles:</h2>
          <div>
             {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
@@ -144,7 +144,17 @@ class App extends React.Component {
               return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
             })}
           </ul>
-        </div> : null}
+        </div> : <div className="bottle-entries-small">
+          <h2>Your Bottles:</h2>
+         <div>
+            {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
+          </div>
+          <ul>
+            {this.state.bottles.map((bottle, i) => {
+              return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
+            })}
+          </ul>
+        </div>}
         <div className="user-entries">
           <h2>Your Entries:</h2>
           <div>

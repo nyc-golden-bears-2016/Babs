@@ -44,7 +44,7 @@ class EntryPrivate extends React.Component {
 
   render() {
     return (
-      <li className="entry">
+      <li className="entry-private">
       {this.props.all_prompts.map((prompt, i) => {
             if(prompt.id === this.props.data.prompt_id){
                   return  this.state.question ? <span className="question" key={i}>{prompt.question}</span> : null

@@ -130,7 +130,7 @@ input{
   display: block;
   word-wrap: normal;
 }
-.bottle-entries{
+.bottle-entries-small{
   top: 100%;
   position: absolute;
   background-color: #ffd4d4;
@@ -139,6 +139,31 @@ input{
   border-left: 1px solid #c5a2a2;
   font-size: 18px;
   width: 10vw;
+  overflow-y: scroll;
+  height: 70vh;
+  border: 1px solid black;
+  & a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  & input[type='submit']{
+
+  width: 7vw;
+  font-size: 12px;
+  border-radius: 5px;
+  }
+}
+
+.bottle-entries-big{
+  top: 100%;
+  position: absolute;
+  background-color: #ffd4d4;
+  box-shadow: 2px 2px 4px #888888;
+  right: 0%;
+  border-left: 1px solid #c5a2a2;
+  font-size: 18px;
+  width: 30vw;
   overflow-y: scroll;
   height: 100vh;
   border: 1px solid black;
@@ -154,6 +179,7 @@ input{
   border-radius: 5px;
   }
 }
+
 
 textarea{
   width: 30vw;
@@ -252,22 +278,32 @@ li{
     100% { transform: translate(-100%, 0); }
 }
 
+
+.entry-private{
+    list-style-type: square;
+  }
+
+  .entry-public{
+    list-style-type: lower-alpha;
+  }
+
+  .entry-stream{
+    list-style-type: lower-roman;
+  }
+
 .entry-private-span{
-  border: solid;
-  border: green;
-  background-color: red;
-}
+    font-family:"minion-pro",times,serif;
+    float: left;
+  }
 
 .entry-bottle-span{
-  border: solid;
-  border: green;
-  background-color: blue;
+font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    float: left;
 }
 
 .entry-stream-span{
-  border: solid;
-  border: green;
-  background-color: green;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    float: left;
 }
 
 .post-long-enough {
