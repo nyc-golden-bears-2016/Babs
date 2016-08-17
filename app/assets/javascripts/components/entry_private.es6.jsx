@@ -1,4 +1,4 @@
-class EntryPrivate extends React.Component {
+class Entry extends React.Component {
 
  constructor(){
     super();
@@ -62,14 +62,17 @@ class EntryPrivate extends React.Component {
         <ul>
           {this.state.replies.map((reply)=>{
              <Reply key={reply.id} data={reply} userId={this.props.userId}/>
+              if(reply.entry_id == this.props.data.id){
+              this.setState({showHide: true})
+             }
           })}
         </ul> : null}
-        {this.state.replies.map((reply)=>{
+        {this.props.replies.map((reply)=>{
              if(reply.entry_id == this.props.data.id){
               this.setState({showHide: true})
              }
           })}
-         {this.props.replies.length > 0 ? <span className="hide-respones" onClick={this.hideResponses}>
+         {this.state.hideShow ? <span className="hide-respones" onClick={this.hideResponses}>
           <button type = "button">{this.state.replyButton}</button>
          </span> : null }
          {this.state.showReply ?

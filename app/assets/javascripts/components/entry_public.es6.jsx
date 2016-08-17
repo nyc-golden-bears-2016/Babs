@@ -44,7 +44,6 @@ class EntryPublic extends React.Component {
 
 
   render() {
-    debugger;
     return (
       <li className="entry-public">
       {this.props.all_prompts.map((prompt, i) => {
