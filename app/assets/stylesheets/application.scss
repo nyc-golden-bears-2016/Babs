@@ -129,7 +129,7 @@ input{
     font-weight: bold;
   }
   & input[type='submit']{
-  font-size: 12px;
+  font-size: 22px;
   }
 }
 
@@ -408,6 +408,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 
-
-
+.teaser{
+  -webkit-filter: blur(3.2px);
+}
 
