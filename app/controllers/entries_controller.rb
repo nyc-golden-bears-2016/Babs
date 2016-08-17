@@ -51,10 +51,12 @@ class EntriesController < ApplicationController
 
   def stream
     streams = Entry.all.where(stream: true)
-    streams = streams[-10..-1].map do |stream|
-      stream.body
+    if streams != nil
+      streams = streams[-10..-1].map do |stream|
+        stream.body
+      end
+      render json: {streams: streams}
     end
-    render json: {streams: streams}
   end
 
   def destroy
