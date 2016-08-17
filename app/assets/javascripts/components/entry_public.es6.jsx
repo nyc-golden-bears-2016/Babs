@@ -20,7 +20,7 @@ class EntryPublic extends React.Component {
   }
 
   showBox(){
-    this.setState({box: true})
+    this.setState({box: !this.state.box})
    }
 
   showQuestion(){

@@ -22,11 +22,13 @@ class EntryBox extends React.Component{
     this.setState({ personal: !this.state.personal})
   }
 
-  onRespond(){
+  onRespond(event){
+    event.preventDefault();
     this.setState({ respond: !this.state.respond })
   }
 
-  onStream(){
+  onStream(event){
+    event.preventDefault();
     if(this.state.stream === false){
       this.setState({stream: true})
     } else{
@@ -73,22 +75,16 @@ class EntryBox extends React.Component{
 
     return (
       <div>
-      <section id="entry-box">
-      <h4>{this.props.inspo.question}</h4>
-      <form id="entry-form" onSubmit={this.handleSubmit}>
-          <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
-          <section id="bottle-button" onClick={this.onPrivate}>
-            <section id="bot-but"/>
-          </section>
-            <section id="respond-button" onClick={this.onRespond}>Respondable:
-                <input type='checkbox'  value='Can Respond'/>
-            </section>
-            <section id="stream-button" onClick={this.onStream}>Stream:
-                <input type='checkbox'  value='Stream'/>
-            </section>
-          <input type='submit' value='Post'/>
-        </form>
-      </section>
+        <section id="entry-box">
+          <h4>{this.props.inspo.question}</h4>
+          <form id="entry-form" onSubmit={this.handleSubmit}>
+              <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
+              <a id="bottle-button bot-but" onClick={this.onPrivate} href="">bottle</a>
+              <a href="/nowhere" id="respond-button" onClick={this.onRespond}>respond</a>
+              <a id="stream-checkbox" onClick={this.onStream} href="/nowhere">♨</a>
+            <input className="stream-link" type='submit' value='Post'/>
+          </form>
+        </section>
       </div>
 
     );
