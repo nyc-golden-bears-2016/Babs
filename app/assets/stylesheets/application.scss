@@ -103,7 +103,6 @@ input{
 
 }
 
-
 .user-entries{
   background-color: #E4F1FE;
   opacity: .6;
@@ -133,6 +132,7 @@ input{
   font-size: 12px;
   }
 }
+
 .entry-span{
   display: block;
   word-wrap: normal;
@@ -184,6 +184,7 @@ textarea{
   font-size: 18px;
   border-radius: 8px;
 }
+
 #bottle-button, #respond-button{
   font-size: 14px;
   display: inline-block;
@@ -193,6 +194,7 @@ textarea{
   background-color: transparent;
 
 }
+
 .respond-button,
 .delete-button,
 .question-button {
@@ -205,11 +207,13 @@ textarea{
     background-color: transparent;
   }
 }
+
 .respond-button{
   & input[type='submit']{
     background-image: image-url("add.png");
   }
 }
+
 .delete-button{
   & input[type='submit']{
     background-image: image-url("garbage.png");
@@ -275,17 +279,24 @@ li{
 }
 
 
-.entry-private{
-    list-style-type: square;
+.entry-private,
+.entry-stream,
+.entry-public{
+    list-style-type: none;
+    border: 1px solid gray;
+    width: 90%;
+    text-align: center;
+    box-shadow: 2px 2px 4px #888888;
+    border-radius: 10px;
   }
 
-  .entry-public{
+/*.entry-public{
     list-style-type: lower-alpha;
   }
 
-  .entry-stream{
+.entry-stream{
     list-style-type: lower-roman;
-  }
+  }*/
 
 .entry-private-span{
     font-family:"minion-pro",times,serif;
@@ -332,6 +343,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 .mail-unread {
+  font-size: 30px;
   color: green;
 }
 
@@ -381,3 +393,21 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   border-bottom: 2px solid black;
   text-align: center;
 }
+
+.anon-response {
+  border-top: 1px solid gray;
+  list-style-type: none;
+  text-align: right;
+  background-color: gray;
+}
+
+.user-response {
+  border-top: 1px solid gray;
+  list-style-type: none;
+  text-align: left;
+}
+
+
+
+
+

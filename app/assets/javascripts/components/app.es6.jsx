@@ -20,7 +20,8 @@ class App extends React.Component {
       showBottleClass: "bottle-entries-big",
       bottleButton: '=>',
       streamOn: '⇩',
-      showStreamId: "show-stream-on"
+      showStreamId: "show-stream-on",
+      unlockedBottle: []
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -121,7 +122,7 @@ class App extends React.Component {
   addEntry(response){
     let entries = this.state.entries;
     this.setState({entries: [response.entry, ...entries]}),
-    this.setState({teaser: response.bottle}),
+    this.setState({unlockedBottle: response.bottle}),
     this.setState({showBottle: true});
    }
 
@@ -139,10 +140,10 @@ class App extends React.Component {
          </section>
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottles</h2>
-          <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} />
+          {this.state.unlockedBottle.length == 0 ? <MessageInABottle data={this.state.teaser} onHandleClick={this.handleClick} /> : <p>waiting for new bottle...</p> }
           <h2 id="your-bottles">your bottles</h2>
           <div>
-            {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.teaser}/> : null }
+            {this.state.showBottle ? <FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> : null }
           </div>
           <ul>
             {this.state.bottles.map((bottle, i) => {
@@ -158,11 +159,11 @@ class App extends React.Component {
           <ul>
             {this.state.entries.map((entry) => {
               if(entry.is_private === true && entry.stream === false){
-              return <EntryPrivate onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+              return <EntryPrivate onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
             } else if (entry.is_private === false && entry.stream === false){
-              return <EntryPublic onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+              return <EntryPublic onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
             } else if (entry.stream === true){
-              return <EntryStream onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} />
+              return <EntryStream onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
             }
             })}
           </ul>

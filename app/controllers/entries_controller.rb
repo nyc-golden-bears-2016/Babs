@@ -50,12 +50,12 @@ class EntriesController < ApplicationController
   end
 
   def stream
-    streams = Entry.all.where(stream: true)
+    streams = Entry.where(stream: true).last(10)
     if streams != nil
-      streams = streams[-10..-1].map do |stream|
+      streams_body = streams.map do |stream|
         stream.body
       end
-      render json: {streams: streams}
+      render json: {streams: streams_body}
     end
   end
 
@@ -124,11 +124,17 @@ class EntriesController < ApplicationController
   end
 
   def prompt_find
-    Prompt.all.each do |prompt|
+    prompts = Prompt.all
+    new_prompts = prompts.select do |prompt|
         unless used_prompts.include?(prompt.id)
           return prompt
         end
      end
+    if new_prompts.empty?
+      return prompts.sample
+    else
+      return new_prompts.sample
+    end
   end
   def mail(post)
     if post.viewer_id != current_user.id
