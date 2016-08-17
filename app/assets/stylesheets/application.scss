@@ -20,12 +20,13 @@ html{
 body{
   margin: 0;
   background-color: #fdfdfd;
+  max-height: 99vh;
 }
 .nav {
   border: 1px solid #c5a2a2;
   height: 10vh;
   line-height: 10vh;
-  background-color: #ff6d6d;
+  background-color: white;
   box-shadow: 2px 2px 4px #888888;
   opacity: .75;
 }
@@ -120,10 +121,7 @@ input{
     font-weight: bold;
   }
   & input[type='submit']{
-
-
   font-size: 12px;
-
   }
 }
 .entry-span{
@@ -131,7 +129,6 @@ input{
   word-wrap: normal;
 }
 .bottle-entries{
-  top: 100%;
   position: absolute;
   background-color: #ffd4d4;
   box-shadow: 2px 2px 4px #888888;
@@ -140,7 +137,7 @@ input{
   font-size: 18px;
   width: 10vw;
   overflow-y: scroll;
-  height: 100vh;
+  height: 85vh;
   border: 1px solid black;
   & a{
     text-decoration: none;
@@ -276,7 +273,7 @@ li{
 
 .streams{
     position: absolute;
-    bottom: -878%;
+    bottom: 0%;
     float: right;
     width: 100%;
 }
@@ -289,6 +286,12 @@ li{
   color: green;
 }
 
-#user-greeting {
+.logo{
+  height: 90%;
+  width: auto;
   float: right;
 }
+
+/*#user-greeting {
+  float: right;
+}*/
