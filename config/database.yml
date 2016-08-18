@@ -13,6 +13,8 @@
 #
 # Configure Using Gemfile
 # gem 'pg'
+
+host: localhost 
 #
 default: &default
   adapter: postgresql
