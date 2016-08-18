@@ -77,12 +77,20 @@ class EntryBox extends React.Component{
                     })
     } else {
       this.setState({postLongEnough: false,
-                    textAreaSize: 'textarea'})
-    }
+                    textAreaSize: 'textarea',
+                    bottleButtonYes: "bottle-button-no",
+                    respondButtonYes: "respond-button-no",
+                    streamButtonYes: "stream-button-yes",
+                    personal: true,
+                    respond:false,
+                    stream: true
+                    })
   }
+}
 
   handleSubmit(event) {
     event.preventDefault();
+    debugger;
     let textArea = this.refs.entryTextarea,
         body = textArea.value,
         can_respond = this.state.respond,

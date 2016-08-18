@@ -123,7 +123,11 @@ class EntriesController < ApplicationController
     entries = get_bottles
     if !entries.empty?
       length = entries[-1].body.length - 40
-      faker =  Faker::Lorem.characters(length)
+      faker = ""
+      length.times do
+        faker << Faker::Lorem.word + " "
+      end
+      return faker
     end
   end
 

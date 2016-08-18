@@ -452,3 +452,24 @@ textarea,
 #prompt{
   font-family: 'Cantarell', sans-serif;
 }
+
+.bottle-explain ,
+.stream-explain ,
+.respond-explain {
+  /*visibility: hidden;*/
+  font-size: .7em;
+  max-width: 40px;
+}
+.bottle-explain span,
+.stream-explain span,
+#respond-explain span {
+  visibility: hidden;
+}
+
+.bottle-explain:hover span,
+.stream-explain:hover span,
+.respond-explain:hover span {
+  visibility: visible;
+
+
+}
