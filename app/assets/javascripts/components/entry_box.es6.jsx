@@ -110,10 +110,13 @@ class EntryBox extends React.Component{
           <section id="prompt"><h4>{this.props.inspo.question}</h4></section>
           <form id="entry-form" onSubmit={this.handleSubmit}>
               <textarea className={ this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
-              <input className="entry-post-button" type='submit' value='Post'/><br/>
+              <div className="post-icons">
               <a className={this.state.bottleButtonYes} id="bottle-button" onClick={this.onPrivate} href=""></a>
               <a className={this.state.respondButtonYes} id="respond-button" onClick={this.onRespond}href=""></a>
               <a className={this.state.streamButtonYes} id="stream-checkbox" onClick={this.onStream} href=""></a>
+              <input className="entry-post-button" type='submit' value='Post'/><br/>
+               </div>
+
           </form>
         </section>
       </div>

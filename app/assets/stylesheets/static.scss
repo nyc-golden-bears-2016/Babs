@@ -22,6 +22,10 @@ li{
       list-style-type: none;
 }
 
+#entry-box{
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
 
 
 .private,
@@ -42,23 +46,26 @@ li{
   background-color: white;
 }
 
-li.private:before{
-    float: right;
-    content: "• ";
-    color: green;
-    font-size: 39px;
+li.private{
+    text-align: right;
+    border-top: 2px solid #dff0d8;
+    display: inherit;
+    text-align: center;
+    font-size: 18px;
 }
-li.stream:before{
-    float: right;
-    content: "• ";
-    color: blue;
-    font-size: 39px;
+li.stream{
+    text-align: right;
+    border-top: 2px solid #d9edf7;
+    display: inherit;
+    text-align: center;
+    font-size: 18px;
 }
-li.public:before{
-    float: right;
-    content: "• ";
-    color: red;
-    font-size: 39px;
+li.public{
+    text-align: right;
+    border-top: 2px solid #FF995C;
+    display: inherit;
+    text-align: center;
+    font-size: 18px;
   }
 
 /*
@@ -138,6 +145,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   border: none;
   height: 3vh;
   text-shadow: 1px 1px 2px #888888;
+  cursor: pointer;
 }
 
 #show-stream-on-button {
@@ -161,6 +169,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   margin: 0%;
   height: 3vh;
   text-shadow: 1px 1px 2px #888888;
+  cursor: pointer;
 }
 
 .bottle-entries-small-button {
@@ -228,13 +237,15 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   padding-left: 76%;
   font-size: 16px;
   outline: none;
+  cursor: pointer;
 }
 .entry-post-button {
   border: 1px solid gray;
-  height: 5vh;
+  margin-top: 1%;
+  height: 3.5vh;
   border-radius: 5px;
   background-color: white;
-  width: 40vw;
+  width: 3.5vw;
   box-shadow: 2px 2px 4px #888888;
 }
 .entry-post-button:hover {
@@ -377,13 +388,13 @@ textarea,
 }
 
 .bottle-button-yes{
-  background: image-url('sprite-bottles.png') -250% 0;
-  background-size: 90%;
+  background: image-url('sprite-bottles.png') -25% 0;
+  background-size: 55%;
   background-repeat: no-repeat;
 }
 .bottle-button-no{
-  background: image-url('sprite-bottles.png') 350% 0;
-  background-size: 90%;
+  background: image-url('sprite-bottles.png') 125% 0;
+  background-size: 55%;
   background-repeat: no-repeat;
 }
 
@@ -451,4 +462,8 @@ textarea,
 }
 #prompt{
   font-family: 'Cantarell', sans-serif;
+}
+
+.post-icons{
+  margin-bottom: 5%;
 }
