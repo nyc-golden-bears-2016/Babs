@@ -1,5 +1,8 @@
 <%= video_tag "video.webm", id:"video-background", autoplay: true, loop: true, muted: true %>
 <div class="user-form">
+   <%= content_tag(:div, flash[:error], :id => "flash") if flash[:error] %>
+      <%= content_tag(:div, flash[:notice], :id => "flash") if flash[:notice] %>
+      <%= content_tag(:div, flash[:alert], :id => "flash") if flash[:alert] %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
       <%= f.label :login %><br />
@@ -19,4 +22,5 @@
       <%= f.submit "Log in" %>
     </div>
   <% end %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %>
 </div>
