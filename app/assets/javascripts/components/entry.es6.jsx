@@ -60,18 +60,13 @@ class Entry extends React.Component {
         <span  className="question-button"><QuestionButton id={this.props.data.id} onShowQuestion={this.showQuestion} /></span>
         <button onClick={this.hideResponses} className="hide-responses-button" type = "button">{this.state.replyButton}</button>
         {this.state.showReply ?
-        <ul className="entry-responses">
+        <ul>
           {this.state.replies.map((reply)=>{
              <Reply key={reply.id} data={reply} userId={this.props.userId}/>
           })}
-
-
         </ul> : null}
-
-
-
          {this.state.showReply ?
-            <ul>
+            <ul  className={"entry-responses-"+this.state.showReply}>
               {this.props.replies.map((reply)=>{
                 if(reply.entry_id === this.props.data.id){
                   return <Reply key={reply.id} data={reply} userId={this.props.userId}/>

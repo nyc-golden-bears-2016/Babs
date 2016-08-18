@@ -9,7 +9,7 @@
     display: inline-block;
     padding-left: 100%;
     display: inline-block;
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
 }
 
 /* Make it move */
@@ -22,6 +22,25 @@ li{
       list-style-type: none;
 }
 
+
+
+.private,
+.stream,
+.public,
+.bottle-entry {
+    background-color: white;
+    list-style-type: none;
+    border: 1px solid gray;
+    width: 90%;
+    text-align: center;
+    box-shadow: 2px 2px 4px #888888;
+    border-radius: 6px;
+  }
+
+
+.bottle-entry{
+  background-color: white;
+}
 
 li.private:before{
     float: right;
@@ -104,18 +123,49 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   float: right;
 }*/
 
-#stream-button {
-  font-size: 17px;
+#show-stream-on-button,
+#show-stream-off-button {
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  font-size: 1.5em;
   position: absolute;
   padding: 0%;
-  bottom: 5%;
+  bottom: 4.7%;
+  outline: none;
+  z-index: 1;
+  transition: bottom .2s ease-out;
+  margin: 0%;
+  border: none;
+  height: 3vh;
+  text-shadow: 1px 1px 2px #888888;
+}
+
+#show-stream-on-button {
+  bottom: 0%;
+
+}
+
+
+.bottle-entries-big-button,
+.bottle-entries-small-button {
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  font-size: 1.5em;
+  border: none;
+  position: fixed;
+  outline: none;
+  padding: 0%;
+  top: 11%;
+  right: 25%;
+  transition: right .6s ease-out;
   margin: 0%;
   height: 3vh;
-  border-bottom: none;
-  border: 1px solid #c5a2a2;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 2px 2px 4px #888888;
+  text-shadow: 1px 1px 2px #888888;
+}
+
+.bottle-entries-small-button {
+  right: 10%;
+
 }
 
 #stream-button:hover {
@@ -152,9 +202,12 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 .user-response {
-  border-top: 1px solid gray;
+  border: 1px solid gray;
   list-style-type: none;
   text-align: left;
+  background-color: #e5f9ff;
+  box-shadow: 1px 1px 2px white;
+  border-radius: 5px;
   padding: 5px;
 }
 
@@ -171,35 +224,46 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 .hide-responses-button {
   border: none;
   background-color: white;
+  text-shadow: 1px 1px 2px #888888;
   padding-left: 76%;
   font-size: 16px;
   outline: none;
 }
 .entry-post-button {
   border: 1px solid gray;
+  height: 5vh;
   border-radius: 5px;
   background-color: white;
-  width: 80%;
+  width: 40vw;
+  box-shadow: 2px 2px 4px #888888;
+}
+.entry-post-button:hover {
+  color: white;
+  background-color: #0066ff;
+  box-shadow: 2px 2px 8px #0066ff;
 }
 .plus-minus-button {
   font-size: 30px;
   color: black;
+  outline: none;
+  text-decoration: none;
 }
 footer {
-  border: 1px solid #c5a2a2;
+  border: 1px solid #66a3ff;
+  color: white;
   height: 4vh;
   line-height: 4vh;
   box-shadow: 1px 1px 2px #888888;
   opacity: .75;
   background: #ff6d6d; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #ffb3b3, #ff6d6d); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #ffb3b3, #ff6d6d); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #ffb3b3, #ff6d6d);
-  background: linear-gradient(#ffb3b3, #ff6d6d);
+  background: -webkit-linear-gradient(left top,#66a3ff, #005ce6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #66a3ff, #005ce6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #66a3ff, #005ce6);
+  background: linear-gradient(#66a3ff, #005ce6);
 }
 
-.user-entries{
-  background-color: white;
+.user-entries {
+  background-color: #FEFDFB;
   opacity: .6;
   top: 12vh;
   position: absolute;
@@ -207,7 +271,7 @@ footer {
   border-radius: 5%;
   left: 8.5%;
   box-shadow: 2px 2px 4px #888888;
-  border-radius: 5%;
+  border-radius: 3%;
   font-size: 18px;
   width: 50vw;
   max-height: 80vh;
@@ -215,7 +279,7 @@ footer {
   padding-left: 2%;
   opacity: 1;
   border: 2px solid #e3e8cf;
-  overflow-y: scroll;
+  overflow-y:  scroll;
   & a{
     text-decoration: none;
     color: black;
@@ -226,19 +290,21 @@ footer {
   }
 }
 
+
+
 .bottle-entries-small,
 .bottle-entries-big {
   top: 10.2%;
   position: absolute;
-  background-color: white;
-  transition: width .6s ease-out;
+  background-color: #FEFBF7;
+  transition: right .6s ease-out;
   box-shadow: 2px 2px 4px #888888;
   right: 0%;
   border-left: 1px solid gray;
   font-size: 18px;
-  width: 25vw;
+  width: 30vw;
   overflow-y: scroll;
-  height: 89vh;
+  height: 87vh;
   border: 1px solid black;
   opacity: 1;
   padding-left: 1%;
@@ -257,25 +323,33 @@ footer {
 }
 
 .bottle-entries-small {
-  width: 18vh;
+  right: -25vh;
 }
 
 
-textarea{
-  width: 30vw;
+textarea,
+#bottle-respond-box {
+  width: 40vw;
   font-size: 18px;
   height: 3em;
   transition: height .6s ease-out;
+  border: 1px solid gray;
+  outline: none;
   border-radius: 8px;
   box-shadow: 2px 2px 4px #888888;
+  margin: auto;
 }
 
+#bottle-respond-box {
+  width: 20vw;
+}
 .post-textarea{
-  width: 30vw;
-  height: 30vh;
+  width: 40vw;
+  height: 20vh;
   font-size: 18px;
+  border: 3px solid #00ff00;
   border-radius: 8px;
-  box-shadow: 2px 2px 4px #888888;
+  box-shadow: 2px 2px 2px #00ff00;
 }
 
 #bottle-button, #respond-button, #stream-checkbox, .stream-link{
@@ -284,9 +358,24 @@ textarea{
   padding-bottom: 10%;
   margin-right: 8%;
   margin-bottom: 5%;
-
   /*background-color: transparent;*/
 }
+
+#bottle-button:hover {
+
+}
+
+#respond-button:hover {
+
+}
+
+#stream-checkbox:hover {
+
+}
+.stream-link:hover {
+
+}
+
 .bottle-button-yes{
   background: image-url('sprite-bottles.png') -250% 0;
   background-size: 90%;
@@ -347,10 +436,12 @@ textarea{
   }
 }
 
-#respond-button{
+.entry-responses-false{
 
 }
-
+.entry-responses-true{
+  transition: height 1.4s ease-out;
+}
 #delete-button {
   font-size: 30px;
 }

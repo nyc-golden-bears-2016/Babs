@@ -65,9 +65,16 @@ class EntryBox extends React.Component{
   // if the character minimum has been met for creating a new entry
   longEnough() {
     charCount = this.refs.entryTextarea.value.length
-    if(charCount > 30) {
+    if(charCount > 80) {
       this.setState({postLongEnough: 'post-long-enough',
-                    textAreaSize: 'post-textarea'})
+                    textAreaSize: 'post-textarea',
+                    bottleButtonYes: "bottle-button-yes",
+                    respondButtonYes: "respond-button-yes",
+                    streamButtonYes: "stream-button-no",
+                    personal:false,
+                    respond:true,
+                    stream: false
+                    })
     } else {
       this.setState({postLongEnough: false,
                     textAreaSize: 'textarea'})
@@ -102,8 +109,8 @@ class EntryBox extends React.Component{
         <section id="entry-box">
           <section id="prompt"><h4>{this.props.inspo.question}</h4></section>
           <form id="entry-form" onSubmit={this.handleSubmit}>
-              <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
-              <input className="stream-link entry-post-button" type='submit' value='Post'/><br/>
+              <textarea className={ this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
+              <input className="entry-post-button" type='submit' value='Post'/><br/>
               <a className={this.state.bottleButtonYes} id="bottle-button" onClick={this.onPrivate} href=""></a>
               <a className={this.state.respondButtonYes} id="respond-button" onClick={this.onRespond}href=""></a>
               <a className={this.state.streamButtonYes} id="stream-checkbox" onClick={this.onStream} href=""></a>

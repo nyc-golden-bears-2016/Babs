@@ -19,15 +19,16 @@ html{
 }
 body{
   margin: 0;
-  background-color: #4183D7;
+  background-color: #e6f0ff;
   max-height: 99vh;
+  overflow-x: hidden;
 }
 
 .nav {
   border: 1px solid black;
   height: 10vh;
   line-height: 10vh;
-  background-color: white;
+  background-color: #6fa3ee;
   box-shadow: 2px 2px 4px #888888;
   opacity: 1;
 }

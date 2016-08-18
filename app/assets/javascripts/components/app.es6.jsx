@@ -18,15 +18,16 @@ class App extends React.Component {
       showEntryForm: true,
       showBottle: false,
       showBottleClass: "bottle-entries-big",
-      bottleButton: '=>',
-      streamOn: '⇩',
       showStreamId: "show-stream-on",
       entryPrivate: "private",
       entryPublic: "public",
       entryStream: "stream",
-      unlockedBottle: [],
       space: " ",
-      faker: ""
+      faker: "",
+      bottleButton: '⇆',
+      streamOn: '⇅',
+      showStreamId: "show-stream-off",
+      unlockedBottle: []
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -53,11 +54,6 @@ class App extends React.Component {
       this.setState({showStream: "stream-big",
                     showStreamId: 'show-stream-off'})
     }
-    if(this.state.streamOn === '⇩'){
-      this.setState({streamOn: '⇧'})
-    }else{
-      this.setState({streamOn: '⇩'})
-    }
   }
 
   onShowBottleClass(){
@@ -66,11 +62,7 @@ class App extends React.Component {
     } else{
       this.setState({showBottleClass: "bottle-entries-big"})
     }
-    if(this.state.bottleButton === '=>'){
-      this.setState({bottleButton: '<='})
-    }else{
-      this.setState({bottleButton: '=>'})
-    }
+
   }
 
   componentDidMount() {
@@ -103,9 +95,7 @@ class App extends React.Component {
       }, dataType: "json"}).done(function(response){
         self.updateStreams({streams: response.streams})
       })
-    }, 80000000);
-
-
+    }, 30000, true);
   }
 
   updateStreams(response) {
@@ -137,14 +127,14 @@ class App extends React.Component {
     return (
       <section>
         <section className="bottle-show" onClick={this.onShowBottleClass}>
-          <button type="button">{this.state.bottleButton}</button>
+          <button className={this.state.showBottleClass +"-button"} type="button">{this.state.bottleButton}</button>
          </section>
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottle</h2>
           {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><p>{this.state.teaser}</p><p className="teaser">{this.state.faker}</p></div> : <p>"waiting for new bottle..."</p> }
           <h2 id="your-bottles">your bottles</h2>
           <ul>
-            {this.state.showBottle ? <li className="entry"><FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> </li> : null }
+            {this.state.showBottle ? <li className="bottle-entry"><FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> </li> : null }
             {this.state.bottles.map((bottle, i) => {
               return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
             })}
@@ -155,7 +145,7 @@ class App extends React.Component {
           <div>
             <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
           </div>
-          <ul>
+          <ul >
             {this.state.entries.map((entry) => {
               if(entry.is_private === true && entry.stream === false){
                 entryType = this.state.entryPrivate
@@ -170,7 +160,7 @@ class App extends React.Component {
         </div>
         <div className = "streams">
           <section id={this.state.showStreamId} onClick={this.showStream}>
-            <button id="stream-button" type="button">{this.state.streamOn}</button>
+            <button id={this.state.showStreamId+"-button"} type="button">{this.state.streamOn}</button>
           </section>
           <footer className={"marquee " + this.state.showStream} ><span>{this.state.streams.join('.....')}</span></footer>
         </div>
