@@ -41,6 +41,7 @@ class EntriesController < ApplicationController
     end
     @bottles = get_your_bottles
     @teaser = get_bottle_teaser
+    @teaserBody =
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
