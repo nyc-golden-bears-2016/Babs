@@ -25,7 +25,8 @@ class App extends React.Component {
       entryPublic: "public",
       entryStream: "stream",
       unlockedBottle: [],
-      space: "                              "
+      space: " ",
+      faker: ""
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -89,6 +90,7 @@ class App extends React.Component {
           teaser: entryResponse.teaser,
           inspo: entryResponse.inspo,
           all_prompts: entryResponse.all_prompts,
+          faker: entryResponse.faker
         });
         entryResponse.bottles.length > 0 ? this.setState({bottles: entryResponse.bottles}) : null
       });
@@ -101,7 +103,7 @@ class App extends React.Component {
       }, dataType: "json"}).done(function(response){
         self.updateStreams({streams: response.streams})
       })
-    }, 8000);
+    }, 80000000);
 
 
   }
@@ -139,7 +141,7 @@ class App extends React.Component {
          </section>
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottle</h2>
-          {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><p>{this.state.teaser}</p><p className="teaser">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eleifend diam pharetra, cursus ipsum in, sollicitudin dui. Etiam molestie dolor laoreet quam fringilla cursus. Donec pellentesque ac mauris vitae placerat. Nunc vehicula convallis volutpat. Donec convallis turpis eget erat tempor, in imperdiet sem dignissim. Aliquam vel purus nec neque euismod bibendum. "</p></div> : <p>"waiting for new bottle..."</p> }
+          {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><p>{this.state.teaser}</p><p className="teaser">{this.state.faker}</p></div> : <p>"waiting for new bottle..."</p> }
           <h2 id="your-bottles">your bottles</h2>
           <ul>
             {this.state.showBottle ? <li className="entry"><FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> </li> : null }
