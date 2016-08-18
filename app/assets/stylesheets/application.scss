@@ -30,7 +30,7 @@ body{
   line-height: 10vh;
   background-color: #6fa3ee;
   box-shadow: 2px 2px 4px #888888;
-  opacity: 1;
+  opacity: .85;
 }
 
 a:hover{
@@ -43,9 +43,12 @@ input{
 
 .nav a{
   padding: 2%;
-  font-size: 24px;
+  font-size: 36px;
   text-decoration: none;
-  color: black;
+  color: white;
+  &:hover{
+    color: black;
+  }
 }
 
 li{
