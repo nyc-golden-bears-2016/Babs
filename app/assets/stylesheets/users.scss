@@ -7,7 +7,7 @@
   background-color: white;
   font-size: 20px;
   height: 9%;
-  width: 20%;
+  width: 23%;
   line-height: 30px;
   display: block;
   text-align: center;
@@ -15,17 +15,26 @@
   margin-bottom: 3%;
   border-radius: 5%;
   opacity: .75;
+  & a{
+    font-size: 16px;
+  }
 }
 
 .actions {
   font-size: 28px;
-  width: 5%;
+  width: 100%;
   padding-right: 16%;
   padding-top: 1%;
   line-height: 20px;
   display: block;
   margin: auto;
-  text-align: left
+  text-align: center;
+  & input{
+    background-color: white;
+    -webkit-appearance: button;
+    border-radius: 10%;
+    font-size: 18px;
+  }
 }
 
 #video-background {
@@ -55,4 +64,10 @@
   display: block;
   text-align: center;
   margin-bottom: 5%;
+}
+#flash{
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
 }
