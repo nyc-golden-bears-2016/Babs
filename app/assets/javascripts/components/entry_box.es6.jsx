@@ -100,7 +100,7 @@ class EntryBox extends React.Component{
     return (
       <div>
         <section id="entry-box">
-          <h4>{this.props.inspo.question}</h4>
+          <section id="prompt"><h4>{this.props.inspo.question}</h4></section>
           <form id="entry-form" onSubmit={this.handleSubmit}>
               <textarea className={ this.state.postLongEnough + " " + this.state.textAreaSize } ref="entryTextarea" onKeyUp={this.longEnough} name="body" placeholder="Write something..."/><br/>
               <input className="stream-link entry-post-button" type='submit' value='Post'/><br/>
