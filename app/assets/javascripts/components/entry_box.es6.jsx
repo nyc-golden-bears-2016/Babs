@@ -90,7 +90,6 @@ class EntryBox extends React.Component{
 
   handleSubmit(event) {
     event.preventDefault();
-    debugger;
     let textArea = this.refs.entryTextarea,
         body = textArea.value,
         can_respond = this.state.respond,

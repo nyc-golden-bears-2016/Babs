@@ -75,9 +75,9 @@ class EntriesController < ApplicationController
 
   # get entry object if user_id is stored as a viewer_id in a different user's entry, i.e. if a user has a MIB.
   def get_bottles
-    bottle = Entry.all.where(viewer_id: current_user.id)
-    if bottle
-      return bottle
+    bottles = Entry.all.where(viewer_id: current_user.id)
+    if bottles
+      return bottles
     else
       return false
     end
@@ -112,7 +112,13 @@ class EntriesController < ApplicationController
   # take bottle object and truncate the body to return a teaser sentence for the user
   def get_bottle_teaser
     entries = get_bottles
-    if !entries.empty?
+    anon_bottles = entries.map do |bottle|
+      if bottle.viewer_id != current_user.id
+        bottle
+      end
+    end
+    anon_bottles.compact!
+    if !anon_bottles.empty?
       teaser = entries[-1].body[0..40]
     else
       "Waiting for a new bottle..."
