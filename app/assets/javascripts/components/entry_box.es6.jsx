@@ -27,8 +27,6 @@ class EntryBox extends React.Component{
       this.setState({bottleButtonYes: "bottle-button-no"})
     } else {
       this.setState({bottleButtonYes: "bottle-button-yes"})
-      this.setState({streamButtonYes: "stream-button-no"})
-      this.setState({stream:false})
     }
   }
 
@@ -47,19 +45,12 @@ class EntryBox extends React.Component{
   onStream(event){
     event.preventDefault();
     if(this.state.stream === false){
-      this.setState({stream: true})
+      this.setState({stream: true,
+                    streamButtonYes: "stream-button-yes"})
     } else{
-      this.setState({stream:false})
+      this.setState({stream:false,
+                    streamButtonYes: "stream-button-no"})
     }
-    if(this.state.stream){
-      this.setState({streamButtonYes: "stream-button-yes"})
-      this.setState({respondButtonYes: "respond-button-no"})
-      this.setState({bottleButtonYes: "bottle-button-no"})
-    } else{
-      this.setState({streamButtonYes: "stream-button-no"})
-    }
-    this.setState({respond:false})
-    this.setState({personal:false})
   }
 
   // if the character minimum has been met for creating a new entry

@@ -34,11 +34,11 @@ class Entry < ApplicationRecord
     self.save
   end
 
-  def unlock_bottle
+  def unlock_bottle(full_bottle)
     if !self.is_private && self.body.length > 80
       self.find_random_user
       if self.body.length > 80
-        full_bottle = Entry.all.where(viewer_id: self.user_id)[-1]
+        full_bottle
         if full_bottle
           return full_bottle
         else

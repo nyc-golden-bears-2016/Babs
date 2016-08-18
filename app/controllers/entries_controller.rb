@@ -14,7 +14,8 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(permit_params)
     @entry.user_id = current_user.id
-    @bottle = @entry.unlock_bottle
+    full_bottle = get_new_bottle
+    @bottle = @entry.unlock_bottle(full_bottle)
     if @entry.stream == true
       @entry.stream_length_check
     end
@@ -45,7 +46,7 @@ class EntriesController < ApplicationController
       @all_prompts = []
     end
     @bottles = get_your_bottles
-    @teaser = get_bottle_teaser
+    @teaser = get_new_bottle.body[0..40]
     @faker  = generate_faker
 
     render json: {entries: @entries,
@@ -116,16 +117,17 @@ class EntriesController < ApplicationController
   end
 
   # take bottle object and truncate the body to return a teaser sentence for the user
-  def get_bottle_teaser
+  def get_new_bottle
     entries = get_bottles
     anon_bottles = entries.map do |bottle|
-      if bottle.viewer_id != current_user.id
+      if bottle.user_id != current_user.id && !bottle.is_read
         bottle
       end
     end
     anon_bottles.compact!
+
     if !anon_bottles.empty?
-      teaser = entries[-1].body[0..40]
+      bottle = anon_bottles[-1]
     else
       "Waiting for a new bottle..."
     end

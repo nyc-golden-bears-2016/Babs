@@ -95,7 +95,7 @@ class App extends React.Component {
       }, dataType: "json"}).done(function(response){
         self.updateStreams({streams: response.streams})
       })
-    }, 30000, true);
+    }, 9000, true);
   }
 
   updateStreams(response) {
@@ -131,7 +131,7 @@ class App extends React.Component {
          </section>
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottle</h2>
-          {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p>"waiting for new bottle..."</p> }
+          {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p>"waiting for new bottle"</p> }
           <h2 id="your-bottles">your bottles</h2>
           <ul>
             {this.state.showBottle ? <li className="bottle-entry"><FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> </li> : null }
