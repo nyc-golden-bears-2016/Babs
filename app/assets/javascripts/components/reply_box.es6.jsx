@@ -29,8 +29,8 @@ class ReplyBox extends React.Component{
         <form id="respond-box" onSubmit={this.handleSubmit}>
           Respond:<br/>
           <textarea ref="responseTextarea" name="body"/>
+          <input className="entry-post-button" type='submit' value='Post Reply'/><br/>
           <input ref="entryId" type="hidden" value={this.props.data.id}/>
-          <input type='submit' value='Post Reply'/>
         </form>
       </section>
     );
