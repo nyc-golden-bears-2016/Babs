@@ -41,12 +41,14 @@ class EntriesController < ApplicationController
     end
     @bottles = get_your_bottles
     @teaser = get_bottle_teaser
+    @faker  = generate_faker
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
                   inspo: @prompt,
                   all_prompts: @all_prompts,
-                  bottles: @bottles}
+                  bottles: @bottles,
+                  faker: @faker}
   end
 
   def stream
@@ -117,6 +119,14 @@ class EntriesController < ApplicationController
     end
   end
 
+  def generate_faker
+    entries = get_bottles
+    if !entries.empty?
+      length = entries[-1].body.length - 40
+      faker =  Faker::Lorem.characters(length)
+    end
+  end
+
   def used_prompts
     current_user.entries.map do |entry|
       entry.prompt_id
@@ -136,11 +146,13 @@ class EntriesController < ApplicationController
       return new_prompts.sample
     end
   end
+
   def mail(post)
     if post.viewer_id != current_user.id
       NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later
     end
   end
+
 end
 
 
