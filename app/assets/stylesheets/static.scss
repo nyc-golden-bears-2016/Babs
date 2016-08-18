@@ -24,10 +24,11 @@ li{
 
 
 
-.entry-private,
-.entry-stream,
-.entry-public,
+.private,
+.stream,
+.public,
 .bottle-entry {
+    background-color: white;
     list-style-type: none;
     border: 1px solid gray;
     width: 90%;
@@ -163,7 +164,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 .bottle-entries-small-button {
-  right: 13%;
+  right: 10%;
 
 }
 
@@ -230,13 +231,22 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 .entry-post-button {
   border: 1px solid gray;
+  height: 5vh;
   border-radius: 5px;
   background-color: white;
-  width: 80%;
+  width: 40vw;
+  box-shadow: 2px 2px 4px #888888;
+}
+.entry-post-button:hover {
+  color: white;
+  background-color: #0066ff;
+  box-shadow: 2px 2px 8px #0066ff;
 }
 .plus-minus-button {
   font-size: 30px;
   color: black;
+  outline: none;
+  text-decoration: none;
 }
 footer {
   border: 1px solid #66a3ff;
@@ -253,7 +263,7 @@ footer {
 }
 
 .user-entries {
-  background-color: white;
+  background-color: #FEFDFB;
   opacity: .6;
   top: 12vh;
   position: absolute;
@@ -261,7 +271,7 @@ footer {
   border-radius: 5%;
   left: 8.5%;
   box-shadow: 2px 2px 4px #888888;
-  border-radius: 5%;
+  border-radius: 3%;
   font-size: 18px;
   width: 50vw;
   max-height: 80vh;
@@ -286,13 +296,13 @@ footer {
 .bottle-entries-big {
   top: 10.2%;
   position: absolute;
-  background-color: #cce0ff;
-  transition: width .6s ease-out;
+  background-color: #FEFBF7;
+  transition: right .6s ease-out;
   box-shadow: 2px 2px 4px #888888;
   right: 0%;
   border-left: 1px solid gray;
   font-size: 18px;
-  width: 25vw;
+  width: 30vw;
   overflow-y: scroll;
   height: 87vh;
   border: 1px solid black;
@@ -313,25 +323,33 @@ footer {
 }
 
 .bottle-entries-small {
-  width: 18vh;
+  right: -25vh;
 }
 
 
-textarea{
-  width: 30vw;
+textarea,
+#bottle-respond-box {
+  width: 40vw;
   font-size: 18px;
   height: 3em;
   transition: height .6s ease-out;
+  border: 1px solid gray;
+  outline: none;
   border-radius: 8px;
   box-shadow: 2px 2px 4px #888888;
+  margin: auto;
 }
 
+#bottle-respond-box {
+  width: 20vw;
+}
 .post-textarea{
-  width: 30vw;
+  width: 40vw;
   height: 20vh;
   font-size: 18px;
+  border: 3px solid #00ff00;
   border-radius: 8px;
-  box-shadow: 2px 2px 4px #888888;
+  box-shadow: 2px 2px 2px #00ff00;
 }
 
 #bottle-button, #respond-button, #stream-checkbox, .stream-link{
@@ -340,9 +358,24 @@ textarea{
   padding-bottom: 10%;
   margin-right: 8%;
   margin-bottom: 5%;
-
   /*background-color: transparent;*/
 }
+
+#bottle-button:hover {
+
+}
+
+#respond-button:hover {
+
+}
+
+#stream-checkbox:hover {
+
+}
+.stream-link:hover {
+
+}
+
 .bottle-button-yes{
   background: image-url('sprite-bottles.png') -250% 0;
   background-size: 90%;

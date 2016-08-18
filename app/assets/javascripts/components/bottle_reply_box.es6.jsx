@@ -24,11 +24,10 @@ class BottleReplyBox extends React.Component{
   render() {
     return (
       <section id="respond-box">
-        <form id="respond-box" onSubmit={this.handleSubmit}>
-          Respond:<br/>
-          <textarea ref="responseTextarea" name="body"/>
+        <form  onSubmit={this.handleSubmit}>
+          <textarea id="bottle-respond-box" ref="responseTextarea" name="body"/>
           <input ref="entryId" type="hidden" value={this.props.data.id}/>
-          <input type='submit' value='Respond'/>
+          <input className="entry-post-button" type='submit' value='Respond'/>
         </form>
       </section>
     );

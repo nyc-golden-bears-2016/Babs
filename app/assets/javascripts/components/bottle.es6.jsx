@@ -33,7 +33,7 @@ class Bottle extends React.Component {
             }
           })}
         </ul>
-        {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.props.onAddReply} /> : null}
+        {this.state.box ? <BottleReplyBox data={this.props.data} onAddReply={this.props.onAddReply} /> : null}
       </li>
     )
   }
