@@ -34,14 +34,20 @@ class EntriesController < ApplicationController
     if @prompt == nil
       @prompt = prompt_find
     end
+
     @entries = current_user.entries.reverse
     @responses = get_responses(@entries)
-    @all_prompts = @entries.map do |entry|
-      Prompt.find(entry.prompt_id)
+    if !@entries.empty?
+      @all_prompts = @entries.map do |entry|
+         Prompt.find(entry.prompt_id)
+      end
+   else
+      @all_prompts = []
     end
     @bottles = get_your_bottles
     @teaser = get_bottle_teaser
     @faker  = generate_faker
+
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
