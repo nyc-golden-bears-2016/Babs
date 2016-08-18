@@ -65,7 +65,7 @@ class EntryBox extends React.Component{
   // if the character minimum has been met for creating a new entry
   longEnough() {
     charCount = this.refs.entryTextarea.value.length
-    if(charCount > 30) {
+    if(charCount > 80) {
       this.setState({postLongEnough: 'post-long-enough',
                     textAreaSize: 'post-textarea'})
     } else {

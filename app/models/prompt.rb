@@ -1,6 +1,6 @@
 class Prompt < ApplicationRecord
   has_many :entries
 
-  # validates :question, presence: true
+  validates :question, presence: true
 
 end

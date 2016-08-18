@@ -113,7 +113,7 @@ class EntriesController < ApplicationController
   def get_bottle_teaser
     entries = get_bottles
     if !entries.empty?
-      teaser = entries[-1].body[0..10]
+      teaser = entries[-1].body[0..40]
     else
       "Waiting for a new bottle..."
     end

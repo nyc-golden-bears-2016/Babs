@@ -9,7 +9,7 @@
     display: inline-block;
     padding-left: 100%;
     display: inline-block;
-    animation: marquee 30s linear infinite;
+    animation: marquee 40s linear infinite;
 }
 
 /* Make it move */
@@ -22,6 +22,24 @@ li{
       list-style-type: none;
 }
 
+
+
+.entry-private,
+.entry-stream,
+.entry-public,
+.bottle-entry {
+    list-style-type: none;
+    border: 1px solid gray;
+    width: 90%;
+    text-align: center;
+    box-shadow: 2px 2px 4px #888888;
+    border-radius: 6px;
+  }
+
+
+.bottle-entry{
+  background-color: white;
+}
 
 li.private:before{
     float: right;
@@ -104,18 +122,49 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   float: right;
 }*/
 
-#stream-button {
-  font-size: 17px;
+#show-stream-on-button,
+#show-stream-off-button {
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  font-size: 1.5em;
   position: absolute;
   padding: 0%;
-  bottom: 5%;
+  bottom: 4.7%;
+  outline: none;
+  z-index: 1;
+  transition: bottom .2s ease-out;
+  margin: 0%;
+  border: none;
+  height: 3vh;
+  text-shadow: 1px 1px 2px #888888;
+}
+
+#show-stream-on-button {
+  bottom: 0%;
+
+}
+
+
+.bottle-entries-big-button,
+.bottle-entries-small-button {
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  font-size: 1.5em;
+  border: none;
+  position: fixed;
+  outline: none;
+  padding: 0%;
+  top: 11%;
+  right: 25%;
+  transition: right .6s ease-out;
   margin: 0%;
   height: 3vh;
-  border-bottom: none;
-  border: 1px solid #c5a2a2;
-  background-color: white;
-  border-radius: 20px;
-  box-shadow: 2px 2px 4px #888888;
+  text-shadow: 1px 1px 2px #888888;
+}
+
+.bottle-entries-small-button {
+  right: 13%;
+
 }
 
 #stream-button:hover {
@@ -152,9 +201,12 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 }
 
 .user-response {
-  border-top: 1px solid gray;
+  border: 1px solid gray;
   list-style-type: none;
   text-align: left;
+  background-color: #e5f9ff;
+  box-shadow: 1px 1px 2px white;
+  border-radius: 5px;
   padding: 5px;
 }
 
@@ -171,6 +223,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 .hide-responses-button {
   border: none;
   background-color: white;
+  text-shadow: 1px 1px 2px #888888;
   padding-left: 76%;
   font-size: 16px;
   outline: none;
@@ -186,19 +239,20 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   color: black;
 }
 footer {
-  border: 1px solid #c5a2a2;
+  border: 1px solid #66a3ff;
+  color: white;
   height: 4vh;
   line-height: 4vh;
   box-shadow: 1px 1px 2px #888888;
   opacity: .75;
   background: #ff6d6d; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(left top, #ffb3b3, #ff6d6d); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom right, #ffb3b3, #ff6d6d); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom right, #ffb3b3, #ff6d6d);
-  background: linear-gradient(#ffb3b3, #ff6d6d);
+  background: -webkit-linear-gradient(left top,#66a3ff, #005ce6); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #66a3ff, #005ce6); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #66a3ff, #005ce6);
+  background: linear-gradient(#66a3ff, #005ce6);
 }
 
-.user-entries{
+.user-entries {
   background-color: white;
   opacity: .6;
   top: 12vh;
@@ -215,7 +269,7 @@ footer {
   padding-left: 2%;
   opacity: 1;
   border: 2px solid #e3e8cf;
-  overflow-y: scroll;
+  overflow-y:  scroll;
   & a{
     text-decoration: none;
     color: black;
@@ -226,11 +280,13 @@ footer {
   }
 }
 
+
+
 .bottle-entries-small,
 .bottle-entries-big {
   top: 10.2%;
   position: absolute;
-  background-color: white;
+  background-color: #cce0ff;
   transition: width .6s ease-out;
   box-shadow: 2px 2px 4px #888888;
   right: 0%;
@@ -238,7 +294,7 @@ footer {
   font-size: 18px;
   width: 25vw;
   overflow-y: scroll;
-  height: 89vh;
+  height: 87vh;
   border: 1px solid black;
   opacity: 1;
   padding-left: 1%;
@@ -272,7 +328,7 @@ textarea{
 
 .post-textarea{
   width: 30vw;
-  height: 30vh;
+  height: 20vh;
   font-size: 18px;
   border-radius: 8px;
   box-shadow: 2px 2px 4px #888888;
@@ -347,10 +403,12 @@ textarea{
   }
 }
 
-#respond-button{
+.entry-responses-false{
 
 }
-
+.entry-responses-true{
+  transition: height 1.4s ease-out;
+}
 #delete-button {
   font-size: 30px;
 }
