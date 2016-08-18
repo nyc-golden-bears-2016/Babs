@@ -21,6 +21,9 @@ class App extends React.Component {
       bottleButton: '=>',
       streamOn: '⇩',
       showStreamId: "show-stream-on",
+      entryPrivate: "private",
+      entryPublic: "public",
+      entryStream: "stream",
       unlockedBottle: []
     };
 
@@ -126,6 +129,7 @@ class App extends React.Component {
    }
 
 
+
   render () {
     return (
       <section>
@@ -150,7 +154,14 @@ class App extends React.Component {
           </div>
           <ul>
             {this.state.entries.map((entry) => {
-              return <Entry onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
+              if(entry.is_private === true && entry.stream === false){
+                entryType = this.state.entryPrivate
+              } else if (entry.is_private === false && entry.stream === false) {
+                entryType = this.state.entryPublic
+              } else if (entry.stream === true){
+                  entryType = this.state.entryStream
+              }
+              return <Entry entryType={entryType} onAddReply={this.addReply} key={entry.id} data={entry} all_prompts={this.state.all_prompts} replies={this.state.replies} onRemoveEntry={this.removeEntry} onInspo={this.state.inspo.question} userId={this.state.user.id}/>
               })}
           </ul>
         </div>
