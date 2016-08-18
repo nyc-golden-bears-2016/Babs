@@ -9,8 +9,7 @@ class Entry extends React.Component {
       box: false,
       question: false,
       showReply: true,
-      replyButton:"hide",
-      showHide: false
+      replyButton: "↟"
     };
 
 
@@ -34,12 +33,13 @@ class Entry extends React.Component {
     } else{
       this.setState({showReply: true})
     }
-     if(this.state.replyButton === "hide"){
-      this.setState({replyButton: "show"})
+     if(this.state.replyButton === "↟"){
+      this.setState({replyButton: "↡"})
     }else{
-      this.setState({replyButton: "hide"})
+      this.setState({replyButton: "↟"})
     }
    }
+
 
 
 
@@ -58,20 +58,18 @@ class Entry extends React.Component {
         <span className="delete-button"><DeleteButton id={this.props.data.id} onRemoveEntry={this.props.onRemoveEntry}/></span>
         <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
         <span  className="question-button"><QuestionButton id={this.props.data.id} onShowQuestion={this.showQuestion} /></span>
+        <button onClick={this.hideResponses} className="hide-responses-button" type = "button">{this.state.replyButton}</button>
         {this.state.showReply ?
-        <ul>
+        <ul className="entry-responses">
           {this.state.replies.map((reply)=>{
              <Reply key={reply.id} data={reply} userId={this.props.userId}/>
           })}
+
+
         </ul> : null}
-         {this.props.replies.length > 0 ? <span className="hide-respones" onClick={this.hideResponses}>
-          <button type = "button">{this.state.replyButton}</button>
-         </span> : null }
-         {this.state.replies.map((reply)=>{
-             if(reply.entry_id == this.props.data.id){
-              this.setState({showHide: true})
-             }
-          })}
+
+
+
          {this.state.showReply ?
             <ul>
               {this.props.replies.map((reply)=>{
