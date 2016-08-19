@@ -4,7 +4,7 @@ class NotificationMailer < ApplicationMailer
     @user = user
     @post = post
     @post.viewer_id = @user.id
-    @url = "http://localhost:3000/sign_in"
+    @url = "message-in-bottle.herokuapp.com/sign_in"
     mail(to: @user.email, subject: "You have a new message in a bottle...")
   end
 end

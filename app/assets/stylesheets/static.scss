@@ -75,6 +75,7 @@ li.public{
 .stream-big,
 .stream-small {
     position: absolute;
+    font-size: 1.5em;
     bottom: 0%;
     float: right;
     width: 100%;
@@ -244,10 +245,10 @@ li.public{
 footer {
   border: 1px solid #66a3ff;
   color: white;
-  height: 4vh;
-  line-height: 4vh;
+  height: 5vh;
+  line-height: 5vh;
   box-shadow: 1px 1px 2px #888888;
-  opacity: .75;
+  opacity: .85;
   background: #ff6d6d; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(left top,#66a3ff, #005ce6); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom right, #66a3ff, #005ce6); /* For Opera 11.1 to 12.0 */

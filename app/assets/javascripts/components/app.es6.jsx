@@ -95,7 +95,7 @@ class App extends React.Component {
       }, dataType: "json"}).done(function(response){
         self.updateStreams({streams: response.streams})
       })
-    }, 9000, true);
+    }, 1000, true);
   }
 
   updateStreams(response) {

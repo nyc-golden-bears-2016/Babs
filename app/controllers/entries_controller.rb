@@ -143,7 +143,7 @@ class EntriesController < ApplicationController
     if !entries.empty?
       length = entries[-1].body.length - 40
       faker = ""
-      (length/5).times do
+      (length/6).times do
         faker << Faker::Lorem.word + " "
       end
       return faker
@@ -169,10 +169,14 @@ class EntriesController < ApplicationController
       return new_prompts.sample
     end
   end
+  def find_viewer(entry)
+    User.find(entry.viewer_id)
+  end
 
   def mail(post)
+
     if post.viewer_id != current_user.id
-      NotificationMailer.awaiting_response(find_viewer, @entry).deliver_later
+      NotificationMailer.awaiting_response(find_viewer(post), post).deliver_now
     end
   end
 

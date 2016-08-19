@@ -26,10 +26,10 @@ class Entry < ApplicationRecord
     begin
       bottle_receiver = User.find(rand(1..total_users))
       if bottle_receiver.id == self.user_id
-        bottle_receiver = nil
+          bottle_receiver = nil
       end
       count += 1
-    end until !bottle_receiver.nil? || count > total_users
+    end until !bottle_receiver.nil? || count > 100
     self.viewer_id = bottle_receiver.id
     self.save
   end
