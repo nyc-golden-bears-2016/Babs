@@ -27,7 +27,7 @@ class App extends React.Component {
       bottleButton: '⇆',
       streamOn: '⇅',
       showStreamId: "show-stream-off",
-      unlockedBottle: []
+      unlockedBottle: {body: ""}
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -111,9 +111,9 @@ class App extends React.Component {
 
   addEntry(response){
     let entries = this.state.entries;
-    this.setState({entries: [response.entry, ...entries]}),
-    this.setState({unlockedBottle: response.bottle}),
-    this.setState({showBottle: true});
+    this.setState({entries: [response.entry, ...entries],
+    unlockedBottle: response.bottle,
+    showBottle: true});
    }
 
    addReply(reply){
@@ -131,9 +131,10 @@ class App extends React.Component {
          </section>
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottle</h2>
-          {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p>"waiting for new bottle"</p> }
+          {this.state.unlockedBottle.body.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p>"waiting for new bottle"</p> }
           <h2 id="your-bottles">unlocked bottles</h2>
           <ul>
+          {this.state.unlockedBottle.body.length > 0 ? <li><Bottle onAddReply={this.addReply} key={this.state.unlockedBottle.id} data={this.state.unlockedBottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} /></li> : null}
             {this.state.bottles.map((bottle, i) => {
               return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
             })}

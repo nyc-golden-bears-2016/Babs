@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
    else
       @all_prompts = []
     end
-    @bottles = get_your_bottles
+    @bottles = get_your_bottles.reverse
     @teaser = get_new_bottle
     if @teaser != "Waiting for a new bottle..."
       @teaser = get_new_bottle.body[0..40]

@@ -38,7 +38,8 @@ class Entry < ApplicationRecord
     if !self.is_private && self.body.length > 80
       self.find_random_user
       if self.body.length > 80
-        full_bottle
+        full_bottle.is_read = true
+        full_bottle.save
         if full_bottle
           return full_bottle
         else
