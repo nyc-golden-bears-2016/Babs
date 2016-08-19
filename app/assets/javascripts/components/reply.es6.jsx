@@ -14,6 +14,7 @@ class Reply extends React.Component{
   }
 
   render() {
+
     return (
      <li className={this.displayUserAnon()} >
         <span>{this.props.data.body}</span>

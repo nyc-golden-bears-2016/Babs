@@ -414,7 +414,10 @@ textarea,
   display: block;
   word-wrap: normal;
 }
-#prompt{
+
+#prompt,
+.question
+{
   font-family: 'Cantarell', sans-serif;
 }
 .post-icons{
