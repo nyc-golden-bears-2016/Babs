@@ -25,6 +25,7 @@ body{
 }
 
 .nav {
+  padding-left: 9vw;
   border: 1px solid black;
   height: 10vh;
   line-height: 10vh;
@@ -43,7 +44,7 @@ input{
 
 .nav a{
   padding: 2%;
-  font-size: 36px;
+  font-size: 1.6em;
   text-decoration: none;
   color: white;
   &:hover{

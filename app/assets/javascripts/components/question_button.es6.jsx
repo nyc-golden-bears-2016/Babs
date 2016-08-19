@@ -15,7 +15,7 @@ class QuestionButton extends React.Component{
     return (
       <div>
         <form id="reply-desire" onClick={this.handleQuestion}>
-          <input type = "submit" value="?"/>
+          <input id="reply-desire" type = "submit" value="?"/>
         </form>
       </div>
     );
