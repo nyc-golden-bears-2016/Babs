@@ -35,10 +35,12 @@ class EntriesController < ApplicationController
     if @prompt == nil
       @prompt = prompt_find
     end
-
     @entries = current_user.entries.reverse
+    if @entries.nil?
+      @entries = [Entry.create(user_id: current_user.id, body: "here's where your journal entries goes. You can check for responses for anonymous people here, and always add notes and continue thoughts....", viewer_id: current_user.id)]
+    end
     @responses = get_responses(@entries)
-    if !@entries.empty?
+    if !@entries.nil? || !@entries.empty?
       @all_prompts = @entries.map do |entry|
          Prompt.find(entry.prompt_id)
       end
@@ -46,7 +48,13 @@ class EntriesController < ApplicationController
       @all_prompts = []
     end
     @bottles = get_your_bottles
-    @teaser = get_new_bottle.body[0..40]
+    @teaser = get_new_bottle
+    if @teaser != "Waiting for a new bottle..."
+      @teaser = get_new_bottle.body[0..40]
+    else
+      @teaser = "waiting for a new bottle"
+    end
+
     @faker  = generate_faker
 
     render json: {entries: @entries,
