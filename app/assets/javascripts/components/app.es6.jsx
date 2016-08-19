@@ -132,7 +132,7 @@ class App extends React.Component {
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottle</h2>
           {this.state.unlockedBottle.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p>"waiting for new bottle"</p> }
-          <h2 id="your-bottles">your bottles</h2>
+          <h2 id="your-bottles">unlocked bottles</h2>
           <ul>
             {this.state.showBottle ? <li className="bottle-entry"><FullMessageInABottle onAddEntry={this.addEntry} onAddReply={this.addReply} data={this.state.unlockedBottle}/> </li> : null }
             {this.state.bottles.map((bottle, i) => {
@@ -141,10 +141,10 @@ class App extends React.Component {
           </ul>
         </div>
         <div className="user-entries">
-          <h2>your entries</h2>
           <div>
             <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
           </div>
+          <h2 className="user-header" >entries</h2>
           <ul >
             {this.state.entries.map((entry) => {
               if(entry.is_private === true && entry.stream === false){

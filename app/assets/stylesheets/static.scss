@@ -19,14 +19,13 @@
 }
 
 li{
-      list-style-type: none;
+  list-style-type: none;
 }
 
 #entry-box{
   text-align: center;
   border-bottom: 1px solid gray;
 }
-
 
 .private,
 .stream,
@@ -40,7 +39,6 @@ li{
     box-shadow: 2px 2px 4px #888888;
     border-radius: 6px;
   }
-
 
 .bottle-entry{
   background-color: white;
@@ -68,14 +66,6 @@ li.public{
     font-size: 18px;
   }
 
-/*
-.entry-bottle-span{
-font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
-    float: left;
-}
-*/
-
-
 .post-long-enough {
   outline: none;
   border: 4px solid #00ff00;
@@ -98,7 +88,9 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   font-size: 30px;
 }
 .plus-minus-button{
-
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  outline: none;
 }
 
 .bottle-show{
@@ -126,10 +118,6 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
   float: right;
 }
 
-/*#user-greeting {
-  float: right;
-}*/
-
 #show-stream-on-button,
 #show-stream-off-button {
   background-image: url("transparent.png");
@@ -150,9 +138,7 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 
 #show-stream-on-button {
   bottom: 0%;
-
 }
-
 
 .bottle-entries-big-button,
 .bottle-entries-small-button {
@@ -242,22 +228,18 @@ font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewrite
 .entry-post-button {
   border: 1px solid gray;
   margin-top: 1%;
+  margin-bottom: 2%;
   height: 3.5vh;
   border-radius: 5px;
   background-color: white;
   width: 3.5vw;
+  min-width: 90px;
   box-shadow: 2px 2px 4px #888888;
 }
 .entry-post-button:hover {
   color: white;
   background-color: #0066ff;
   box-shadow: 2px 2px 8px #0066ff;
-}
-.plus-minus-button {
-  font-size: 30px;
-  color: black;
-  outline: none;
-  text-decoration: none;
 }
 footer {
   border: 1px solid #66a3ff;
@@ -301,8 +283,6 @@ footer {
   }
 }
 
-
-
 .bottle-entries-small,
 .bottle-entries-big {
   top: 10.2%;
@@ -337,7 +317,6 @@ footer {
   right: -25vh;
 }
 
-
 textarea,
 #bottle-respond-box {
   width: 40vw;
@@ -370,21 +349,6 @@ textarea,
   margin-right: 8%;
   margin-bottom: 5%;
   /*background-color: transparent;*/
-}
-
-#bottle-button:hover {
-
-}
-
-#respond-button:hover {
-
-}
-
-#stream-checkbox:hover {
-
-}
-.stream-link:hover {
-
 }
 
 .bottle-button-yes{
@@ -433,22 +397,12 @@ textarea,
   }
 }
 
-.respond-button{
-  & input[type='submit']{
-    background-image: image-url("add.png");
-  }
-}
-
 .delete-button{
   & input[type='submit']{
     background-image: image-url("garbage.png");
     filter: hue-rotate(180deg);
       -webkit-filter: hue-rotate(180deg);
   }
-}
-
-.entry-responses-false{
-
 }
 .entry-responses-true{
   transition: height 1.4s ease-out;
@@ -467,3 +421,14 @@ textarea,
   margin-bottom: 5%;
 }
 
+.user-header,
+#new-bottles,
+#your-bottles {
+  text-align: center;
+  font-family: 'Slabo 27px', serif;
+  letter-spacing: 1.7px;
+}
+
+#reply-desire {
+  outline: none;
+}

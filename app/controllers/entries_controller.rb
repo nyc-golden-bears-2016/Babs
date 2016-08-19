@@ -138,7 +138,7 @@ class EntriesController < ApplicationController
     if !entries.empty?
       length = entries[-1].body.length - 40
       faker = ""
-      length.times do
+      (length/5).times do
         faker << Faker::Lorem.word + " "
       end
       return faker
