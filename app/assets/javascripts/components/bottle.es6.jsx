@@ -4,8 +4,6 @@ class Bottle extends React.Component {
     super();
       this.state ={
       user: "",
-      entries: [],
-      replies: [],
       box: false
     };
     this.showBox = this.showBox.bind(this);
@@ -22,7 +20,7 @@ class Bottle extends React.Component {
         <span className="entry-span">{this.props.data.body}</span><br />
         {this.props.data.can_respond ? <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>: null }
         <ul>
-          {this.state.replies.map((reply)=>{
+          {this.props.replies.map((reply)=>{
               return <Reply key={reply.id} data={reply}/>
           })}
         </ul>
