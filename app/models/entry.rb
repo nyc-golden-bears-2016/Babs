@@ -35,7 +35,7 @@ class Entry < ApplicationRecord
   end
 
   def unlock_bottle(full_bottle)
-    if !self.is_private && self.body.length > 80
+    if !self.is_private && self.body.length > 80 && full_bottle.class == self.class
       self.find_random_user
       if self.body.length > 80
         full_bottle.is_read = true

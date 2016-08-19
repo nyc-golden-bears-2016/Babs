@@ -52,11 +52,9 @@ class EntriesController < ApplicationController
     if @teaser != "Waiting for a new bottle..."
       @teaser = get_new_bottle.body[0..40]
     else
-      @teaser = "waiting for a new bottle"
+      @teaser = "Waiting for a new bottle..."
     end
-
     @faker  = generate_faker
-
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
@@ -133,16 +131,15 @@ class EntriesController < ApplicationController
       end
     end
     anon_bottles.compact!
-
     if !anon_bottles.empty?
       bottle = anon_bottles[-1]
     else
-      "Waiting for a new bottle..."
+     "Waiting for a new bottle..."
     end
   end
 
   def generate_faker
-    entries = get_bottles
+    entries = get_your_bottles
     if !entries.empty?
       length = entries[-1].body.length - 40
       faker = ""
