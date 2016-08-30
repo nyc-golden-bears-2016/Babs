@@ -145,7 +145,7 @@ class App extends React.Component {
             <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
           </div>
           <h2 className="user-header" >entries</h2>
-          <ul >
+          <ul class="user-ul">
             {this.state.entries.map((entry) => {
               if(entry.is_private === true && entry.stream === false){
                 entryType = this.state.entryPrivate
