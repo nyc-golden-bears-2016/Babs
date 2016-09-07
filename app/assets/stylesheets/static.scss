@@ -12,7 +12,6 @@
     animation: marquee 40s linear infinite;
 }
 
-/* Make it move */
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
@@ -436,4 +435,8 @@ textarea,
 
 #reply-desire {
   outline: none;
+}
+
+ul{
+  list-style-type: none;
 }

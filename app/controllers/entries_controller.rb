@@ -51,10 +51,10 @@ class EntriesController < ApplicationController
     @teaser = get_new_bottle
     if @teaser != "Waiting for a new bottle..."
       @teaser = get_new_bottle.body[0..40]
+      @faker  = generate_faker
     else
       @teaser = "Waiting for a new bottle..."
     end
-    @faker  = generate_faker
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
@@ -139,15 +139,21 @@ class EntriesController < ApplicationController
   end
 
   def generate_faker
-    entries = get_your_bottles
+    if get_bottles.length == 1
+      entries = get_bottles
+    else
+      entries = get_your_bottles
+    end
     if !entries.empty?
       length = entries[-1].body.length - 40
       faker = ""
-      (length/6).times do
+      (length/8).times do
         faker << Faker::Lorem.word + " "
       end
-      return faker
+    else
+      faker = nil
     end
+      return faker
   end
 
   def used_prompts

@@ -16,7 +16,6 @@ class Entry extends React.Component {
     this.showBox = this.showBox.bind(this);
     this.showQuestion = this.showQuestion.bind(this);
     this.hideResponses = this.hideResponses.bind(this);
-    this.handleQuestion = this.handleQuestion.bind(this);
 
   }
 
