@@ -16,6 +16,7 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     full_bottle = get_new_bottle
     @bottle = @entry.unlock_bottle(full_bottle)
+    @entry.find_random_user
     if @entry.stream == true
       @entry.stream_length_check
     end
@@ -36,9 +37,6 @@ class EntriesController < ApplicationController
       @prompt = prompt_find
     end
     @entries = current_user.entries.reverse
-    if @entries.nil?
-      @entries = [Entry.create(user_id: current_user.id, body: "here's where your journal entries goes. You can check for responses for anonymous people here, and always add notes and continue thoughts....", viewer_id: current_user.id)]
-    end
     @responses = get_responses(@entries)
     if !@entries.nil? || !@entries.empty?
       @all_prompts = @entries.map do |entry|

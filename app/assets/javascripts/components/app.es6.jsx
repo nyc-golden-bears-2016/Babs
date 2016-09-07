@@ -9,10 +9,7 @@ class App extends React.Component {
       streams: [],
       teaser: '',
       inspo: '',
-      bottles:  [{
-                  id: 1,
-                  body: 'Write an entry to unlock your first bottle!'
-                }],
+      bottles:  [],
       all_prompts: [],
       showStream: "stream-big",
       showEntryForm: true,
@@ -131,7 +128,7 @@ class App extends React.Component {
          </section>
         <div className={this.state.showBottleClass}>
           <h2 id="new-bottles">new bottle</h2>
-          {this.state.unlockedBottle.body.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p>"waiting for new bottle"</p> }
+          {this.state.unlockedBottle.body.length == 0 ? <div className="teaser-font"><span>{this.state.teaser} </span><span className="teaser">{this.state.faker}</span></div> : <p className="teaser-font">"waiting for new bottle..." </p>}
           <h2 id="your-bottles">unlocked bottles</h2>
           <ul>
           {this.state.unlockedBottle.body.length > 0 ? <li><Bottle onAddReply={this.addReply} key={this.state.unlockedBottle.id} data={this.state.unlockedBottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} /></li> : null}
