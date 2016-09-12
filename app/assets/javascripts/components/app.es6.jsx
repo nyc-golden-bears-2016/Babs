@@ -24,7 +24,8 @@ class App extends React.Component {
       bottleButton: '⇆',
       streamOn: '⇅',
       showStreamId: "show-stream-off",
-      unlockedBottle: {body: ""}
+      unlockedBottle: {body: ""},
+      userEntries: "user-entries"
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -55,9 +56,11 @@ class App extends React.Component {
 
   onShowBottleClass(){
     if(this.state.showBottleClass === "bottle-entries-big"){
-      this.setState({showBottleClass: "bottle-entries-small"})
+      this.setState({showBottleClass: "bottle-entries-small",
+                     userEntries: "user-entries-large"})
     } else{
-      this.setState({showBottleClass: "bottle-entries-big"})
+      this.setState({showBottleClass: "bottle-entries-big",
+                     userEntries: "user-entries"})
     }
 
   }
@@ -137,7 +140,7 @@ class App extends React.Component {
             })}
           </ul>
         </div>
-        <div className="user-entries">
+        <div className={this.state.userEntries}>
           <div>
             <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
           </div>
