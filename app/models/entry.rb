@@ -21,7 +21,7 @@ class Entry < ApplicationRecord
 
   # find a random user to receiver message
   def find_random_user
-    total_users = User.last.id
+    total_users = User.all.last.id
     count = 0
     begin
       bottle_receiver = User.find(rand(1..total_users))
@@ -53,7 +53,7 @@ class Entry < ApplicationRecord
     else
       # viewer_id can't be null. If a message is private, the viewer_id is set to the user_id
       self.viewer_id = self.user_id
-      {body: 'Send a message in a bottle to unlock one.',
+      {body: 'Send another message in a bottle!',
         id: self.id}
     end
   end

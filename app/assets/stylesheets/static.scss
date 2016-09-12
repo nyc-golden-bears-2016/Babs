@@ -12,7 +12,6 @@
     animation: marquee 40s linear infinite;
 }
 
-/* Make it move */
 @keyframes marquee {
     0%   { transform: translate(0, 0); }
     100% { transform: translate(-100%, 0); }
@@ -223,9 +222,9 @@ li.public{
 }
 .entry-post-button {
   border: 1px solid gray;
-  margin-top: 1%;
-  margin-bottom: 2%;
-  height: 3.5vh;
+  margin-top: 2%;
+  margin-bottom: 10%;
+  height: 6.0vh;
   border-radius: 5px;
   background-color: white;
   width: 3.5vw;
@@ -436,4 +435,8 @@ textarea,
 
 #reply-desire {
   outline: none;
+}
+
+ul{
+  list-style-type: none;
 }

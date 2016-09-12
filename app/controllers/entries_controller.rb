@@ -16,6 +16,7 @@ class EntriesController < ApplicationController
     @entry.user_id = current_user.id
     full_bottle = get_new_bottle
     @bottle = @entry.unlock_bottle(full_bottle)
+    @entry.find_random_user
     if @entry.stream == true
       @entry.stream_length_check
     end
@@ -36,9 +37,6 @@ class EntriesController < ApplicationController
       @prompt = prompt_find
     end
     @entries = current_user.entries.reverse
-    if @entries.nil?
-      @entries = [Entry.create(user_id: current_user.id, body: "here's where your journal entries goes. You can check for responses for anonymous people here, and always add notes and continue thoughts....", viewer_id: current_user.id)]
-    end
     @responses = get_responses(@entries)
     if !@entries.nil? || !@entries.empty?
       @all_prompts = @entries.map do |entry|
@@ -51,10 +49,10 @@ class EntriesController < ApplicationController
     @teaser = get_new_bottle
     if @teaser != "Waiting for a new bottle..."
       @teaser = get_new_bottle.body[0..40]
+      @faker  = generate_faker
     else
       @teaser = "Waiting for a new bottle..."
     end
-    @faker  = generate_faker
     render json: {entries: @entries,
                   responses: @responses,
                   teaser: @teaser,
@@ -139,15 +137,21 @@ class EntriesController < ApplicationController
   end
 
   def generate_faker
-    entries = get_your_bottles
+    if get_bottles.length == 1
+      entries = get_bottles
+    else
+      entries = get_your_bottles
+    end
     if !entries.empty?
       length = entries[-1].body.length - 40
       faker = ""
-      (length/6).times do
+      (length/8).times do
         faker << Faker::Lorem.word + " "
       end
-      return faker
+    else
+      faker = nil
     end
+      return faker
   end
 
   def used_prompts
