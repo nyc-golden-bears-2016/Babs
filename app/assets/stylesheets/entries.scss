@@ -1,0 +1,231 @@
+#entry-box{
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+
+.private,
+.stream,
+.public,
+.bottle-entry {
+    background-color: white;
+    list-style-type: none;
+    border: 1px solid gray;
+    width: 90%;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 2px 2px 4px #888888;
+    border-radius: 6px;
+    line-height: 1.5em;
+  }
+
+.bottle-entry{
+  background-color: white;
+}
+
+li.private{
+    border-top: 4px solid #dff0d8;
+    display: inherit;
+    text-align: center;
+    font-size: 18px;
+}
+li.stream{
+    border-top: 4px solid #d9edf7;
+    display: inherit;
+    text-align: center;
+    font-size: 18px;
+}
+li.public{
+    border-top: 4px solid #FF995C;
+    display: inherit;
+    text-align: center;
+    font-size: 18px;
+  }
+
+.post-long-enough {
+  outline: none;
+  border: 4px solid #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.plus-minus-button{
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  outline: none;
+}
+
+.mail-read {
+  font-size: 30px;
+  color: red;
+}
+
+.mail-unread {
+  font-size: 30px;
+  color: green;
+  font-size: 30px;
+}
+
+.entry-post-button {
+  border: 1px solid gray;
+  margin-top: 2%;
+  margin-bottom: 10%;
+  height: 6.0vh;
+  border-radius: 5px;
+  background-color: white;
+  width: 3.5vw;
+  min-width: 90px;
+  box-shadow: 2px 2px 4px #888888;
+}
+.entry-post-button:hover {
+  color: white;
+  background-color: #0066ff;
+  box-shadow: 2px 2px 8px #0066ff;
+}
+
+.user-entries,
+.user-entries-large {
+  background-color: #FEFDFB;
+  opacity: .6;
+  top: 12vh;
+  position: absolute;
+  padding: 1%;
+  width: 55vw;
+  transition: width .6s ease-out;
+  border-radius: 5%;
+  left: 10.5%;
+  box-shadow: 2px 2px 4px #888888;
+  font-size: 18px;
+  max-height: 83vh;
+  margin-right: 2%;
+  padding-left: 0%;
+  opacity: 1;
+  border: 1px solid #003366;
+  overflow-y:  scroll;
+  & a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  & input[type='submit']{
+  font-size: 22px;
+  }
+}
+
+.user-entries-large {
+  width: 69vw;
+}
+
+textarea,
+#bottle-respond-box {
+  width: 40vw;
+  font-size: 18px;
+  height: 3em;
+  transition: height .6s ease-out;
+  border: 1px solid gray;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px #888888;
+  margin: auto;
+}
+
+#bottle-respond-box {
+  width: 20vw;
+}
+.post-textarea{
+  width: 40vw;
+  height: 20vh;
+  font-size: 18px;
+  border: 3px solid #00ff00;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px #00ff00;
+}
+
+#bottle-button,
+#respond-button,
+#stream-checkbox,
+.stream-link {
+  font-size: 14px;
+  padding-right: 7%;
+  padding-bottom: 10%;
+  margin-right: 8%;
+  margin-bottom: 5%;
+  /*background-color: transparent;*/
+}
+
+.bottle-button-yes{
+  background: image-url('sprite-bottles.png') -25% 0;
+  background-size: 55%;
+  background-repeat: no-repeat;
+}
+.bottle-button-no{
+  background: image-url('sprite-bottles.png') 125% 0;
+  background-size: 55%;
+  background-repeat: no-repeat;
+}
+
+.respond-button-yes{
+  background: image-url('sprite-responses.png') 150% 0;
+  background-size: 150%;
+  background-repeat: no-repeat;
+}
+.respond-button-no{
+  background: image-url('sprite-responses.png') -30% 0;
+  background-size: 150%;
+  background-repeat: no-repeat;
+}
+
+.stream-button-yes{
+  background: image-url('sprite-streams.png') 150% 0;
+  background-size: 150%;
+  background-repeat: no-repeat;
+}
+.stream-button-no{
+  background: image-url('sprite-streams.png') -30% 0;
+  background-size: 150%;
+  background-repeat: no-repeat;
+}
+
+.respond-button,
+.delete-button,
+.question-button {
+  display: inline-block;
+  & input[type='submit']{
+    background-size: 20%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    font-size: 30px;
+    background-color: transparent;
+  }
+}
+
+.delete-button{
+  & input[type='submit']{
+    background-image: image-url("garbage.png");
+    filter: hue-rotate(180deg);
+      -webkit-filter: hue-rotate(180deg);
+  }
+}
+.entry-responses-true{
+  transition: height 1.4s ease-out;
+}
+#delete-button {
+  font-size: 30px;
+}
+.entry-span{
+  display: block;
+  word-wrap: normal;
+}
+
+#prompt,
+.question
+{
+  font-family: 'Cantarell', sans-serif;
+}
+
+.question {
+  border-bottom: 1px solid black;
+}
+
+.post-icons{
+  margin-bottom: 5%;
+}

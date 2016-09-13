@@ -1,0 +1,83 @@
+.bottle-show{
+  position: absolute;
+  top: 83.6%;
+  right: 10.1%;
+  z-index: 1;
+}
+
+.bottle-entries-big-button,
+.bottle-entries-small-button {
+  background-image: url("transparent.png");
+  background:rgba(0,0,0,0.01);
+  font-size: 1.5em;
+  border: none;
+  position: fixed;
+  outline: none;
+  padding: 0%;
+  top: 11%;
+  right: 25%;
+  transition: right .6s ease-out;
+  margin: 0%;
+  height: 3vh;
+  text-shadow: 1px 1px 2px #888888;
+  cursor: pointer;
+}
+
+.bottle-entries-small-button {
+  right: 10%;
+}
+
+#new-bottles {
+ border-bottom: 2px solid black;
+ text-align: center;
+}
+
+#your-bottles {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+.teaser{
+  -webkit-filter: blur(3.0px);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.teaser-font{
+  font-family: "Courier New", Courier, monospace;
+}
+
+.bottle-entries-small,
+.bottle-entries-big {
+  top: 10.2%;
+  position: absolute;
+  background-color: #FEFBF7;
+  transition: right .6s ease-out;
+  box-shadow: 2px 2px 4px #888888;
+  right: 0%;
+  border-left: 1px solid gray;
+  font-size: 18px;
+  width: 30vw;
+  overflow-y: scroll;
+  height: 89vh;
+  border: 1px solid black;
+  opacity: 1;
+  padding-left: 1%;
+  padding-right: 1%;
+
+  & a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  & input[type='submit']{
+
+  width: 7vw;
+  font-size: 12px;
+  border-radius: 5px;
+  }
+}
+
+.bottle-entries-small {
+  right: -25vh;
+}
