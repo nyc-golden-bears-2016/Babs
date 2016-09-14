@@ -102,7 +102,7 @@ class Entry extends React.Component {
                 }
               })}
             </ul> : null}
-        {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.props.onAddReply} /> : null}
+        {this.state.box ? <ReplyBox data={this.props.data} onAddReply={this.props.onAddReply} onHide={this.hideBox} /> : null}
       </li>
     )
   }
