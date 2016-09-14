@@ -6,8 +6,8 @@ class ReplyBox extends React.Component{
   }
 
   handleSubmit(event) {
-
     event.preventDefault();
+    this.props.onHide();
     let textArea = this.refs.responseTextarea,
         entry_id = this.refs.entryId.value,
         body = textArea.value;
