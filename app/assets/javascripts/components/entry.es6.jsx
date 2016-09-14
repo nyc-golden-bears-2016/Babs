@@ -16,6 +16,7 @@ class Entry extends React.Component {
     this.showBox = this.showBox.bind(this);
     this.showQuestion = this.showQuestion.bind(this);
     this.hideResponses = this.hideResponses.bind(this);
+    this.hideBox = this.hideBox.bind(this);
 
   }
 
@@ -54,6 +55,12 @@ class Entry extends React.Component {
     }
    }
 
+  hideBox(){
+    if(this.state.showReply === false){
+      this.setState({showReply: true})
+    }
+  } 
+
 
 
 
@@ -74,7 +81,7 @@ class Entry extends React.Component {
             <input type = "submit" value="⊗"/>
           </form>
         </span>
-        <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox}/></span>
+        <span className="respond-button"><ReplyButton id={this.props.data.id} onShowBox={this.showBox} onHide={this.hideBox}/></span>
         <span className="question-button">
         <form id="reply-desire" onClick={this.showQuestion}>
           <input id="reply-desire" type = "submit" value="?"/>

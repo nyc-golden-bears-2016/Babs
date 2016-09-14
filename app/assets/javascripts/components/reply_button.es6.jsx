@@ -15,6 +15,7 @@ class ReplyButton extends React.Component{
       } else {
         this.setState({plusMinus: "+"})
       }
+      this.props.onHide();
       this.props.onShowBox();
 
     }
