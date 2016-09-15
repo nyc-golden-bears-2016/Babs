@@ -16,21 +16,16 @@ class ResponsesController < ApplicationController
     if @response.entry_id.nil?
       @response.entry_id = 1
     end
-    if request.xhr?
-      if @response.save
+    if @response.save
         render json: @response
-      else
-        flash[:error] = 'Something went wrong'
-      end
     else
-      flash[:error] = "Something went wrong"
-      redirect_to '/static/index'
+        flash[:error] = 'Something went wrong'
     end
   end
 
   private
 
   def permit_params
-    params.require(:response).permit(:body, :entry_id, :user_id, :can_respond)
+    params.require(:response).permit(:body, :entry_id, :can_respond)
   end
 end

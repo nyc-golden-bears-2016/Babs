@@ -135,8 +135,8 @@ class App extends React.Component {
           <h2 id="your-bottles">unlocked bottles</h2>
           <ul>
           {this.state.unlockedBottle.body.length > 0 ? <li><Bottle onAddReply={this.addReply} key={this.state.unlockedBottle.id} data={this.state.unlockedBottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} /></li> : null}
-            {this.state.bottles.map((bottle, i) => {
-              return <Bottle onAddReply={this.addReply} key={i} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry} />
+            {this.state.bottles.map((bottle) => {
+            return <Bottle onAddReply={this.addReply} key={bottle.id} data={bottle} replies={this.state.replies} onRemoveEntry={this.removeEntry}/>
             })}
           </ul>
         </div>
@@ -145,7 +145,7 @@ class App extends React.Component {
             <EntryBox onAddEntry={this.addEntry} inspo ={this.state.inspo}/>
           </div>
           <h2 className="user-header" >entries</h2>
-          <ul class="user-ul">
+          <ul className="user-ul">
             {this.state.entries.map((entry) => {
               if(entry.is_private === true && entry.stream === false){
                 entryType = this.state.entryPrivate

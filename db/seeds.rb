@@ -30,8 +30,8 @@ Prompt.create(question: "Let everybody in the city think of the word 'yes' at th
 Prompt.create(question: "Make it the whole world thinking all the time, 1960 Spring --Yoko Ono")
 
 
-# User.create(username: "Kudes", email: "BKudler@gmail.com", password: "password")
-# User.create(username: "Behrman", email: "bbehrman10@gmail.com", password: "password")
+User.create(username: "Kudes", email: "BKudler@gmail.com", password: "password")
+User.create(username: "Behrman", email: "bbehrman10@gmail.com", password: "password")
 # User.create(username: "stream", email: "fake10@gmail.com", password: "password")
 
 
