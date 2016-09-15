@@ -7,6 +7,7 @@ class BottleReplyBox extends React.Component{
 
   handleSubmit(event) {
     event.preventDefault();
+    this.props.onHide();
     let textArea = this.refs.responseTextarea,
         entry_id = this.refs.entryId.value,
         body = textArea.value;
@@ -16,8 +17,8 @@ class BottleReplyBox extends React.Component{
       data: { response: { body: body, entry_id: entry_id } }
     })
     .done((response) => {
-      textArea.value = '';
       this.props.onAddReply(response);
+      textArea.value = '';
     })
   }
 
@@ -27,6 +28,7 @@ class BottleReplyBox extends React.Component{
         <form  onSubmit={this.handleSubmit}>
           <textarea id="bottle-respond-box" ref="responseTextarea" name="body"/>
           <input ref="entryId" type="hidden" value={this.props.data.id}/>
+          <input ref="viewerId" type="hidden" value={this.props.data.viewer_id}/>
           <input className="entry-post-button" type='submit' value='Respond'/>
         </form>
       </section>
