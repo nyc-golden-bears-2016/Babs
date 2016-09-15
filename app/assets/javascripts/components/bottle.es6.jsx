@@ -23,7 +23,6 @@ class Bottle extends React.Component {
 
 
   render() {
-    debugger;
     return (
       <li className="bottle-entry">
         <span className="entry-span">{this.props.data.body}</span><br />
